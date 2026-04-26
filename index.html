@@ -1,131 +1,180 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mboiz Stream Nexus - Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #050505;
-            --accent-blue: #00D2FF;
-            --text-color: #ffffff;
-            --glass-bg: rgba(255, 255, 255, 0.05);
-        }
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            overflow-x: hidden;
-        }
-        .navbar {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(10px);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--glass-bg);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-        .brand {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--accent-blue);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            text-shadow: 0 0 10px var(--accent-blue);
-        }
-        .container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            padding: 0 1rem;
-        }
-        .hero {
-            text-align: center;
-            padding: 4rem 0;
-            background: radial-gradient(circle at center, rgba(0, 210, 255, 0.1) 0%, transparent 70%);
-        }
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.2rem;
-            opacity: 0.8;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        .stat-card {
-            background: var(--glass-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-        }
-        .stat-card h3 {
-            margin-top: 0;
-            opacity: 0.6;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-        }
-        .stat-card .value {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--accent-blue);
-        }
-        .footer {
-            text-align: center;
-            padding: 2rem;
-            opacity: 0.5;
-            font-size: 0.9rem;
-        }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .sidebar-btn.active { background: rgba(0, 210, 255, 0.1); color: #00D2FF; border-right: 4px solid #00D2FF; }
+        .tab-content.hidden { display: none; }
     </style>
 </head>
-<body>
-    <nav class="navbar">
-        <div class="brand">Mboiz Stream Nexus</div>
-        <div class="nav-links">
-            <span id="session-id">Session: LOADING...</span>
+<body class="h-screen flex overflow-hidden">
+    <aside class="w-64 glass border-r border-white/10 flex flex-col">
+        <div class="p-6 border-b border-white/10 text-center">
+            <h1 class="text-xl font-bold text-[#00D2FF]">Mboiz Stream Nexus</h1>
+            <p class="text-[10px] text-white/40 tracking-widest uppercase mt-1">Premium Stream Asset</p>
         </div>
-    </nav>
-    <div class="hero">
-        <h1>Welcome to Mboiz Stream Nexus</h1>
-        <p>Premium streaming dashboard for professional creators.</p>
-    </div>
-    <div class="container">
-        <div class="stats-grid">
-            <div class="stat-card">
-                <h3>Active Viewers</h3>
-                <div class="value">1,234</div>
-            </div>
-            <div class="stat-card">
-                <h3>Stream Health</h3>
-                <div class="value">EXCELLENT</div>
-            </div>
-            <div class="stat-card">
-                <h3>Uptime</h3>
-                <div class="value">04:20:00</div>
+        <nav class="flex-1 py-4 overflow-y-auto">
+            <button onclick="switchTab('engine', this)" class="sidebar-btn active w-full flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-all text-sm font-medium">
+                <i class="ph ph-cpu text-lg"></i> Engine Session
+            </button>
+            <button onclick="switchTab('overlay', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-all text-sm font-medium">
+                <i class="ph ph-paint-brush text-lg"></i> Overlay Asset
+            </button>
+            <button onclick="switchTab('info', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-all text-sm font-medium">
+                <i class="ph ph-info text-lg"></i> Information
+            </button>
+            <button onclick="switchTab('tutorial', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-all text-sm font-medium">
+                <i class="ph ph-book-open text-lg"></i> Tutorial
+            </button>
+            <button onclick="switchTab('donatur', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-4 hover:bg-white/5 transition-all text-sm font-medium">
+                <i class="ph ph-hand-heart text-lg"></i> Donatur
+            </button>
+        </nav>
+        <div class="p-4 border-t border-white/10 space-y-2">
+            <button class="w-full py-2 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2">
+                <i class="ph ph-discord-logo"></i> DISCORD
+            </button>
+            <a href="https://sociabuzz.com/dailylife_emix" target="_blank" class="block w-full py-2 bg-white/5 hover:bg-white/10 text-center rounded-lg text-xs font-bold border border-white/10 transition-all uppercase">
+                Support Dev
+            </a>
+        </div>
+    </aside>
+    <main class="flex-1 overflow-y-auto bg-[#080808] p-8">
+        <div id="tab-engine" class="tab-content">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-2">Engine Session</h2>
+                <p class="text-white/40 mb-8 text-sm">Kelola koneksi engine TikTok Live kamu di sini.</p>
+                <div class="glass p-8 rounded-3xl space-y-8">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                        <div class="space-y-3">
+                            <label class="text-xs font-bold text-white/60 uppercase tracking-wider">TikTok Username</label>
+                            <input id="username" type="text" placeholder="@username" class="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 focus:outline-none focus:border-[#00D2FF] transition-all text-lg text-white">
+                        </div>
+                        <div class="space-y-3">
+                            <label class="text-xs font-bold text-white/60 uppercase tracking-wider">Active Session ID</label>
+                            <div class="flex gap-3">
+                                <input id="session" type="text" readonly class="flex-1 bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white/30 focus:outline-none font-mono">
+                                <button onclick="copySession()" class="px-5 bg-white/5 hover:bg-white/10 rounded-2xl border border-white/10 transition-all">
+                                    <i class="ph ph-copy text-xl"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <button id="btnConnect" class="flex-[2] py-5 bg-white text-black rounded-2xl font-black text-lg hover:bg-[#00D2FF] transition-all tracking-tight">
+                            CONNECT TO ENGINE
+                        </button>
+                        <button id="stop" class="flex-1 py-5 bg-red-500/10 border border-red-500/20 text-red-500 rounded-2xl font-bold hover:bg-red-500 hover:text-white transition-all">
+                            STOP
+                        </button>
+                    </div>
+                    <div class="p-6 bg-white/5 rounded-2xl flex flex-col md:flex-row items-center justify-between gap-4 border border-white/5">
+                        <div class="flex items-center gap-4">
+                            <div class="w-4 h-4 rounded-full bg-yellow-500 animate-pulse shadow-[0_0_15px_rgba(234,179,8,0.5)]"></div>
+                            <span id="status" class="font-bold text-white/80">Status: Disconnected</span>
+                        </div>
+                        <div class="flex items-center gap-6">
+                            <div class="text-right">
+                                <p class="text-[10px] text-white/30 uppercase font-bold">Engine Mode</p>
+                                <p id="engineMode" class="text-sm font-bold text-[#00D2FF]">None</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-    <footer class="footer">
-        &copy; 2026 Mboiz Creative. All rights reserved.
-    </footer>
+        <div id="tab-overlay" class="tab-content hidden">
+            <div class="max-w-7xl mx-auto">
+                <h2 class="text-3xl font-bold mb-2">Overlay Asset</h2>
+                <p class="text-white/40 mb-8 text-sm">Pilih dan kustomisasi asset untuk stream kamu.</p>
+                <div id="card-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+            </div>
+        </div>
+        <div id="tab-info" class="tab-content hidden text-center py-20">
+            <i class="ph ph-info text-6xl text-white/10 mb-4"></i>
+            <h2 class="text-2xl font-bold">Information</h2>
+            <p class="text-white/40">Informasi mengenai aplikasi akan ditampilkan di sini.</p>
+        </div>
+        <div id="tab-tutorial" class="tab-content hidden text-center py-20">
+            <i class="ph ph-book-open text-6xl text-white/10 mb-4"></i>
+            <h2 class="text-2xl font-bold">Tutorial</h2>
+            <p class="text-white/40">Panduan penggunaan aplikasi.</p>
+        </div>
+        <div id="tab-donatur" class="tab-content hidden text-center py-20">
+            <i class="ph ph-hand-heart text-6xl text-white/10 mb-4"></i>
+            <h2 class="text-2xl font-bold">Donatur</h2>
+            <p class="text-white/40">Terima kasih kepada para pendukung kami.</p>
+        </div>
+    </main>
     <script>
-        const urlParams = new URLSearchParams(window.location.search);
-        const session = urlParams.get('session') || 'GUEST';
-        document.getElementById('session-id').textContent = 'Session: ' + session;
+        const cards = [
+            { id: 'brandingStream', name: 'Branding Stream', icon: 'ph-identification-card', asset: 'branding', btn: 'Pengaturan' },
+            { id: 'widgetClock', name: 'Widget Clock', icon: 'ph-clock', asset: 'clock', btn: 'Pengaturan' },
+            { id: 'dockOBS', name: 'Dock OBS', icon: 'ph-monitor', asset: 'dockobs', btn: 'Pengaturan' },
+            { id: 'openOBSControl', name: 'OBS Trigger', icon: 'ph-lightning', asset: 'obstrigger', btn: 'Pengaturan' },
+            { id: 'chatStyle', name: 'Chat Box', icon: 'ph-chat-text', asset: 'chat', btn: 'Tema' },
+            { id: 'dockchatStyle', name: 'Dock Chat', icon: 'ph-sidebar', asset: 'dockchat', btn: 'Tema', copy: true },
+            { id: 'viewerStyle', name: 'Viewer Counter', icon: 'ph-users', asset: 'viewer', btn: 'Tema', copy: true },
+            { id: 'absenStream', name: 'Absen Heart Me', icon: 'ph-heart', asset: 'absen', btn: 'Pengaturan' },
+            { id: 'ttsOverlay', name: 'Text To Speech', icon: 'ph-speaker-high', asset: 'tts', btn: 'Pengaturan' },
+            { id: 'followLink', name: 'Follow Alert', icon: 'ph-user-plus', asset: 'follow', btn: 'Tema', copy: true },
+            { id: 'giftLink', name: 'Gift Notification', icon: 'ph-gift', asset: 'gift', btn: 'Tema', copy: true },
+            { id: 'joinLink', name: 'Join Notification', icon: 'ph-sign-in', asset: 'join', btn: 'Tema', copy: true },
+            { id: 'likeStyle', name: 'Like Animation', icon: 'ph-thumbs-up', asset: 'like', btn: 'Tema', copy: true },
+            { id: 'shareLink', name: 'Share Alert', icon: 'ph-share-network', asset: 'share', btn: 'Tema', copy: true },
+            { id: 'leaderboardLink', name: 'Gift Leaderboard', icon: 'ph-trophy', asset: 'leaderboard', btn: 'Tema', copy: true },
+            { id: 'likeboardStyle', name: 'Like Leaderboard', icon: 'ph-ranking', asset: 'likeboard', btn: 'Tema', copy: true },
+            { id: 'contactCreator', name: 'Custom Design?', icon: 'ph-paint-brush-broad', asset: 'custom', btn: 'Hubungi Kreator' }
+        ];
+        function renderCards() {
+            const container = document.getElementById('card-container');
+            if(!container) return;
+            container.innerHTML = cards.map(card => `
+                <div class="glass p-6 rounded-3xl hover:border-[#00D2FF]/40 transition-all group relative overflow-hidden">
+                    <div class="absolute -right-4 -top-4 w-24 h-24 bg-[#00D2FF]/5 rounded-full blur-2xl group-hover:bg-[#00D2FF]/10 transition-all"></div>
+                    <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center mb-6 text-[#00D2FF] group-hover:scale-110 transition-all">
+                        <i class="ph ${card.icon} text-3xl"></i>
+                    </div>
+                    <h3 class="font-bold text-lg mb-6 tracking-tight">${card.name}</h3>
+                    <div class="space-y-3">
+                        <button id="${card.id}" class="w-full py-3 bg-white/5 hover:bg-white/10 border border-white/10 rounded-xl text-sm font-bold transition-all uppercase tracking-wider">
+                            ${card.btn}
+                        </button>
+                        ${card.copy ? `
+                            <button onclick="copyOverlay('${card.asset}')" class="w-full py-3 bg-[#00D2FF]/10 text-[#00D2FF] hover:bg-[#00D2FF] hover:text-black rounded-xl text-sm font-black transition-all uppercase tracking-wider">
+                                Salin URL
+                            </button>
+                        ` : ''}
+                    </div>
+                </div>
+            `).join('');
+        }
+        function switchTab(tabId, btn) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            document.getElementById('tab-' + tabId).classList.remove('hidden');
+            document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        }
+        function copyOverlay(name) {
+            const session = document.getElementById('session').value;
+            const url = `http://localhost:3001/${name}/index.html?session=${session}`;
+            navigator.clipboard.writeText(url);
+            alert('Link Overlay Berhasil Disalin!');
+        }
+        function copySession() {
+            const session = document.getElementById('session').value;
+            navigator.clipboard.writeText(session);
+            alert('Session ID Berhasil Disalin!');
+        }
+        document.getElementById('session').value = 'MBOIZ_' + Math.random().toString(36).substr(2, 9).toUpperCase();
+        renderCards();
     </script>
 </body>
 </html>
