@@ -1,109 +1,73 @@
 <!DOCTYPE html>
-<html lang="id">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mboiz Stream Nexus - Dashboard V.5</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-    *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
-    body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}
-    .top-banner{background:linear-gradient(90deg,#0056b3,#007bff);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-shrink:0}
-    .info-tag{background:#00d2ff;color:#fff;padding:2px 8px;border-radius:20px;font-weight:800;font-size:11px;margin-right:8px}
-    .wrapper{display:flex;flex:1;overflow:hidden}
-    .sidebar{width:250px;background:#111;display:flex;flex-direction:column;padding:20px 0;border-right:1px solid rgba(255,255,255,0.05);flex-shrink:0}
-    .logo-area{padding:0 20px 25px}
-    .logo-label{font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase}
-    .logo-text{font-size:20px;font-weight:800}
-    .logo-text span{color:#007bff}
-    .nav-item{padding:11px 20px;display:flex;align-items:center;gap:12px;color:#666;cursor:pointer;font-size:14px;font-weight:500;transition:.2s}
-    .nav-item:hover{color:#fff}
-    .nav-item.active{background:#007bff;color:#fff;border-radius:10px;margin:2px 12px;padding:11px 14px}
-    .nav-item i{width:18px;text-align:center;font-size:15px}
-    .sidebar-footer{margin-top:auto;padding:0 12px;display:flex;flex-direction:column;gap:8px}
-    .footer-btn{padding:10px;border-radius:8px;border:none;color:#fff;background:#222;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
-    .footer-btn:hover{background:#333}
-    .footer-btn.orange{background:linear-gradient(45deg,#e65c00,#f97316)}
-    .main-content{flex:1;padding:28px;overflow-y:auto;background:#0d0d0d;position:relative}
-    .hero-banner{width:100%;height:190px;background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7,#c084fc);border-radiuss:20px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
-    .hero-text{color:rgba(255,255,255,0.4);font-size:16px;font-weight:800;letter-spacing:3px;text-align:center}
-    .session-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
-    .card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px}
-    .card-label{font-size:11px;color:#666;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
-    .card-row{display:flex;gap:8px;align-items:center}
-    .input-box{flex:1;background:#252525;border:1px solid rgba(255,255,255,0.06);padding:9px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
-    .btn{padding:9px 16px;border-radius:9px;border:none;font-weight:600;cursor:pointer;font-size:13px;transition:.2s}
-    .btn-blue{background:#007bff;color:#fff}
-    .btn-dark{background:#252525;color:#fff}
-    .btn-red{background:#dc3545;color:#fff}
-    .status-bar{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:14px}
-    .mode-badge{background:#252525;padding:6px 12px;border-radius:7px;font-size:13px}
-    .asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .a-card{border-radius:14px;padding:18px 16px;min-height:105px;display:flex;flex-direction:column;justify-content:space-between}
-    .a-card h4{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
-    .a-btn{background:rgba(255,255,255,0.13);border:none;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;transition:.2s}
-    .a-btn:hover{background:rgba(255,255,255,0.25)}
-    .custom-card{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3);border-radius:14px;padding:18px 16px}
-    .custom-card h4{color:#3b9bff;font-size:15px;font-weight:700;margin-bottom:10px}
-    .btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
-    .modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center}
-    .modal-overlay.open{display:flex}
-    .modal-box{background:#161616;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;width:520px;max-height:85vh;overflow-y:auto}
-    .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
-    .modal-head h3{font-size:16px;font-weight:700}
-    .modal-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;padding:4px 8px}
-    .theme-list{display:flex;flex-direction:column;gap:8px}
-    .theme-item{background:#222;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.2s}
-    .theme-item:hover,.theme-item.selected{border-color:#007bff;background:#0d2040}
-    .theme-item span{font-size:14px;font-weight:500}
-    .warn-text{font-size:11px;color:#555;margin-top:14px;text-align:center;font-style:italic}
-    .apply-btn{width:100%;margin-top:16px;padding:12px;background:#007bff;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
-    .form-group{margin-bottom:14px}
-    .form-label{font-size:12px;color:#888;margin-bottom:6px;display:block;font-weight:600;text-transform:uppercase}
-    .form-input{width:100%;background:#222;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
-    .branding-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
-    .branding-item{display:flex;gap:8px;align-items:center}
-    .color-picker-wrap{display:flex;align-items:center;gap:10px;background:#222;padding:8px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.08)}
-    .preview-box{background:#111;border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
-    .sim-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
-    .sim-btn{background:#222;border:1px solid #333;color:#fff;padding:8px;border-radius:8px;font-size:12px;cursor:pointer}
-    .sim-btn:hover{background:#333}
-    .footer-credit{text-align:right;font-size:12px;color:#333;margin-top:20px}
-    </style>
-  </head>
-  <body>
-    <div class="top-banner">
-        <div><span class="info-tag">INFO</span>span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:4px">Join Now! &rarr;</a>a></div>
-      <i class="fas fa-times" style="cursor:pointer;opacity:.6"></i>i>
-    </div>
-  <div class="wrapper">
-      <div class="sidebar">
-            <div class="logo-area">
-                    <div class="logo-label">DASHBOARD</div>
-                    <div class="logo-text">Mboiz<span>Nexus.</span></div>
-            </div>
-          <div class="nav-item active" data-tab="engine"><i class="fas fa-microchip"></i>i>Engine Session</div>
-          <div class="nav-item" data-tab="overlay"><i class="fas fa-layer-group"></i>i>Overlay Asset</div>
-          <div class="nav-item"><i class="fas fa-chart-bar"></i>i>Information</div>
-          <div class="nav-item"><i class="fas fa-book"></i>i>Tutorial</div>
-          <div class="nav-item"><i class="fas fa-dollar-sign"></i>i>Donatur</div>
-          <div class="sidebar-footer">
-                <button class="footer-btn"><i class="fas fa-language"></i>i>Bahasa: ID</button>button>
-                <button class="footer-btn"><i class="fab fa-discord"></i>i>Pusat Bantuan (Discord)</button>button>
-                <button class="footer-btn orange"><i class="fas fa-coffee"></i>i>Support Developer</button>button>
-          </div>
-      </div>
-    <div class="main-content">
-        <div id="engine-view">
-              <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS<br>STREAM ASSET</div></div>
-              <div class="session-grid">
-                      <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" id="btnCopySession">Salin</button>button></div></div>
-                      <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i>i> Dock Control</button>button></div></div>
-              </div>
-              <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:6px">Mulai</button>button></div></div>
-              <div class="status-bar"><div style="display:flex;align-items:center;gap:12px"><span class="mode-badge">Mode : None</span><span style="color:#555;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-r</span>
-  </div>
-  </body>
-  </style></title>
-  </head>
+<!DOCTYPE html>
+document.querySelectorAll(".a-btn[data-modal]").forEach(function(btn){
+  btn.addEventListener("click", function(){ openModal(this.getAttribute("data-modal")); });
+});
+
+
+function openModal(key){
+  var d = MODAL_DATA[key];
+  if(!d) return;
+  document.getElementById("modal-title").textContent = d.title;
+  var body = document.getElementById("modal-body");
+  body.innerHTML = "";
+  var selectedPath = "";
+
+
+  if(d.type === "branding"){
+    var html = '<div class="branding-list" id="brandList">';
+    d.defaults.forEach(v => { html += '<div class="branding-item"><input class="form-input" value="' + v + '"></div>'; });
+    html += '</div><button class="btn btn-dark" style="width:100%;margin-bottom:12px" onclick="addBrandItem()">+ New Item</button>';
+    html += '<div class="color-picker-wrap"><label class="form-label" style="margin:0">Theme Color:</label><input type="color" id="brandColor" value="#007bff" style="border:none;background:none;width:40px;height:30px;cursor:pointer"></div>';
+    html += '<button class="apply-btn" onclick="copyResult(\'branding/index.html\')">Apply to overlay</button>';
+    body.innerHTML = html;
+  } else if(d.type === "clock"){
+    body.innerHTML = '<div class="preview-box" style="font-size:24px;font-weight:700">12:45:00</div><div class="form-group"><label class="form-label">YOUR LOCATION</label><input class="form-input" value="Jakarta"></div><div class="color-picker-wrap"><label class="form-label" style="margin:0">Text Color:</label><input type="color" value="#ffffff" style="border:none;background:none;width:40px;height:30px;cursor:pointer"></div><button class="apply-btn" onclick="copyResult(\'clock/clock.html\')">Apply & Copy Link</button>';
+  } else if(d.type === "like_anim"){
+    var animOpts = ""; d.anims.forEach(a => { animOpts += "<option>" + a + "</option>"; });
+    body.innerHTML = '<div class="form-group"><label class="form-label">Minimal Likes</label><input class="form-input" type="number" value="10"></div><div class="form-group"><label class="form-label">Animation Type</label><select class="form-input" style="background:#222">' + animOpts + '</select></div><button class="apply-btn" onclick="copyResult(\'like/index.html\')">Save & Copy Link</button>';
+  } else if(d.type === "leaderboard"){
+    var simBtns = ""; d.buttons.forEach(b => { simBtns += '<button class="sim-btn" onclick="alert(\'Simulation: ' + b + '\')">' + b + '</button>'; });
+    body.innerHTML = '<div class="preview-box">Tema Aktif: <b>' + d.themeName + '</b></div><div class="sim-buttons">' + simBtns + '</div><button class="apply-btn" onclick="copyResult(\'' + d.path + '\')">Apply & Copy Link</button>';
+  } else if(d.type === "tema"){
+    var h = "<div class='theme-list'>";
+    d.themes.forEach(function(t){ h += '<div class="theme-item" onclick="selectTheme(this, \'' + t.p + '\')"><span>' + t.n + '</span><i class="fas fa-chevron-right"></i></div>'; });
+    h += "</div><button class='apply-btn' id='btnFinalApply'>Apply & Copy Link</button>";
+    body.innerHTML = h;
+  } else if(d.type === "info"){
+    body.innerHTML = '<p style=\'color:#aaa;font-size:14px;line-height:1.7;margin-bottom:16px\'>' + d.text + '</p><button class=\'apply-btn\' onclick="copyResult(\'' + d.path + '\')">Copy Link</button>';
+  }
+  document.getElementById("modal").classList.add("open");
+}
+
+
+function addBrandItem(){
+  var list = document.getElementById("brandList");
+  if(list.children.length < 10){
+    var div = document.createElement("div"); div.className = "branding-item";
+    div.innerHTML = '<input class="form-input" placeholder="Menu Item">'; list.appendChild(div);
+  } else { alert("Maksimal 10 menu!"); }
+}
+
+
+function selectTheme(el, path){
+  document.querySelectorAll(".theme-item").forEach(i => i.classList.remove("selected"));
+  el.classList.add("selected");
+  document.getElementById("btnFinalApply").onclick = () => copyResult(path);
+}
+
+
+function copyResult(path){
+  var url = "http://localhost:3001/" + path + "?session=" + SESSION;
+  navigator.clipboard.writeText(url).then(() => { alert("URL Disalin!\\n\\n" + url); closeModal(); });
+}
+
+
+function closeModal(){ document.getElementById("modal").classList.remove("open"); }
+document.getElementById("btnCloseModal").onclick = closeModal;
+document.getElementById("btnCopySession").onclick = () => {
+  navigator.clipboard.writeText(SESSION).then(() => { alert("Session ID disalin!"); });
+};
+</script>
+</body>
+  </html>
