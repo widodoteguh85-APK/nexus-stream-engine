@@ -9,51 +9,76 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
 *{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
 body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}
-.top-banner{background:linear-gradient(90deg,#0056b3,#007bff);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
-.info-tag{background:#00d2ff;color:#fff;padding:2px 8px;border-radius:20px;font-weight:800;font-size:11px;margin-right:10px}
+.top-banner{background:linear-gradient(90deg,#0056b3,#007bff);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-shrink:0}
+.info-tag{background:#00d2ff;color:#fff;padding:2px 8px;border-radius:20px;font-weight:800;font-size:11px;margin-right:8px}
 .wrapper{display:flex;flex:1;overflow:hidden}
-.sidebar{width:250px;background:#111;display:flex;flex-direction:column;padding:20px 0;border-right:1px solid rgba(255,255,255,0.05)}
+.sidebar{width:250px;background:#111;display:flex;flex-direction:column;padding:20px 0;border-right:1px solid rgba(255,255,255,0.05);flex-shrink:0}
 .logo-area{padding:0 20px 25px}
-.logo-label{font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase}
+.logo-label{font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase}
 .logo-text{font-size:20px;font-weight:800}
 .logo-text span{color:#007bff}
-.nav-item{padding:11px 20px;display:flex;align-items:center;gap:12px;color:#777;cursor:pointer;font-size:14px;font-weight:500}
+.nav-item{padding:11px 20px;display:flex;align-items:center;gap:12px;color:#666;cursor:pointer;font-size:14px;font-weight:500;transition:.2s}
 .nav-item:hover{color:#fff}
-.nav-item.active{background:#007bff;color:#fff;border-radius:10px;margin:0 12px}
-.nav-item i{width:18px;text-align:center}
+.nav-item.active{background:#007bff;color:#fff;border-radius:10px;margin:2px 12px;padding:11px 14px}
+.nav-item i{width:18px;text-align:center;font-size:15px}
 .sidebar-footer{margin-top:auto;padding:0 12px;display:flex;flex-direction:column;gap:8px}
-.footer-btn{padding:10px;border-radius:8px;border:none;color:#fff;background:#222;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
-.footer-btn.orange{background:linear-gradient(45deg,#ff8c00,#e65c00)}
-.main-content{flex:1;padding:28px;overflow-y:auto;position:relative;background:#0d0d0d}
-.hero-banner{width:100%;height:195px;background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7,#c084fc);border-radius:20px;margin-bottom:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.hero-text{color:rgba(255,255,255,0.4);font-size:18px;font-weight:800;letter-spacing:3px}
-.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
-.card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px}
-.card-label{font-size:12px;color:#777;margin-bottom:10px;font-weight:500}
-.card-row{display:flex;gap:10px;align-items:center}
-.input-box{flex:1;background:#252525;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:#fff;font-size:13px}
-.btn{padding:9px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:13px}
-.btn-blue{background:#007bff;color:#fff}
-.btn-dark{background:#252525;color:#fff}
+.footer-btn{padding:10px;border-radius:8px;border:none;color:#fff;background:#222;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.footer-btn:hover{background:#333}
+.footer-btn.orange{background:linear-gradient(45deg,#e65c00,#f97316)}
+.main-content{flex:1;padding:28px;overflow-y:auto;background:#0d0d0d;position:relative}
+.hero-banner{width:100%;height:190px;background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7,#c084fc);border-radius:20px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.hero-text{color:rgba(255,255,255,0.4);font-size:16px;font-weight:800;letter-spacing:3px;text-align:center}
+.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px}
+.card-label{font-size:11px;color:#666;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.card-row{display:flex;gap:8px;align-items:center}
+.input-box{flex:1;background:#252525;border:1px solid rgba(255,255,255,0.06);padding:9px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
+.btn{padding:9px 16px;border-radius:9px;border:none;font-weight:600;cursor:pointer;font-size:13px;transition:.2s}
+.btn-blue{background:#007bff;color:#fff}.btn-blue:hover{background:#0066d6}
+.btn-dark{background:#252525;color:#fff}.btn-dark:hover{background:#333}
 .btn-red{background:#dc3545;color:#fff}
-.status-bar{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px;display:flex;justify-content:space-between;align-items:center;margin-top:16px}
-.mode-badge{background:#252525;padding:7px 14px;border-radius:8px;font-size:13px}
-.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;display:none}
-.a-card{border-radius:16px;padding:20px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;position:relative}
-.a-card h4{font-size:15px;font-weight:600;color:#fff}
-.a-btn{background:rgba(255,255,255,0.12);border:none;color:#fff;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;backdrop-filter:blur(4px)}
-.a-btn:hover{background:rgba(255,255,255,0.22)}
-.card-custom{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3)}
-.card-custom h4{color:#007bff;font-size:16px}
-.btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;align-self:flex-start;margin-top:10px}
-.footer-credit{text-align:right;font-size:12px;color:#444;margin-top:20px}
-.footer-credit b{color:#666}
+.status-bar{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.mode-badge{background:#252525;padding:6px 12px;border-radius:7px;font-size:13px}
+/* OVERLAY GRID */
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.a-card{border-radius:14px;padding:18px 16px;min-height:105px;display:flex;flex-direction:column;justify-content:space-between;position:relative;cursor:default}
+.a-card h4{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
+.a-btn{background:rgba(255,255,255,0.13);border:none;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;backdrop-filter:blur(4px);transition:.2s}
+.a-btn:hover{background:rgba(255,255,255,0.25)}
+.custom-card{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3);border-radius:14px;padding:18px 16px}
+.custom-card h4{color:#3b9bff;font-size:15px;font-weight:700;margin-bottom:10px}
+.btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
+/* MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-box{background:#161616;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;width:480px;max-height:80vh;overflow-y:auto;position:relative}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-head h3{font-size:16px;font-weight:700}
+.modal-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;padding:4px 8px}
+.modal-close:hover{color:#fff}
+.theme-list{display:flex;flex-direction:column;gap:8px}
+.theme-item{background:#222;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.2s}
+.theme-item:hover{border-color:#007bff;background:#1a2a3a}
+.theme-item.selected{border-color:#007bff;background:#0d2040}
+.theme-item span{font-size:14px;font-weight:500}
+.warn-text{font-size:11px;color:#555;margin-top:14px;text-align:center;font-style:italic}
+.apply-btn{width:100%;margin-top:16px;padding:12px;background:#007bff;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.apply-btn:hover{background:#0066d6}
+.form-group{margin-bottom:14px}
+.form-label{font-size:12px;color:#888;margin-bottom:6px;display:block;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.form-input{width:100%;background:#222;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
+.form-input:focus{border-color:#007bff}
+.sedang-perbaiki{background:#f59e0b;border-radius:12px;padding:20px;display:flex;align-items:center;gap:14px;margin:10px 0}
+.sedang-perbaiki i{font-size:28px;color:#1a1a1a}
+.sedang-perbaiki b{color:#1a1a1a;font-size:16px;font-weight:800;letter-spacing:1px}
+.footer-credit{text-align:right;font-size:12px;color:#333;margin-top:20px;padding-top:10px}
+.footer-credit b{color:#444}
 </style>
 </head>
 <body>
 <div class="top-banner">
-  <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:5px">Join Now! →</a></div>
-  <i class="fas fa-times" style="cursor:pointer;opacity:0.7"></i>
+  <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:4px">Join Now! →</a></div>
+  <i class="fas fa-times" style="cursor:pointer;opacity:.6"></i>
 </div>
 <div class="wrapper">
   <div class="sidebar">
@@ -73,50 +98,284 @@ body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:colu
     </div>
   </div>
   <div class="main-content">
+    <!-- ENGINE SESSION -->
     <div id="engine-view">
-      <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS STREAM ASSET</div></div>
+      <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS<br>STREAM ASSET</div></div>
       <div class="session-grid">
         <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" onclick="copySession()">Salin</button></div></div>
         <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i> Dock Control</button></div></div>
       </div>
-      <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:5px">Mulai</button></div></div>
-      <div class="status-bar"><div style="display:flex;align-items:center;gap:15px"><span class="mode-badge">Mode : None</span><span style="color:#777;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
+      <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:6px">Mulai</button></div></div>
+      <div class="status-bar"><div style="display:flex;align-items:center;gap:12px"><span class="mode-badge">Mode : None</span><span style="color:#555;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
     </div>
-    <div id="overlay-view" class="asset-grid">
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#0f3460)"><h4>OBS Trigger</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b263b)"><h4>Chat Box</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn">Pengaturan</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1a1a)"><h4>Like Animation</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn">Tema</button></div>
-      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn">Tema</button></div>
-      <div class="card-custom a-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
+    <!-- OVERLAY ASSET -->
+    <div id="overlay-view" style="display:none">
+      <div class="asset-grid">
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn" onclick="openModal('branding')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn" onclick="openModal('clock')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn" onclick="openModal('dock')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0f1a2e,#1a2d4a)"><h4>OBS Trigger</h4><button class="a-btn" onclick="openModal('obs')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b2d3b)"><h4>Chat Box</h4><button class="a-btn" onclick="openModal('chat')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn" onclick="openModal('dockchat')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn" onclick="openModal('viewer')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn" onclick="openModal('absen')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn" onclick="openModal('tts')">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn" onclick="openModal('follow')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn" onclick="openModal('gift')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn" onclick="openModal('join')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1515)"><h4>Like Animation</h4><button class="a-btn" onclick="openModal('like')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn" onclick="openModal('share')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn" onclick="openModal('giftlb')">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a0d,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn" onclick="openModal('likeboard')">Tema</button></div>
+        <div class="custom-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
+      </div>
+      <div class="footer-credit">Powered by <b>Mboiz Stream Nexus</b></div>
     </div>
-    <div class="footer-credit">Powered by <b>Mboiz Stream Nexus</b></div>
   </div>
 </div>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="modal-title">Pengaturan</h3><button class="modal-close" onclick="closeModal()"><i class="fas fa-times"></i></button></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+
 <script>
-function showTab(t){
-  var e=document.getElementById('engine-view');
-  var o=document.getElementById('overlay-view');
-  var items=document.querySelectorAll('.nav-item');
-  if(t==='engine'){e.style.display='block';o.style.display='none';}
-  else{e.style.display='none';o.style.display='grid';}
-  items.forEach(function(i,idx){i.classList.toggle('active',(t==='engine'&&idx===0)||(t==='overlay'&&idx===1));});
+var session = document.getElementById('sessionId').value;
+var selectedTheme = '';
+
+var modalData = {
+  branding: {
+    title: 'Branding Stream',
+    type: 'perbaiki'
+  },
+  clock: {
+    title: 'Widget Clock - Pengaturan',
+    type: 'form',
+    fields: [
+      {label:'YOUR LOCATION (Nama Kota)', id:'clock-city', placeholder:'Contoh: Jakarta'},
+      {label:'SESSION ID', id:'clock-session', placeholder:'Session ID'}
+    ],
+    path: 'clock/clock.html'
+  },
+  dock: {
+    title: 'Dock OBS - Pengaturan',
+    type: 'info',
+    text: 'Buka OBS Studio → View → Docks → Custom Browser Docks. Tambahkan URL berikut:',
+    path: 'dock/index.html'
+  },
+  obs: {
+    title: 'OBS Trigger - Pengaturan',
+    type: 'info',
+    text: 'OBS Trigger akan membuka panel kontrol OBS Automation untuk mengatur event dan action otomatis.',
+    path: 'obs/obscontrol.html'
+  },
+  chat: {
+    title: 'Chat Box - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Dynamic Island', path:'theme/dynamic.html'},
+      {label:'Special Roblox', path:'theme/roblox.html'},
+      {label:'Gaming Mood', path:'theme/gaming.html'},
+      {label:'Minimalist Glass', path:'theme/minimalist-glass.html'},
+      {label:'Minimalist White', path:'theme/minimalist-white.html'},
+      {label:'Neumorphism Light', path:'theme/neumorphism.html'},
+      {label:'Neumorphism Dark', path:'theme/neumorphism-dark.html'},
+      {label:'Square Minimalist', path:'theme/square-minimalis.html'},
+      {label:'Women Style', path:'theme/womenstyle.html'},
+      {label:'Girl Pink', path:'theme/girlpink.html'},
+      {label:'Paper Theme', path:'theme/paper.html'}
+    ]
+  },
+  dockchat: {
+    title: 'Dock Chat - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Horizontal', path:'dockchat/index.html'},
+      {label:'Vertical', path:'dockchat/vertical.html'},
+      {label:'Bubble Chat', path:'dockchat/bubblechat.html'},
+      {label:'Cute Glow Chat', path:'dockchat/minimalistglow.html'},
+      {label:'Pixel Art Chat', path:'dockchat/pixelart.html'},
+      {label:'Gaming Mood', path:'dockchat/gaming.html'}
+    ]
+  },
+  viewer: {
+    title: 'Viewer Counter - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Minimalist Glass', path:'viewer/index.html'},
+      {label:'Animation Border', path:'viewer/style/border-motion.html'},
+      {label:'Dark Blue', path:'viewer/style/dark-blue.html'},
+      {label:'Squircle', path:'viewer/style/Squircle.html'}
+    ]
+  },
+  absen: {
+    title: 'Absen Heart Me - Pengaturan',
+    type: 'form',
+    fields: [
+      {label:'JUDUL HEADER', id:'absen-title', placeholder:'ABSENSI HEART ME'},
+      {label:'SESSION ID', id:'absen-session', placeholder:'Session ID'}
+    ],
+    path: 'absen/index.html'
+  },
+  tts: {
+    title: 'Text To Speech - Pengaturan',
+    type: 'info',
+    text: 'Panel TTS digunakan untuk mengatur suara otomatis saat ada chat masuk. Buka URL overlay TTS dan tambahkan ke OBS sebagai Browser Source.',
+    path: 'tts/index.html'
+  },
+  follow: {
+    title: 'Follow Alert - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Blue Small', path:'follow/style/blue-small.html'},
+      {label:'Glass Sparkling', path:'follow/style/glass-clink.html'},
+      {label:'Magma', path:'follow/style/magma.html'},
+      {label:'Special Motion', path:'follow/style/special-follow.html'}
+    ]
+  },
+  gift: {
+    title: 'Gift Notification - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Minimalist Gift', path:'gift/index.html'},
+      {label:'Gift Motion', path:'gift/giftmotion.html'},
+      {label:'Gift Animation', path:'gift/giftanimation.html'}
+    ]
+  },
+  join: {
+    title: 'Join Notification - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Minimalist Join', path:'join/index.html'},
+      {label:'Scattered Join', path:'join/scattered.html'}
+    ]
+  },
+  like: {
+    title: 'Like Animation - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Like Animation V1', path:'like/index.html'},
+      {label:'Like Animation V2', path:'like/like-v2.html'}
+    ]
+  },
+  share: {
+    title: 'Share Alert - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Small Orange', path:'share/style/smal-orange.html'},
+      {label:'Vibrant Orange', path:'share/style/vibrant-orange.html'},
+      {label:'Wonderful Share', path:'share/style/wonderful-share.html'}
+    ]
+  },
+  giftlb: {
+    title: 'Gift Leaderboard - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Minimalist Leaderboard', path:'leaderboard/index.html'},
+      {label:'Glass Glassmorphism', path:'leaderboard/glass.html'},
+      {label:'Dark Glassmorphism', path:'leaderboard/dark-glassmorphism.html'},
+      {label:'Light Theme', path:'leaderboard/light-theme.html'}
+    ]
+  },
+  likeboard: {
+    title: 'Like Leaderboard - Pilih Tema',
+    type: 'tema',
+    themes: [
+      {label:'Minimalist Glass', path:'likeboard/index.html'},
+      {label:'Big Top', path:'likeboard/style1.html'},
+      {label:'Big 10 Top', path:'likeboard/style2.html'}
+    ]
+  }
+};
+
+function openModal(key) {
+  var data = modalData[key];
+  if (!data) return;
+  document.getElementById('modal-title').textContent = data.title;
+  var body = document.getElementById('modal-body');
+  body.innerHTML = '';
+  selectedTheme = '';
+
+  if (data.type === 'perbaiki') {
+    body.innerHTML = '<div class="sedang-perbaiki"><i class="fas fa-tools"></i><b>SEDANG DI PERBAIKI</b></div>';
+  } else if (data.type === 'tema') {
+    var html = '<div class="theme-list">';
+    data.themes.forEach(function(t, i) {
+      html += '<div class="theme-item" id="ti'+i+'" onclick="selectTheme(this,''+t.path+'')"><span>'+t.label+'</span><i class="fas fa-chevron-right" style="color:#444;font-size:12px"></i></div>';
+    });
+    html += '</div><p class="warn-text">⚠️ Live Preview Rendering System makes your CPU work hard</p>';
+    html += '<button class="apply-btn" onclick="applyTheme(''+key+'')">Apply & Copy Link</button>';
+    body.innerHTML = html;
+  } else if (data.type === 'form') {
+    var html = '';
+    data.fields.forEach(function(f) {
+      html += '<div class="form-group"><label class="form-label">'+f.label+'</label><input class="form-input" id="'+f.id+'" placeholder="'+f.placeholder+'"></div>';
+    });
+    html += '<button class="apply-btn" onclick="applyForm(''+data.path+'')">Apply & Copy Link</button>';
+    body.innerHTML = html;
+    if (data.fields.find(function(f){return f.id.includes('session');})) {
+      setTimeout(function(){
+        var el = document.querySelector('[id$="-session"]');
+        if (el) el.value = session;
+      }, 50);
+    }
+  } else if (data.type === 'info') {
+    body.innerHTML = '<p style="color:#aaa;font-size:14px;line-height:1.7;margin-bottom:16px">'+data.text+'</p><button class="apply-btn" onclick="copyPath(''+data.path+'')">Copy Link</button>';
+  }
+
+  document.getElementById('modal').classList.add('open');
 }
-function copySession(){
-  var v=document.getElementById('sessionId').value;
-  navigator.clipboard.writeText(v).then(function(){alert('Session ID disalin!');});
+
+function selectTheme(el, path) {
+  document.querySelectorAll('.theme-item').forEach(function(i){i.classList.remove('selected')});
+  el.classList.add('selected');
+  selectedTheme = path;
 }
+
+function applyTheme(key) {
+  if (!selectedTheme) { alert('Pilih tema terlebih dahulu!'); return; }
+  var url = 'http://localhost:3001/' + selectedTheme + '?session=' + session;
+  navigator.clipboard.writeText(url).then(function(){
+    alert('URL Disalin!\n\n' + url);
+    closeModal();
+  }).catch(function(){ prompt('Copy URL ini:', url); closeModal(); });
+}
+
+function applyForm(path) {
+  var url = 'http://localhost:3001/' + path + '?session=' + session;
+  navigator.clipboard.writeText(url).then(function(){
+    alert('URL Disalin!\n\n' + url);
+    closeModal();
+  }).catch(function(){ prompt('Copy URL ini:', url); closeModal(); });
+}
+
+function copyPath(path) {
+  var url = 'http://localhost:3001/' + path + '?session=' + session;
+  navigator.clipboard.writeText(url).then(function(){
+    alert('URL Disalin!\n\n' + url);
+    closeModal();
+  }).catch(function(){ prompt('Copy URL ini:', url); closeModal(); });
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('open'); }
+
+function showTab(t) {
+  document.getElementById('engine-view').style.display = t==='engine' ? 'block' : 'none';
+  document.getElementById('overlay-view').style.display = t==='overlay' ? 'block' : 'none';
+  document.querySelectorAll('.nav-item').forEach(function(i,idx){
+    i.classList.toggle('active', (t==='engine'&&idx===0)||(t==='overlay'&&idx===1));
+  });
+}
+
+function copySession() {
+  navigator.clipboard.writeText(session).then(function(){ alert('Session ID disalin!'); })
+    .catch(function(){ prompt('Session ID:', session); });
+}
+
+document.getElementById('modal').addEventListener('click', function(e){ if(e.target===this) closeModal(); });
 </script>
 </body>
 </html>
