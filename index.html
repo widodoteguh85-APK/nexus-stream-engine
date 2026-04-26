@@ -22,7 +22,7 @@
         .btn-blue { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
         .status-card { background: var(--bg-card); padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; margin-top: 20px; }
         .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; display: none; }
-        .asset-card { background: var(--bg-card); padding: 15px; border-radius: 15px; text-align: center; }
+        .asset-card { background: var(--bg-card); padding: 15px; border-radius: 15px; text-align: center; position: relative; }
     </style>
 </head>
 <body>
@@ -43,38 +43,52 @@
         <div class="main-content">
             <div id="engine-view">
                 <div class="hero-banner"><h2>MBOIZ NEXUS STREAM ASSET</h2></div>
-                <div class="card-grid"><div class="card"><p>Active Session ID</p><input type="text" value="MBOIZ_SESSION" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Salin</button></div><div class="card"><p>Open Dock Control</p><button class="btn-blue" style="width:100%; margin-top:10px">Dock Control</button></div></div>
+                <div class="card-grid">
+                    <div class="card"><p>Active Session ID</p><input type="text" id="session-id" value="MBOIZ_SESSION" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Salin</button></div>
+                    <div class="card"><p>Open Dock Control</p><button class="btn-blue" style="width:100%; margin-top:10px">Dock Control</button></div>
+                </div>
                 <div class="card" style="margin-top:20px"><p>TikTok Username</p><input type="text" placeholder="Masukkan tanpa @" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Mulai</button></div>
                 <div class="status-card"><div>Mode: None | Status Koneksi...</div><button style="background:#dc3545; color:#fff; border:none; padding:10px 20px; border-radius:10px;">Stop Engine</button></div>
             </div>
             <div id="overlay-view" class="asset-grid">
-                <!-- Add 17 cards here -->
-                <div class="asset-card"><h4>Branding Stream</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Widget Clock</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Dock OBS</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>OBS Trigger</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Chat Box</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Dock Chat</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Viewer Counter</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Absen Heart Me</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Text To Speech</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Follow Alert</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Gift Notification</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Join Notification</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Like Animation</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Share Alert</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Gift Leaderboard</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Like Leaderboard</h4><button>Salin URL</button></div>
-                <div class="asset-card"><h4>Custom Design</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Branding Stream <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('branding')">Salin URL</button></div>
+                <div class="asset-card"><h4>Widget Clock <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('clock')">Salin URL</button></div>
+                <div class="asset-card"><h4>Dock OBS</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('dock-obs')">Salin URL</button></div>
+                <div class="asset-card"><h4>OBS Trigger</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('trigger')">Salin URL</button></div>
+                <div class="asset-card"><h4>Chat Box <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('chat')">Salin URL</button></div>
+                <div class="asset-card"><h4>Dock Chat</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('dock-chat')">Salin URL</button></div>
+                <div class="asset-card"><h4>Viewer Counter</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('viewer')">Salin URL</button></div>
+                <div class="asset-card"><h4>Absen Heart Me</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('absen')">Salin URL</button></div>
+                <div class="asset-card"><h4>Text To Speech</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('tts')">Salin URL</button></div>
+                <div class="asset-card"><h4>Follow Alert</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('follow')">Salin URL</button></div>
+                <div class="asset-card"><h4>Gift Notification</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('gift')">Salin URL</button></div>
+                <div class="asset-card"><h4>Join Notification</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('join')">Salin URL</button></div>
+                <div class="asset-card"><h4>Like Animation</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('like')">Salin URL</button></div>
+                <div class="asset-card"><h4>Share Screen</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('share')">Salin URL</button></div>
+                <div class="asset-card"><h4>Goal Bar</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('goal')">Salin URL</button></div>
+                <div class="asset-card"><h4>Event List</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('events')">Salin URL</button></div>
+                <div class="asset-card"><h4>Custom Design</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('custom')">Salin URL</button></div>
             </div>
-            <div class="footer-credit" style="position: absolute; bottom: 20px; right: 30px; font-size: 12px; color: #a0a0a0;">Powered by <b>Mboiz Stream</b></div>
+            <div style="position:absolute; bottom:15px; right:30px; font-size:10px; color:rgba(255,255,255,0.3)">Powered by Mboiz Stream</div>
         </div>
     </div>
+
     <script>
-        function showTab(t){
-            document.getElementById('engine-view').style.display=t=='engine'?'block':'none';
-            document.getElementById('overlay-view').style.display=t=='overlay'?'grid':'none';
-            document.querySelectorAll('.nav-item').forEach((i,idx)=>i.classList.toggle('active',(t=='engine'&&idx==0)||(t=='overlay'&&idx==1)));
+        function showTab(tabId) {
+            document.getElementById('engine-view').style.display = tabId === 'engine' ? 'block' : 'none';
+            document.getElementById('overlay-view').style.display = tabId === 'overlay' ? 'grid' : 'none';
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+                if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId)) {
+                    item.classList.add('active');
+                }
+            });
+        }
+        function copyLink(path) {
+            const session = document.getElementById('session-id').value;
+            const url = 'http://localhost:3001/' + path + '?session=' + session;
+            navigator.clipboard.writeText(url);
+            alert('URL Disalin: ' + url);
         }
     </script>
 </body>
