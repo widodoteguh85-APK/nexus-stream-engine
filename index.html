@@ -1,95 +1,122 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <title>Mboiz Stream Nexus - Dashboard V.5</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
-        :root { --bg-body: #0a0a0a; --bg-sidebar: #111111; --bg-card: #1a1a1a; --primary-blue: #007bff; --accent-orange: #ff8c00; --text-main: #ffffff; }
-        body { background: var(--bg-body); color: #fff; height: 100vh; display: flex; flex-direction: column; font-family: 'Plus Jakarta Sans', sans-serif; margin:0; }
-        .top-banner { background: linear-gradient(90deg, #0056b3, #007bff); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-        .wrapper { display: flex; flex: 1; overflow: hidden; }
-        .sidebar { width: 260px; background: var(--bg-sidebar); display: flex; flex-direction: column; padding: 20px 0; border-right: 1px solid rgba(255,255,255,0.05); }
-        .nav-item { padding: 12px 25px; display: flex; align-items: center; gap: 15px; color: #a0a0a0; cursor: pointer; }
-        .nav-item.active { background: var(--primary-blue); color: #fff; border-radius: 10px; margin: 0 10px; }
-        .footer-btn { padding: 10px; background: #222; border: none; color: #fff; border-radius: 8px; margin: 5px 15px; cursor: pointer; }
-        .footer-btn.orange { background: #ff8c00; }
-        .main-content { flex: 1; padding: 30px; overflow-y: auto; position: relative; }
-        .hero-banner { width: 100%; height: 200px; background: linear-gradient(135deg, #6b21a8, #9333ea, #c084fc); border-radius: 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
-        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
-        .card { background: var(--bg-card); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
-        .btn-blue { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
-        .status-card { background: var(--bg-card); padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; margin-top: 20px; }
-        .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; display: none; }
-        .asset-card { background: var(--bg-card); padding: 15px; border-radius: 15px; text-align: center; position: relative; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mboiz Stream Nexus - Dashboard V.5</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top-banner{background:linear-gradient(90deg,#0056b3,#007bff);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px}
+.info-tag{background:#00d2ff;color:#fff;padding:2px 8px;border-radius:20px;font-weight:800;font-size:11px;margin-right:10px}
+.wrapper{display:flex;flex:1;overflow:hidden}
+.sidebar{width:250px;background:#111;display:flex;flex-direction:column;padding:20px 0;border-right:1px solid rgba(255,255,255,0.05)}
+.logo-area{padding:0 20px 25px}
+.logo-label{font-size:10px;color:#666;letter-spacing:2px;text-transform:uppercase}
+.logo-text{font-size:20px;font-weight:800}
+.logo-text span{color:#007bff}
+.nav-item{padding:11px 20px;display:flex;align-items:center;gap:12px;color:#777;cursor:pointer;font-size:14px;font-weight:500}
+.nav-item:hover{color:#fff}
+.nav-item.active{background:#007bff;color:#fff;border-radius:10px;margin:0 12px}
+.nav-item i{width:18px;text-align:center}
+.sidebar-footer{margin-top:auto;padding:0 12px;display:flex;flex-direction:column;gap:8px}
+.footer-btn{padding:10px;border-radius:8px;border:none;color:#fff;background:#222;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px}
+.footer-btn.orange{background:linear-gradient(45deg,#ff8c00,#e65c00)}
+.main-content{flex:1;padding:28px;overflow-y:auto;position:relative;background:#0d0d0d}
+.hero-banner{width:100%;height:195px;background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7,#c084fc);border-radius:20px;margin-bottom:22px;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.hero-text{color:rgba(255,255,255,0.4);font-size:18px;font-weight:800;letter-spacing:3px}
+.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px}
+.card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:18px}
+.card-label{font-size:12px;color:#777;margin-bottom:10px;font-weight:500}
+.card-row{display:flex;gap:10px;align-items:center}
+.input-box{flex:1;background:#252525;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:#fff;font-size:13px}
+.btn{padding:9px 18px;border-radius:10px;border:none;font-weight:600;cursor:pointer;font-size:13px}
+.btn-blue{background:#007bff;color:#fff}
+.btn-dark{background:#252525;color:#fff}
+.btn-red{background:#dc3545;color:#fff}
+.status-bar{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:16px;padding:16px;display:flex;justify-content:space-between;align-items:center;margin-top:16px}
+.mode-badge{background:#252525;padding:7px 14px;border-radius:8px;font-size:13px}
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;display:none}
+.a-card{border-radius:16px;padding:20px;min-height:110px;display:flex;flex-direction:column;justify-content:space-between;cursor:pointer;position:relative}
+.a-card h4{font-size:15px;font-weight:600;color:#fff}
+.a-btn{background:rgba(255,255,255,0.12);border:none;color:#fff;padding:7px 16px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;backdrop-filter:blur(4px)}
+.a-btn:hover{background:rgba(255,255,255,0.22)}
+.card-custom{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3)}
+.card-custom h4{color:#007bff;font-size:16px}
+.btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer;align-self:flex-start;margin-top:10px}
+.footer-credit{text-align:right;font-size:12px;color:#444;margin-top:20px}
+.footer-credit b{color:#666}
+</style>
 </head>
 <body>
-    <div class="top-banner"><div><span style="background:#00d2ff; padding:2px 8px; border-radius:10px; font-weight:800; font-size:11px;">INFO</span> Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff">Join Now! →</a></div></div>
-    <div class="wrapper">
-        <div class="sidebar">
-            <div style="padding:0 25px 20px;"><div style="color:#a0a0a0; font-size:10px;">DASHBOARD</div><div style="font-size:22px; font-weight:800;">Mboiz<span>Nexus.</span></div></div>
-            <div class="nav-item active" onclick="showTab('engine')"><i class="fas fa-microchip"></i> Engine Session</div>
-            <div class="nav-item" onclick="showTab('overlay')"><i class="fas fa-layer-group"></i> Overlay Asset</div>
-            <div class="nav-item"><i class="fas fa-chart-bar"></i> Information</div>
-            <div class="nav-item"><i class="fas fa-book"></i> Tutorial</div>
-            <div class="nav-item"><i class="fas fa-dollar-sign"></i> Donatur</div>
-            <div style="flex:1"></div>
-            <button class="footer-btn">Bahasa: ID</button>
-            <button class="footer-btn">Discord</button>
-            <button class="footer-btn orange">Support Developer</button>
-        </div>
-        <div class="main-content">
-            <div id="engine-view">
-                <div class="hero-banner"><h2>MBOIZ NEXUS STREAM ASSET</h2></div>
-                <div class="card-grid">
-                    <div class="card"><p>Active Session ID</p><input type="text" id="session-id" value="MBOIZ_SESSION" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Salin</button></div>
-                    <div class="card"><p>Open Dock Control</p><button class="btn-blue" style="width:100%; margin-top:10px">Dock Control</button></div>
-                </div>
-                <div class="card" style="margin-top:20px"><p>TikTok Username</p><input type="text" placeholder="Masukkan tanpa @" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Mulai</button></div>
-                <div class="status-card"><div>Mode: None | Status Koneksi...</div><button style="background:#dc3545; color:#fff; border:none; padding:10px 20px; border-radius:10px;">Stop Engine</button></div>
-            </div>
-            <div id="overlay-view" class="asset-grid">
-                <div class="asset-card"><h4>Branding Stream <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('branding')">Salin URL</button></div>
-                <div class="asset-card"><h4>Widget Clock <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('clock')">Salin URL</button></div>
-                <div class="asset-card"><h4>Dock OBS</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('dock-obs')">Salin URL</button></div>
-                <div class="asset-card"><h4>OBS Trigger</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('trigger')">Salin URL</button></div>
-                <div class="asset-card"><h4>Chat Box <i class="fas fa-cog" style="font-size:12px; cursor:pointer; margin-left:5px;"></i></h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('chat')">Salin URL</button></div>
-                <div class="asset-card"><h4>Dock Chat</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('dock-chat')">Salin URL</button></div>
-                <div class="asset-card"><h4>Viewer Counter</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('viewer')">Salin URL</button></div>
-                <div class="asset-card"><h4>Absen Heart Me</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('absen')">Salin URL</button></div>
-                <div class="asset-card"><h4>Text To Speech</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('tts')">Salin URL</button></div>
-                <div class="asset-card"><h4>Follow Alert</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('follow')">Salin URL</button></div>
-                <div class="asset-card"><h4>Gift Notification</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('gift')">Salin URL</button></div>
-                <div class="asset-card"><h4>Join Notification</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('join')">Salin URL</button></div>
-                <div class="asset-card"><h4>Like Animation</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('like')">Salin URL</button></div>
-                <div class="asset-card"><h4>Share Screen</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('share')">Salin URL</button></div>
-                <div class="asset-card"><h4>Goal Bar</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('goal')">Salin URL</button></div>
-                <div class="asset-card"><h4>Event List</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('events')">Salin URL</button></div>
-                <div class="asset-card"><h4>Custom Design</h4><button class="btn-blue" style="font-size:12px; padding:5px 10px;" onclick="copyLink('custom')">Salin URL</button></div>
-            </div>
-            <div style="position:absolute; bottom:15px; right:30px; font-size:10px; color:rgba(255,255,255,0.3)">Powered by Mboiz Stream</div>
-        </div>
+<div class="top-banner">
+  <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:5px">Join Now! →</a></div>
+  <i class="fas fa-times" style="cursor:pointer;opacity:0.7"></i>
+</div>
+<div class="wrapper">
+  <div class="sidebar">
+    <div class="logo-area">
+      <div class="logo-label">DASHBOARD</div>
+      <div class="logo-text">Mboiz<span>Nexus.</span></div>
     </div>
-
-    <script>
-        function showTab(tabId) {
-            document.getElementById('engine-view').style.display = tabId === 'engine' ? 'block' : 'none';
-            document.getElementById('overlay-view').style.display = tabId === 'overlay' ? 'grid' : 'none';
-            document.querySelectorAll('.nav-item').forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('onclick') && item.getAttribute('onclick').includes(tabId)) {
-                    item.classList.add('active');
-                }
-            });
-        }
-        function copyLink(path) {
-            const session = document.getElementById('session-id').value;
-            const url = 'http://localhost:3001/' + path + '?session=' + session;
-            navigator.clipboard.writeText(url);
-            alert('URL Disalin: ' + url);
-        }
-    </script>
+    <div class="nav-item active" onclick="showTab('engine')"><i class="fas fa-microchip"></i>Engine Session</div>
+    <div class="nav-item" onclick="showTab('overlay')"><i class="fas fa-layer-group"></i>Overlay Asset</div>
+    <div class="nav-item"><i class="fas fa-chart-bar"></i>Information</div>
+    <div class="nav-item"><i class="fas fa-book"></i>Tutorial</div>
+    <div class="nav-item"><i class="fas fa-dollar-sign"></i>Donatur</div>
+    <div class="sidebar-footer">
+      <button class="footer-btn"><i class="fas fa-language"></i>Bahasa: ID</button>
+      <button class="footer-btn"><i class="fab fa-discord"></i>Pusat Bantuan (Discord)</button>
+      <button class="footer-btn orange"><i class="fas fa-coffee"></i>Support Developer ☕</button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div id="engine-view">
+      <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS STREAM ASSET</div></div>
+      <div class="session-grid">
+        <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" onclick="copySession()">Salin</button></div></div>
+        <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i> Dock Control</button></div></div>
+      </div>
+      <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:5px">Mulai</button></div></div>
+      <div class="status-bar"><div style="display:flex;align-items:center;gap:15px"><span class="mode-badge">Mode : None</span><span style="color:#777;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
+    </div>
+    <div id="overlay-view" class="asset-grid">
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#0f3460)"><h4>OBS Trigger</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b263b)"><h4>Chat Box</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn">Pengaturan</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1a1a)"><h4>Like Animation</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn">Tema</button></div>
+      <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn">Tema</button></div>
+      <div class="card-custom a-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
+    </div>
+    <div class="footer-credit">Powered by <b>Mboiz Stream Nexus</b></div>
+  </div>
+</div>
+<script>
+function showTab(t){
+  var e=document.getElementById('engine-view');
+  var o=document.getElementById('overlay-view');
+  var items=document.querySelectorAll('.nav-item');
+  if(t==='engine'){e.style.display='block';o.style.display='none';}
+  else{e.style.display='none';o.style.display='grid';}
+  items.forEach(function(i,idx){i.classList.toggle('active',(t==='engine'&&idx===0)||(t==='overlay'&&idx===1));});
+}
+function copySession(){
+  var v=document.getElementById('sessionId').value;
+  navigator.clipboard.writeText(v).then(function(){alert('Session ID disalin!');});
+}
+</script>
 </body>
 </html>
