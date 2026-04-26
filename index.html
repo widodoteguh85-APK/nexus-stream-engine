@@ -1,9 +1,174 @@
 <!DOCTYPE html>
-<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mboiz Stream Nexus - Dashboard V.5</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:column;overflow:hidden}
+.top-banner{background:linear-gradient(90deg,#0056b3,#007bff);padding:10px 20px;display:flex;justify-content:space-between;align-items:center;font-size:13px;flex-shrink:0}
+.info-tag{background:#00d2ff;color:#fff;padding:2px 8px;border-radius:20px;font-weight:800;font-size:11px;margin-right:8px}
+.wrapper{display:flex;flex:1;overflow:hidden}
+.sidebar{width:250px;background:#111;display:flex;flex-direction:column;padding:20px 0;border-right:1px solid rgba(255,255,255,0.05);flex-shrink:0}
+.logo-area{padding:0 20px 25px}
+.logo-label{font-size:10px;color:#555;letter-spacing:2px;text-transform:uppercase}
+.logo-text{font-size:20px;font-weight:800}
+.logo-text span{color:#007bff}
+.nav-item{padding:11px 20px;display:flex;align-items:center;gap:12px;color:#666;cursor:pointer;font-size:14px;font-weight:500;transition:.2s}
+.nav-item:hover{color:#fff}
+.nav-item.active{background:#007bff;color:#fff;border-radius:10px;margin:2px 12px;padding:11px 14px}
+.nav-item i{width:18px;text-align:center;font-size:15px}
+.sidebar-footer{margin-top:auto;padding:0 12px;display:flex;flex-direction:column;gap:8px}
+.footer-btn{padding:10px;border-radius:8px;border:none;color:#fff;background:#222;font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:.2s}
+.footer-btn:hover{background:#333}
+.footer-btn.orange{background:linear-gradient(45deg,#e65c00,#f97316)}
+.main-content{flex:1;padding:28px;overflow-y:auto;background:#0d0d0d;position:relative}
+.hero-banner{width:100%;height:190px;background:linear-gradient(135deg,#5b21b6,#7c3aed,#a855f7,#c084fc);border-radius:20px;margin-bottom:20px;display:flex;align-items:center;justify-content:center}
+.hero-text{color:rgba(255,255,255,0.4);font-size:16px;font-weight:800;letter-spacing:3px;text-align:center}
+.session-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}
+.card{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:16px}
+.card-label{font-size:11px;color:#666;margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px}
+.card-row{display:flex;gap:8px;align-items:center}
+.input-box{flex:1;background:#252525;border:1px solid rgba(255,255,255,0.06);padding:9px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
+.btn{padding:9px 16px;border-radius:9px;border:none;font-weight:600;cursor:pointer;font-size:13px;transition:.2s}
+.btn-blue{background:#007bff;color:#fff}
+.btn-dark{background:#252525;color:#fff}
+.btn-red{background:#dc3545;color:#fff}
+.status-bar{background:#1a1a1a;border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:14px 16px;display:flex;justify-content:space-between;align-items:center;margin-top:14px}
+.mode-badge{background:#252525;padding:6px 12px;border-radius:7px;font-size:13px}
+.asset-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.a-card{border-radius:14px;padding:18px 16px;min-height:105px;display:flex;flex-direction:column;justify-content:space-between}
+.a-card h4{font-size:14px;font-weight:600;color:#fff;line-height:1.3;margin-bottom:8px}
+.a-btn{background:rgba(255,255,255,0.13);border:none;color:#fff;padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;align-self:flex-start;transition:.2s}
+.a-btn:hover{background:rgba(255,255,255,0.25)}
+.custom-card{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3);border-radius:14px;padding:18px 16px}
+.custom-card h4{color:#3b9bff;font-size:15px;font-weight:700;margin-bottom:10px}
+.btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay.open{display:flex}
+.modal-box{background:#161616;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;width:520px;max-height:85vh;overflow-y:auto}
+.modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.modal-head h3{font-size:16px;font-weight:700}
+.modal-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;padding:4px 8px}
+.theme-list{display:flex;flex-direction:column;gap:8px}
+.theme-item{background:#222;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.2s}
+.theme-item:hover,.theme-item.selected{border-color:#007bff;background:#0d2040}
+.theme-item span{font-size:14px;font-weight:500}
+.warn-text{font-size:11px;color:#555;margin-top:14px;text-align:center;font-style:italic}
+.apply-btn{width:100%;margin-top:16px;padding:12px;background:#007bff;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+.form-group{margin-bottom:14px}
+.form-label{font-size:12px;color:#888;margin-bottom:6px;display:block;font-weight:600;text-transform:uppercase}
+.form-input{width:100%;background:#222;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
+.branding-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+.branding-item{display:flex;gap:8px;align-items:center}
+.color-picker-wrap{display:flex;align-items:center;gap:10px;background:#222;padding:8px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.08)}
+.preview-box{background:#111;border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
+.sim-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+.sim-btn{background:#222;border:1px solid #333;color:#fff;padding:8px;border-radius:8px;font-size:12px;cursor:pointer}
+.sim-btn:hover{background:#333}
+.footer-credit{text-align:right;font-size:12px;color:#333;margin-top:20px}
+</style>
+</head>
+<body>
+<div class="top-banner">
+  <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:4px">Join Now! &rarr;</a></div>
+  <i class="fas fa-times" style="cursor:pointer;opacity:.6"></i>
+</div>
+<div class="wrapper">
+  <div class="sidebar">
+    <div class="logo-area">
+      <div class="logo-label">DASHBOARD</div>
+      <div class="logo-text">Mboiz<span>Nexus.</span></div>
+    </div>
+    <div class="nav-item active" data-tab="engine"><i class="fas fa-microchip"></i>Engine Session</div>
+    <div class="nav-item" data-tab="overlay"><i class="fas fa-layer-group"></i>Overlay Asset</div>
+    <div class="nav-item"><i class="fas fa-chart-bar"></i>Information</div>
+    <div class="nav-item"><i class="fas fa-book"></i>Tutorial</div>
+    <div class="nav-item"><i class="fas fa-dollar-sign"></i>Donatur</div>
+    <div class="sidebar-footer">
+      <button class="footer-btn"><i class="fas fa-language"></i>Bahasa: ID</button>
+      <button class="footer-btn"><i class="fab fa-discord"></i>Pusat Bantuan (Discord)</button>
+      <button class="footer-btn orange"><i class="fas fa-coffee"></i>Support Developer</button>
+    </div>
+  </div>
+  <div class="main-content">
+    <div id="engine-view">
+      <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS<br>STREAM ASSET</div></div>
+      <div class="session-grid">
+        <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" id="btnCopySession">Salin</button></div></div>
+        <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i> Dock Control</button></div></div>
+      </div>
+      <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:6px">Mulai</button></div></div>
+      <div class="status-bar"><div style="display:flex;align-items:center;gap:12px"><span class="mode-badge">Mode : None</span><span style="color:#555;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
+    </div>
+    <div id="overlay-view" style="display:none">
+      <div class="asset-grid">
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn" data-modal="branding">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn" data-modal="clock">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn" data-modal="dock">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0f1a2e,#1a2d4a)"><h4>OBS Trigger</h4><button class="a-btn" data-modal="obs">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b2d3b)"><h4>Chat Box</h4><button class="a-btn" data-modal="chat">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn" data-modal="dockchat">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn" data-modal="viewer">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn" data-modal="absen">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn" data-modal="tts">Pengaturan</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn" data-modal="follow">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn" data-modal="gift">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn" data-modal="join">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1515)"><h4>Like Animation</h4><button class="a-btn" data-modal="like">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn" data-modal="share">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn" data-modal="giftlb">Tema</button></div>
+        <div class="a-card" style="background:linear-gradient(135deg,#1a1a0d,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn" data-modal="likeboard">Tema</button></div>
+        <div class="custom-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
+      </div>
+      <div class="footer-credit">Powered by <b>Mboiz Stream Nexus</b></div>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="modal">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="modal-title">Pengaturan</h3><button class="modal-close" id="btnCloseModal"><i class="fas fa-times"></i></button></div>
+    <div id="modal-body"></div>
+  </div>
+</div>
+<script>
+var MODAL_DATA = {
+  branding:{title:"Kustomisasi Tema Overlay",type:"branding",defaults:["RVTik Stream","Tech Reviews","Tutorials","Streaming","Podcasting"]},
+  clock:{title:"Widget Clock - Pengaturan",type:"clock"},
+  dock:{title:"Dock OBS - Setup",type:"info",text:"Salin URL ini ke OBS Studio (View > Docks > Custom Browser Docks):",path:"dock/index.html"},
+  obs:{title:"OBS Trigger Control",type:"info",text:"Panel untuk mengatur otomasi scene/source OBS berbasis event TikTok.",path:"obs/obscontrol.html"},
+  chat:{title:"Chat Box - Pilih Tema",type:"tema",themes:[{n:"Dynamic Island",p:"theme/dynamic.html"},{n:"Special Roblox",p:"theme/roblox.html"},{n:"Gaming Mood",p:"theme/gaming.html"},{n:"Minimalist Glass",p:"theme/minimalist-glass.html"},{n:"Minimalist White",p:"theme/minimalist-white.html"},{n:"Neumorphism Light",p:"theme/neumorphism.html"},{n:"Neumorphism Dark",p:"theme/neumorphism-dark.html"},{n:"Square Minimalist",p:"theme/square-minimalis.html"},{n:"Women Style",p:"theme/womenstyle.html"},{n:"Girl Pink",p:"theme/girlpink.html"}]},
+  dockchat:{title:"Dock Chat - Pilih Tema",type:"tema",themes:[{n:"Horizontal",p:"dockchat/index.html"},{n:"Vertical",p:"dockchat/vertical.html"},{n:"Bubble Chat",p:"dockchat/bubblechat.html"},{n:"Cute Glow Chat",p:"dockchat/minimalistglow.html"},{n:"Pixel Art Chat",p:"dockchat/pixelart.html"},{n:"Gaming Mood",p:"dockchat/gaming.html"}]},
+  viewer:{title:"Viewer Counter - Pilih Tema",type:"tema",themes:[{n:"Minimalist Glass",p:"viewer/index.html"},{n:"Animation Border",p:"viewer/style/border-motion.html"},{n:"Dark Blue",p:"viewer/style/dark-blue.html"},{n:"Squircle",p:"viewer/style/Squircle.html"}]},
+  absen:{title:"Absen Heart Me",type:"leaderboard",themeName:"Absen Notif Cozy",path:"absen/index.html",buttons:["Gift User A","Gift User B","Auto Sim"]},
+  tts:{title:"Text To Speech Setup",type:"info",text:"Panduan lengkap routing audio ke OBS and TikTok Live Studio.",path:"tts/index.html"},
+  follow:{title:"Follow Alert - Pilih Tema",type:"tema",themes:[{n:"Blue Small",p:"follow/style/blue-small.html"},{n:"Glass Sparkling",p:"follow/style/glass-clink.html"},{n:"Magma",p:"follow/style/magma.html"},{n:"Special Motion",p:"follow/style/special-follow.html"}]},
+  gift:{title:"Gift Notification",type:"tema",themes:[{n:"Minimalist Gift",p:"gift/index.html"},{n:"Gift Motion",p:"gift/giftmotion.html"},{n:"Gift Animation",p:"gift/giftanimation.html"}]},
+  join:{title:"Join Notification",type:"tema",themes:[{n:"Simple",p:"join/index.html"},{n:"Vertical Scattered",p:"join/scattered.html"}]},
+  like:{title:"Like Animation Control",type:"like_anim",anims:["popup","floatingBubbles","rain","confetti","avatar","neonCyber","meteorShower","avatarRain","fireworks","supernova"]},
+  share:{title:"Share Alert",type:"tema",themes:[{n:"Small Orange",p:"share/style/smal-orange.html"},{n:"Vibrant Orange",p:"share/style/vibrant-orange.html"},{n:"Wonderful Share",p:"share/style/wonderful-share.html"}]},
+  giftlb:{title:"Gift Leaderboard",type:"leaderboard",themeName:"Dark Glassmorphism",path:"leaderboard/index.html",buttons:["Gift","Auto","Reset"]},
+  likeboard:{title:"Like Leaderboard",type:"tema",themes:[{n:"Minimalist Glass",p:"likeboard/index.html"},{n:"Big Top",p:"likeboard/style1.html"},{n:"Big 10 Top",p:"likeboard/style2.html"}]}
+};
+
+var SESSION = "MBOIZ_SESSION";
+
+document.querySelectorAll(".nav-item[data-tab]").forEach(function(el){
+  el.addEventListener("click", function(){
+    var t = this.getAttribute("data-tab");
+    document.getElementById("engine-view").style.display = t==="engine" ? "block" : "none";
+    document.getElementById("overlay-view").style.display = t==="overlay" ? "block" : "none";
+    document.querySelectorAll(".nav-item[data-tab]").forEach(function(n){ n.classList.remove("active"); });
+    this.classList.add("active");
+  });
+});
+
 document.querySelectorAll(".a-btn[data-modal]").forEach(function(btn){
   btn.addEventListener("click", function(){ openModal(this.getAttribute("data-modal")); });
 });
-
 
 function openModal(key){
   var d = MODAL_DATA[key];
@@ -12,7 +177,6 @@ function openModal(key){
   var body = document.getElementById("modal-body");
   body.innerHTML = "";
   var selectedPath = "";
-
 
   if(d.type === "branding"){
     var html = '<div class="branding-list" id="brandList">';
@@ -40,7 +204,6 @@ function openModal(key){
   document.getElementById("modal").classList.add("open");
 }
 
-
 function addBrandItem(){
   var list = document.getElementById("brandList");
   if(list.children.length < 10){
@@ -49,19 +212,16 @@ function addBrandItem(){
   } else { alert("Maksimal 10 menu!"); }
 }
 
-
 function selectTheme(el, path){
   document.querySelectorAll(".theme-item").forEach(i => i.classList.remove("selected"));
   el.classList.add("selected");
   document.getElementById("btnFinalApply").onclick = () => copyResult(path);
 }
 
-
 function copyResult(path){
   var url = "http://localhost:3001/" + path + "?session=" + SESSION;
   navigator.clipboard.writeText(url).then(() => { alert("URL Disalin!\\n\\n" + url); closeModal(); });
 }
-
 
 function closeModal(){ document.getElementById("modal").classList.remove("open"); }
 document.getElementById("btnCloseModal").onclick = closeModal;
@@ -70,4 +230,4 @@ document.getElementById("btnCopySession").onclick = () => {
 };
 </script>
 </body>
-  </html>
+</html>
