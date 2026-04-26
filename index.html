@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" style="margin:0;padding:0;height:100%;overflow:hidden;">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,125 +9,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; }
-        html, body { margin: 0; padding: 0; height: 100%; background: #050505; color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; }
-        #root { display: flex; flex-direction: column; height: 100vh; width: 100vw; }
+        body { margin: 0; padding: 0; height: 100%; background: #050505; color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; display: block !important; }
         .sidebar-btn { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 24px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; background: transparent; border: none; color: white; transition: 0.2s; border-right: 4px solid transparent; }
         .sidebar-btn:hover { background: rgba(255, 255, 255, 0.05); }
         .sidebar-btn.active { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-right: 4px solid #3b82f6; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .tab-content { display: none; width: 100%; }
+        .tab-content { display: none; }
         .tab-content.active { display: block; }
     </style>
 </head>
 <body>
-    <div id="root">
-        <!-- Top Info Bar -->
-        <div style="background: #2563eb; color: white; padding: 8px 16px; text-align: center; font-size: 11px; font-weight: bold; text-transform: uppercase; letter-spacing: 0.05em; flex-shrink: 0;">
-            <span style="background: white; color: #2563eb; padding: 2px 6px; border-radius: 4px; margin-right: 8px;">INFO</span>
-            Join Komunitas Mboiz Stream untuk update fitur terbaru & bantuan teknis!
-        </div>
-
-        <div style="display: flex; flex: 1; overflow: hidden;">
-            <!-- Sidebar -->
-            <aside style="width: 260px; background: #09090b; border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; flex-shrink: 0;">
-                <div style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                    <h1 style="font-size: 18px; font-weight: bold; margin: 0; display: flex; align-items: center;">Mboiz Nexus <span style="background: rgba(59,130,246,0.1); color: #3b82f6; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">V.5</span></h1>
-                    <p style="font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 4px; margin-bottom: 0; letter-spacing: 0.1em;">Premium Stream Asset</p>
-                </div>
-                
-                <nav style="flex: 1; padding: 16px 0; overflow-y: auto;">
-                    <button onclick="switchTab('engine', this)" class="sidebar-btn active">
-                        <i class="ph ph-cpu" style="font-size: 20px;"></i> Engine Session
-                    </button>
-                    <button onclick="switchTab('overlay', this)" class="sidebar-btn">
-                        <i class="ph ph-stack" style="font-size: 20px;"></i> Overlay Asset
-                    </button>
-                    <button onclick="switchTab('info', this)" class="sidebar-btn">
-                        <i class="ph ph-chart-bar" style="font-size: 20px;"></i> Information
-                    </button>
-                    <button onclick="switchTab('tutorial', this)" class="sidebar-btn">
-                        <i class="ph ph-book-open" style="font-size: 20px;"></i> Tutorial
-                    </button>
-                    <button onclick="switchTab('donatur', this)" class="sidebar-btn">
-                        <i class="ph ph-currency-dollar" style="font-size: 20px;"></i> Donatur
-                    </button>
-                    <button onclick="switchTab('bahasa', this)" class="sidebar-btn">
-                        <i class="ph ph-translate" style="font-size: 20px;"></i> Bahasa
-                    </button>
-                    <button onclick="switchTab('discord', this)" class="sidebar-btn">
-                        <i class="ph ph-discord-logo" style="font-size: 20px;"></i> Join Discord
-                    </button>
-                    <button onclick="switchTab('support', this)" class="sidebar-btn">
-                        <i class="ph ph-headset" style="font-size: 20px;"></i> Pusat Bantuan
-                    </button>
-                </nav>
-
-                <div style="padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 8px;">
-                    <button style="width: 100%; background: #ea580c; color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase;">SUPPORT DEVELOPER</button>
-                    <button style="width: 100%; background: rgba(255,255,255,0.05); color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; text-transform: uppercase;">PUSAT BANTUAN</button>
-                </div>
-            </aside>
-
-            <!-- Content Area -->
-            <main style="flex: 1; background: #050505; padding: 32px; overflow-y: auto; position: relative;">
-                <div id="engine" class="tab-content active">
-                    <div style="width: 100%; height: 180px; border-radius: 16px; background: linear-gradient(135deg, #4c1d95, #1e3a8a); margin-bottom: 32px; position: relative; border: 1px solid rgba(255,255,255,0.1); display: flex; flex-direction: column; justify-content: center; padding: 0 40px; overflow: hidden;">
-                        <div style="position: absolute; inset: 0; background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); opacity: 0.1;"></div>
-                        <h2 style="font-size: 32px; font-weight: 900; font-style: italic; margin: 0; letter-spacing: -0.05em; position: relative;">MBOIZ NEXUS ENGINE</h2>
-                        <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 4px; position: relative;">Sistem Otomasi Live TikTok Terbaik di Indonesia</p>
-                    </div>
-
-                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                        <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div style="width: 40px; height: 40px; background: rgba(59,130,246,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="ph ph-key" style="color: #3b82f6; font-size: 20px;"></i>
-                                </div>
-                                <span style="font-weight: bold; font-size: 14px;">Active Session ID</span>
-                            </div>
-                            <input type="text" value="SESSION-6472-X921" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: #3b82f6; font-family: monospace; font-size: 12px;" readonly>
-                        </div>
-                        <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div style="width: 40px; height: 40px; background: rgba(34,197,94,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="ph ph-monitor" style="color: #22c55e; font-size: 20px;"></i>
-                                </div>
-                                <span style="font-weight: bold; font-size: 14px;">Open Dock Control</span>
-                            </div>
-                            <button style="width: 100%; background: #16a34a; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 12px; cursor: pointer;">BUKA CONTROL PANEL</button>
-                        </div>
-                        <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                            <div style="display: flex; align-items: center; gap: 12px;">
-                                <div style="width: 40px; height: 40px; background: rgba(236,72,153,0.1); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                    <i class="ph ph-at" style="color: #ec4899; font-size: 20px;"></i>
-                                </div>
-                                <span style="font-weight: bold; font-size: 14px;">TikTok Username</span>
-                            </div>
-                            <input type="text" placeholder="@username" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: white; font-size: 12px; outline: none;">
-                        </div>
-                    </div>
-
-                    <div style="display: flex; justify-content: center; margin-top: 40px;">
-                        <button style="background: #dc2626; color: white; border: none; padding: 16px 64px; border-radius: 999px; font-weight: 900; font-size: 14px; letter-spacing: 0.1em; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(220, 38, 38, 0.2);">
-                            <i class="ph ph-power" style="font-size: 20px;"></i> STOP ENGINE SESSION
-                        </button>
-                    </div>
-                </div>
-
-                <div id="overlay" class="tab-content">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
-                        <h2 style="font-size: 24px; font-weight: bold; margin: 0;">Overlay Assets <span style="color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 8px;">17 Items</span></h2>
-                    </div>
-                    <div id="asset-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px;"></div>
-                </div>
-
-                <div style="position: absolute; bottom: 32px; right: 32px; font-size: 10px; color: rgba(255,255,255,0.2); font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em;">
-                    Powered by Mboiz Stream
-                </div>
-            </main>
-        </div>
+    <div id="banner" style="display: block; width: 100%; background: #2563eb; color: white; padding: 8px; text-align: center; font-size: 11px; font-weight: bold; text-transform: uppercase;">
+        <span style="background: white; color: #2563eb; padding: 2px 6px; border-radius: 4px; margin-right: 8px;">INFO</span>
+        Join Komunitas Mboiz Stream untuk update fitur terbaru & bantuan teknis!
     </div>
-
+    <div id="app" style="display: flex; height: calc(100vh - 35px); width: 100%;">
+        <aside style="width: 260px; background: #09090b; border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; flex-shrink: 0;">
+            <div style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <h1 style="font-size: 18px; font-weight: bold; margin: 0; display: flex; align-items: center;">Mboiz Nexus <span style="background: rgba(59,130,246,0.1); color: #3b82f6; font-size: 10px; padding: 2px 6px; border-radius: 4px; margin-left: 8px;">V.5</span></h1>
+                <p style="font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 4px; margin-bottom: 0;">Premium Stream Asset</p>
+            </div>
+            <nav style="flex: 1; padding: 16px 0; overflow-y: auto;">
+                <button onclick="switchTab('engine', this)" class="sidebar-btn active"><i class="ph ph-cpu" style="font-size: 20px;"></i> Engine Session</button>
+                <button onclick="switchTab('overlay', this)" class="sidebar-btn"><i class="ph ph-stack" style="font-size: 20px;"></i> Overlay Asset</button>
+                <button onclick="switchTab('info', this)" class="sidebar-btn"><i class="ph ph-chart-bar" style="font-size: 20px;"></i> Information</button>
+                <button onclick="switchTab('tutorial', this)" class="sidebar-btn"><i class="ph ph-book-open" style="font-size: 20px;"></i> Tutorial</button>
+                <button onclick="switchTab('donatur', this)" class="sidebar-btn"><i class="ph ph-currency-dollar" style="font-size: 20px;"></i> Donatur</button>
+                <button onclick="switchTab('bahasa', this)" class="sidebar-btn"><i class="ph ph-translate" style="font-size: 20px;"></i> Bahasa</button>
+                <button onclick="switchTab('discord', this)" class="sidebar-btn"><i class="ph ph-discord-logo" style="font-size: 20px;"></i> Join Discord</button>
+                <button onclick="switchTab('support', this)" class="sidebar-btn"><i class="ph ph-headset" style="font-size: 20px;"></i> Pusat Bantuan</button>
+            </nav>
+            <div style="padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 8px;">
+                <button style="width: 100%; background: #ea580c; color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: none; cursor: pointer;">SUPPORT DEVELOPER</button>
+                <button style="width: 100%; background: rgba(255,255,255,0.05); color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); cursor: pointer;">PUSAT BANTUAN</button>
+            </div>
+        </aside>
+        <main style="flex: 1; padding: 32px; overflow-y: auto; background: #050505; position: relative;">
+            <div id="engine" class="tab-content active">
+                <div style="width: 100%; height: 180px; border-radius: 16px; background: linear-gradient(135deg, #4c1d95, #1e3a8a); margin-bottom: 32px; display: flex; flex-direction: column; justify-content: center; padding: 0 40px; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
+                    <div style="position: absolute; inset: 0; background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); opacity: 0.1;"></div>
+                    <h2 style="font-size: 32px; font-weight: 900; font-style: italic; margin: 0; letter-spacing: -0.05em; position: relative;">MBOIZ NEXUS ENGINE</h2>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 4px; position: relative;">Sistem Otomasi Live TikTok Terbaik di Indonesia</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                    <div class="glass" style="padding: 24px; border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;"><i class="ph ph-key" style="color: #3b82f6; font-size: 20px;"></i><span style="font-weight: bold; font-size: 14px;">Active Session ID</span></div>
+                        <input type="text" value="SESSION-6472-X921" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: #3b82f6; font-family: monospace; font-size: 12px;" readonly>
+                    </div>
+                    <div class="glass" style="padding: 24px; border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;"><i class="ph ph-monitor" style="color: #22c55e; font-size: 20px;"></i><span style="font-weight: bold; font-size: 14px;">Open Dock Control</span></div>
+                        <button style="width: 100%; background: #16a34a; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 12px; cursor: pointer;">BUKA CONTROL PANEL</button>
+                    </div>
+                    <div class="glass" style="padding: 24px; border-radius: 16px;">
+                        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;"><i class="ph ph-at" style="color: #ec4899; font-size: 20px;"></i><span style="font-weight: bold; font-size: 14px;">TikTok Username</span></div>
+                        <input type="text" placeholder="@username" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: white; font-size: 12px; outline: none;">
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 40px;">
+                    <button style="background: #dc2626; color: white; border: none; padding: 16px 64px; border-radius: 999px; font-weight: 900; font-size: 14px; letter-spacing: 0.1em; cursor: pointer;">STOP ENGINE SESSION</button>
+                </div>
+            </div>
+            <div id="overlay" class="tab-content">
+                <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Overlay Assets <span style="color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 8px;">17 Items</span></h2>
+                <div id="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px;"></div>
+            </div>
+        </main>
+    </div>
     <script>
         function switchTab(tabId, el) {
             document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
@@ -135,30 +82,13 @@
             document.getElementById(tabId).classList.add('active');
             el.classList.add('active');
         }
-
-        const assets = [
-            "Branding Stream", "Goal Bar Premium", "Subathon Timer", "Latest Follower",
-            "Top Gifter Glow", "Chat Box Glass", "Alert Popup V4", "Social Media Bar",
-            "Music Player", "Webcam Frame", "Live Viewers Counter", "Event List",
-            "Milestone Progress", "Custom Text Marquee", "Vote System", "Like Leaderboard",
-            "Butuh Desain Custom?"
-        ];
-
-        const grid = document.getElementById('asset-grid');
+        const assets = ["Branding Stream", "Goal Bar Premium", "Subathon Timer", "Latest Follower", "Top Gifter Glow", "Chat Box Glass", "Alert Popup V4", "Social Media Bar", "Music Player", "Webcam Frame", "Live Viewers Counter", "Event List", "Milestone Progress", "Custom Text Marquee", "Vote System", "Like Leaderboard", "Butuh Desain Custom?"];
+        const grid = document.getElementById('grid');
         assets.forEach((name, i) => {
             const card = document.createElement('div');
             card.className = 'glass';
             card.style = 'padding: 20px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;';
-            card.innerHTML = `
-                <div style="width: 100%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                    <i class="ph ${i === 16 ? 'ph-paint-brush' : 'ph-image'}" style="font-size: 32px; color: rgba(255,255,255,0.1);"></i>
-                </div>
-                <div>
-                    <div style="font-weight: bold; font-size: 12px; margin-bottom: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${name}</div>
-                    <div style="font-size: 10px; color: rgba(255,255,255,0.4);">Ready to use</div>
-                </div>
-                <button style="width: 100%; background: rgba(59,130,246,0.1); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); padding: 8px; border-radius: 8px; font-size: 10px; font-weight: bold; cursor: pointer;">COPY LINK</button>
-            `;
+            card.innerHTML = `<div style="width: 100%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="ph ${i === 16 ? 'ph-paint-brush' : 'ph-image'}" style="font-size: 32px; color: rgba(255,255,255,0.1);"></i></div><div><div style="font-weight: bold; font-size: 12px; margin-bottom: 4px;">${name}</div><div style="font-size: 10px; color: rgba(255,255,255,0.4);">Ready to use</div></div><button style="width: 100%; background: rgba(59,130,246,0.1); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); padding: 8px; border-radius: 8px; font-size: 10px; font-weight: bold; cursor: pointer;">COPY LINK</button>`;
             grid.appendChild(card);
         });
     </script>
