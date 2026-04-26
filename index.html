@@ -2,101 +2,79 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mboiz Stream Nexus - Dashboard V.5</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://unpkg.com/@phosphor-icons/web"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; padding: 0; height: 100vh; width: 100vw; background: #050505; color: white; font-family: 'Plus Jakarta Sans', sans-serif; overflow: hidden; position: relative; display: block !important; }
-        #banner { position: absolute; top: 0; left: 0; width: 100%; height: 35px; background: #2563eb; color: white; display: flex; align-items: center; justify-content: center; font-size: 11px; font-weight: bold; text-transform: uppercase; z-index: 100; }
-        #root { position: absolute; top: 35px; left: 0; right: 0; bottom: 0; display: flex; }
-        aside { width: 260px; background: #09090b; border-right: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; }
-        main { flex: 1; padding: 32px; overflow-y: auto; background: #050505; position: relative; }
-        .sidebar-btn { width: 100%; display: flex; align-items: center; gap: 12px; padding: 14px 24px; font-size: 12px; font-weight: 600; cursor: pointer; text-align: left; background: transparent; border: none; color: white; transition: 0.2s; border-right: 4px solid transparent; }
-        .sidebar-btn.active { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-right: 4px solid #3b82f6; }
-        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+        :root { --bg-body: #0a0a0a; --bg-sidebar: #111111; --bg-card: #1a1a1a; --primary-blue: #007bff; --accent-orange: #ff8c00; --text-main: #ffffff; }
+        body { background: var(--bg-body); color: #fff; height: 100vh; display: flex; flex-direction: column; font-family: 'Plus Jakarta Sans', sans-serif; margin:0; }
+        .top-banner { background: linear-gradient(90deg, #0056b3, #007bff); padding: 10px 20px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+        .wrapper { display: flex; flex: 1; overflow: hidden; }
+        .sidebar { width: 260px; background: var(--bg-sidebar); display: flex; flex-direction: column; padding: 20px 0; border-right: 1px solid rgba(255,255,255,0.05); }
+        .nav-item { padding: 12px 25px; display: flex; align-items: center; gap: 15px; color: #a0a0a0; cursor: pointer; }
+        .nav-item.active { background: var(--primary-blue); color: #fff; border-radius: 10px; margin: 0 10px; }
+        .footer-btn { padding: 10px; background: #222; border: none; color: #fff; border-radius: 8px; margin: 5px 15px; cursor: pointer; }
+        .footer-btn.orange { background: #ff8c00; }
+        .main-content { flex: 1; padding: 30px; overflow-y: auto; position: relative; }
+        .hero-banner { width: 100%; height: 200px; background: linear-gradient(135deg, #6b21a8, #9333ea, #c084fc); border-radius: 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: center; }
+        .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+        .card { background: var(--bg-card); padding: 20px; border-radius: 20px; border: 1px solid rgba(255,255,255,0.05); }
+        .btn-blue { background: #007bff; color: #fff; border: none; padding: 10px 20px; border-radius: 10px; cursor: pointer; }
+        .status-card { background: var(--bg-card); padding: 20px; border-radius: 20px; display: flex; justify-content: space-between; margin-top: 20px; }
+        .asset-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 15px; margin-top: 20px; display: none; }
+        .asset-card { background: var(--bg-card); padding: 15px; border-radius: 15px; text-align: center; }
     </style>
 </head>
 <body>
-    <div id="banner">
-        <span style="background:white;color:#2563eb;padding:2px 6px;border-radius:4px;margin-right:8px;font-size:10px;">INFO</span>
-        Join Komunitas Mboiz Stream untuk update fitur terbaru & bantuan teknis!
-    </div>
-    <div id="root">
-        <aside>
-            <div style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <h1 style="font-size: 18px; font-weight: bold; margin: 0;">Mboiz Nexus <span style="background:rgba(59,130,246,0.1);color:#3b82f6;font-size:10px;padding:2px 6px;border-radius:4px;">V.5</span></h1>
-                <p style="font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; margin-top: 4px;">Premium Stream Asset</p>
+    <div class="top-banner"><div><span style="background:#00d2ff; padding:2px 8px; border-radius:10px; font-weight:800; font-size:11px;">INFO</span> Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff">Join Now! →</a></div></div>
+    <div class="wrapper">
+        <div class="sidebar">
+            <div style="padding:0 25px 20px;"><div style="color:#a0a0a0; font-size:10px;">DASHBOARD</div><div style="font-size:22px; font-weight:800;">Mboiz<span>Nexus.</span></div></div>
+            <div class="nav-item active" onclick="showTab('engine')"><i class="fas fa-microchip"></i> Engine Session</div>
+            <div class="nav-item" onclick="showTab('overlay')"><i class="fas fa-layer-group"></i> Overlay Asset</div>
+            <div class="nav-item"><i class="fas fa-chart-bar"></i> Information</div>
+            <div class="nav-item"><i class="fas fa-book"></i> Tutorial</div>
+            <div class="nav-item"><i class="fas fa-dollar-sign"></i> Donatur</div>
+            <div style="flex:1"></div>
+            <button class="footer-btn">Bahasa: ID</button>
+            <button class="footer-btn">Discord</button>
+            <button class="footer-btn orange">Support Developer</button>
+        </div>
+        <div class="main-content">
+            <div id="engine-view">
+                <div class="hero-banner"><h2>MBOIZ NEXUS STREAM ASSET</h2></div>
+                <div class="card-grid"><div class="card"><p>Active Session ID</p><input type="text" value="MBOIZ_SESSION" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Salin</button></div><div class="card"><p>Open Dock Control</p><button class="btn-blue" style="width:100%; margin-top:10px">Dock Control</button></div></div>
+                <div class="card" style="margin-top:20px"><p>TikTok Username</p><input type="text" placeholder="Masukkan tanpa @" style="width:100%; background:#222; color:#fff; border:none; padding:10px; border-radius:8px; margin-top:10px;"><button class="btn-blue" style="margin-top:10px">Mulai</button></div>
+                <div class="status-card"><div>Mode: None | Status Koneksi...</div><button style="background:#dc3545; color:#fff; border:none; padding:10px 20px; border-radius:10px;">Stop Engine</button></div>
             </div>
-            <nav style="flex: 1; padding: 16px 0; overflow-y: auto;">
-                <button onclick="switchTab('engine', this)" class="sidebar-btn active"><i class="ph ph-cpu" style="font-size: 20px;"></i> Engine Session</button>
-                <button onclick="switchTab('overlay', this)" class="sidebar-btn"><i class="ph ph-stack" style="font-size: 20px;"></i> Overlay Asset</button>
-                <button onclick="switchTab('info', this)" class="sidebar-btn"><i class="ph ph-chart-bar" style="font-size: 20px;"></i> Information</button>
-                <button onclick="switchTab('tutorial', this)" class="sidebar-btn"><i class="ph ph-book-open" style="font-size: 20px;"></i> Tutorial</button>
-                <button onclick="switchTab('donatur', this)" class="sidebar-btn"><i class="ph ph-currency-dollar" style="font-size: 20px;"></i> Donatur</button>
-                <button onclick="switchTab('bahasa', this)" class="sidebar-btn"><i class="ph ph-translate" style="font-size: 20px;"></i> Bahasa</button>
-                <button onclick="switchTab('discord', this)" class="sidebar-btn"><i class="ph ph-discord-logo" style="font-size: 20px;"></i> Join Discord</button>
-                <button onclick="switchTab('support', this)" class="sidebar-btn"><i class="ph ph-headset" style="font-size: 20px;"></i> Pusat Bantuan</button>
-            </nav>
-            <div style="padding: 16px; border-top: 1px solid rgba(255,255,255,0.05); display: flex; flex-direction: column; gap: 8px;">
-                <button style="width: 100%; background: #ea580c; color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: none; cursor: pointer; text-transform: uppercase;">SUPPORT DEVELOPER</button>
-                <button style="width: 100%; background: rgba(255,255,255,0.05); color: white; padding: 10px; border-radius: 8px; font-size: 11px; font-weight: bold; border: 1px solid rgba(255,255,255,0.1); cursor: pointer; text-transform: uppercase;">PUSAT BANTUAN</button>
+            <div id="overlay-view" class="asset-grid">
+                <!-- Add 17 cards here -->
+                <div class="asset-card"><h4>Branding Stream</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Widget Clock</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Dock OBS</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>OBS Trigger</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Chat Box</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Dock Chat</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Viewer Counter</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Absen Heart Me</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Text To Speech</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Follow Alert</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Gift Notification</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Join Notification</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Like Animation</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Share Alert</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Gift Leaderboard</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Like Leaderboard</h4><button>Salin URL</button></div>
+                <div class="asset-card"><h4>Custom Design</h4><button>Salin URL</button></div>
             </div>
-        </aside>
-        <main>
-            <div id="engine" class="tab-content active">
-                <div style="width: 100%; height: 180px; border-radius: 16px; background: linear-gradient(135deg, #4c1d95, #1e3a8a); margin-bottom: 32px; display: flex; flex-direction: column; justify-content: center; padding: 0 40px; border: 1px solid rgba(255,255,255,0.1); position: relative; overflow: hidden;">
-                    <div style="position: absolute; inset: 0; background: url('https://www.transparenttextures.com/patterns/carbon-fibre.png'); opacity: 0.1;"></div>
-                    <h2 style="font-size: 32px; font-weight: 900; font-style: italic; margin: 0;">MBOIZ NEXUS ENGINE</h2>
-                    <p style="color: rgba(255,255,255,0.6); font-size: 14px; margin-top: 4px;">Sistem Otomasi Live TikTok Terbaik di Indonesia</p>
-                </div>
-                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
-                    <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; align-items: center; gap: 12px;"><i class="ph ph-key" style="color:#3b82f6; font-size:20px;"></i><h3 style="font-size:14px;font-weight:bold;margin:0;">Active Session ID</h3></div>
-                        <input type="text" value="SESSION-6472-X921" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: #3b82f6; font-family: monospace; font-size: 12px;" readonly>
-                    </div>
-                    <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; align-items: center; gap: 12px;"><i class="ph ph-monitor" style="color:#22c55e; font-size:20px;"></i><h3 style="font-size:14px;font-weight:bold;margin:0;">Open Dock Control</h3></div>
-                        <button style="width: 100%; background: #16a34a; color: white; border: none; padding: 12px; border-radius: 8px; font-weight: bold; font-size: 12px; cursor: pointer;">BUKA CONTROL PANEL</button>
-                    </div>
-                    <div class="glass" style="padding: 24px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;">
-                        <div style="display: flex; align-items: center; gap: 12px;"><i class="ph ph-at" style="color:#ec4899; font-size:20px;"></i><h3 style="font-size:14px;font-weight:bold;margin:0;">TikTok Username</h3></div>
-                        <input type="text" placeholder="@username" style="width: 100%; background: #000; border: 1px solid #27272a; border-radius: 8px; padding: 12px; color: white; font-size: 12px; outline: none;">
-                    </div>
-                </div>
-                <div style="display: flex; justify-content: center; margin-top: 40px;">
-                    <button style="background: #dc2626; color: white; border: none; padding: 16px 64px; border-radius: 999px; font-weight: 900; font-size: 14px; letter-spacing: 0.1em; cursor: pointer; display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 20px rgba(220,38,38,0.2);"><i class="ph ph-power" style="font-size: 20px;"></i> STOP ENGINE SESSION</button>
-                </div>
-            </div>
-            <div id="overlay" class="tab-content">
-                <h2 style="font-size: 24px; font-weight: bold; margin-bottom: 24px;">Overlay Assets <span style="color: rgba(255,255,255,0.2); font-size: 14px; margin-left: 8px;">17 Items</span></h2>
-                <div id="grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 24px;"></div>
-            </div>
-            <div style="position: absolute; bottom: 32px; right: 32px; font-size: 10px; color: rgba(255,255,255,0.2); font-weight: bold; text-transform: uppercase; letter-spacing: 0.1em;">
-                Powered by Mboiz Stream
-            </div>
-        </main>
+        </div>
     </div>
     <script>
-        function switchTab(tabId, el) {
-            document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.sidebar-btn').forEach(b => b.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            el.classList.add('active');
+        function showTab(t){
+            document.getElementById('engine-view').style.display=t=='engine'?'block':'none';
+            document.getElementById('overlay-view').style.display=t=='overlay'?'grid':'none';
+            document.querySelectorAll('.nav-item').forEach((i,idx)=>i.classList.toggle('active',(t=='engine'&&idx==0)||(t=='overlay'&&idx==1)));
         }
-        const assets = ["Branding Stream", "Goal Bar Premium", "Subathon Timer", "Latest Follower", "Top Gifter Glow", "Chat Box Glass", "Alert Popup V4", "Social Media Bar", "Music Player", "Webcam Frame", "Live Viewers Counter", "Event List", "Milestone Progress", "Custom Text Marquee", "Vote System", "Like Leaderboard", "Butuh Desain Custom?"];
-        const grid = document.getElementById('grid');
-        assets.forEach((name, i) => {
-            const card = document.createElement('div');
-            card.className = 'glass';
-            card.style = 'padding: 20px; border-radius: 16px; display: flex; flex-direction: column; gap: 16px;';
-            card.innerHTML = `<div style="width: 100%; height: 100px; background: rgba(255,255,255,0.05); border-radius: 12px; display: flex; align-items: center; justify-content: center;"><i class="ph ${i === 16 ? 'ph-paint-brush' : 'ph-image'}" style="font-size: 32px; color: rgba(255,255,255,0.1);"></i></div><div><div style="font-weight: bold; font-size: 12px; margin-bottom: 4px;">${name}</div><div style="font-size: 10px; color: rgba(255,255,255,0.4);">Ready to use</div></div><button style="width: 100%; background: rgba(59,130,246,0.1); color: #3b82f6; border: 1px solid rgba(59,130,246,0.2); padding: 8px; border-radius: 8px; font-size: 10px; font-weight: bold; cursor: pointer;">COPY LINK</button>`;
-            grid.appendChild(card);
-        });
     </script>
 </body>
 </html>
