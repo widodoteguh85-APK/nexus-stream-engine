@@ -47,9 +47,9 @@ body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:colu
 .custom-card{background:#1a1a1a;border:1px solid rgba(0,123,255,0.3);border-radius:14px;padding:18px 16px}
 .custom-card h4{color:#3b9bff;font-size:15px;font-weight:700;margin-bottom:10px}
 .btn-kreator{background:#007bff;color:#fff;border:none;padding:8px 18px;border-radius:20px;font-size:13px;font-weight:600;cursor:pointer}
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.82);z-index:9999;align-items:center;justify-content:center}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.85);z-index:9999;align-items:center;justify-content:center}
 .modal-overlay.open{display:flex}
-.modal-box{background:#161616;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;width:480px;max-height:80vh;overflow-y:auto}
+.modal-box{background:#161616;border:1px solid rgba(255,255,255,0.08);border-radius:20px;padding:28px;width:520px;max-height:85vh;overflow-y:auto}
 .modal-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .modal-head h3{font-size:16px;font-weight:700}
 .modal-close{background:none;border:none;color:#888;font-size:20px;cursor:pointer;padding:4px 8px}
@@ -57,176 +57,206 @@ body{background:#0a0a0a;color:#fff;height:100vh;display:flex;flex-direction:colu
 .theme-item{background:#222;border:1px solid rgba(255,255,255,0.06);border-radius:10px;padding:12px 16px;cursor:pointer;display:flex;align-items:center;justify-content:space-between;transition:.2s}
 .theme-item:hover,.theme-item.selected{border-color:#007bff;background:#0d2040}
 .theme-item span{font-size:14px;font-weight:500}
-.warn-text{font-size:11px;color:#555;margin-top:14px;text-align:center;font-style:italic}
-.apply-btn{width:100%;margin-top:16px;padding:12px;background:#007bff;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
-.form-group{margin-bottom:14px}
-.form-label{font-size:12px;color:#888;margin-bottom:6px;display:block;font-weight:600;text-transform:uppercase}
-.form-input{width:100%;background:#222;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
-.wip-box{background:#f59e0b;border-radius:12px;padding:20px;display:flex;align-items:center;gap:14px}
-.wip-box b{color:#1a1a1a;font-size:16px;font-weight:800}
-.footer-credit{text-align:right;font-size:12px;color:#333;margin-top:20px}
-</style>
-</head>
-<body>
-<div class="top-banner">
-  <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:4px">Join Now! &rarr;</a></div>
-  <i class="fas fa-times" style="cursor:pointer;opacity:.6"></i>
-</div>
-<div class="wrapper">
-  <div class="sidebar">
-    <div class="logo-area">
-      <div class="logo-label">DASHBOARD</div>
-      <div class="logo-text">Mboiz<span>Nexus.</span></div>
-    </div>
-    <div class="nav-item active" data-tab="engine"><i class="fas fa-microchip"></i>Engine Session</div>
-    <div class="nav-item" data-tab="overlay"><i class="fas fa-layer-group"></i>Overlay Asset</div>
-    <div class="nav-item"><i class="fas fa-chart-bar"></i>Information</div>
-    <div class="nav-item"><i class="fas fa-book"></i>Tutorial</div>
-    <div class="nav-item"><i class="fas fa-dollar-sign"></i>Donatur</div>
-    <div class="sidebar-footer">
-      <button class="footer-btn"><i class="fas fa-language"></i>Bahasa: ID</button>
-      <button class="footer-btn"><i class="fab fa-discord"></i>Pusat Bantuan (Discord)</button>
-      <button class="footer-btn orange"><i class="fas fa-coffee"></i>Support Developer</button>
-    </div>
-  </div>
-  <div class="main-content">
-    <div id="engine-view">
-      <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS<br>STREAM ASSET</div></div>
-      <div class="session-grid">
-        <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" id="btnCopySession">Salin</button></div></div>
-        <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i> Dock Control</button></div></div>
-      </div>
-      <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:6px">Mulai</button></div></div>
-      <div class="status-bar"><div style="display:flex;align-items:center;gap:12px"><span class="mode-badge">Mode : None</span><span style="color:#555;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
-    </div>
-    <div id="overlay-view" style="display:none">
-      <div class="asset-grid">
-        <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn" data-modal="branding">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn" data-modal="clock">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn" data-modal="dock">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0f1a2e,#1a2d4a)"><h4>OBS Trigger</h4><button class="a-btn" data-modal="obs">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b2d3b)"><h4>Chat Box</h4><button class="a-btn" data-modal="chat">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn" data-modal="dockchat">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn" data-modal="viewer">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn" data-modal="absen">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn" data-modal="tts">Pengaturan</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn" data-modal="follow">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn" data-modal="gift">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn" data-modal="join">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1515)"><h4>Like Animation</h4><button class="a-btn" data-modal="like">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn" data-modal="share">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn" data-modal="giftlb">Tema</button></div>
-        <div class="a-card" style="background:linear-gradient(135deg,#1a1a0d,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn" data-modal="likeboard">Tema</button></div>
-        <div class="custom-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
-      </div>
-      <div class="footer-credit">Powered by <b>Mboiz Stream Nexus</b></div>
-    </div>
-  </div>
-</div>
-<div class="modal-overlay" id="modal">
-  <div class="modal-box">
-    <div class="modal-head"><h3 id="modal-title">Pengaturan</h3><button class="modal-close" id="btnCloseModal"><i class="fas fa-times"></i></button></div>
-    <div id="modal-body"></div>
-  </div>
-</div>
-<script>
-var MODAL_DATA = {
-  branding:{title:"Branding Stream",type:"wip"},
-  clock:{title:"Widget Clock",type:"form",fields:[{label:"YOUR LOCATION",id:"fld-city",ph:"Contoh: Jakarta"},{label:"SESSION ID",id:"fld-session",ph:""}],path:"clock/clock.html"},
-  dock:{title:"Dock OBS",type:"info",text:"Buka OBS Studio lalu View > Docks > Custom Browser Docks dan tambahkan URL berikut ke OBS Anda.",path:"dock/index.html"},
-  obs:{title:"OBS Trigger",type:"info",text:"OBS Trigger membuka panel kontrol untuk mengatur event otomatis. Tambahkan URL ke OBS Browser Source.",path:"obs/obscontrol.html"},
-  chat:{title:"Chat Box - Pilih Tema",type:"tema",themes:[{n:"Dynamic Island",p:"theme/dynamic.html"},{n:"Special Roblox",p:"theme/roblox.html"},{n:"Gaming Mood",p:"theme/gaming.html"},{n:"Minimalist Glass",p:"theme/minimalist-glass.html"},{n:"Minimalist White",p:"theme/minimalist-white.html"},{n:"Neumorphism Light",p:"theme/neumorphism.html"},{n:"Neumorphism Dark",p:"theme/neumorphism-dark.html"},{n:"Square Minimalist",p:"theme/square-minimalis.html"},{n:"Women Style",p:"theme/womenstyle.html"},{n:"Girl Pink",p:"theme/girlpink.html"},{n:"Paper Theme",p:"theme/paper.html"}]},
-  dockchat:{title:"Dock Chat - Pilih Tema",type:"tema",themes:[{n:"Horizontal",p:"dockchat/index.html"},{n:"Vertical",p:"dockchat/vertical.html"},{n:"Bubble Chat",p:"dockchat/bubblechat.html"},{n:"Cute Glow Chat",p:"dockchat/minimalistglow.html"},{n:"Pixel Art Chat",p:"dockchat/pixelart.html"},{n:"Gaming Mood",p:"dockchat/gaming.html"}]},
-  viewer:{title:"Viewer Counter - Pilih Tema",type:"tema",themes:[{n:"Minimalist Glass",p:"viewer/index.html"},{n:"Animation Border",p:"viewer/style/border-motion.html"},{n:"Dark Blue",p:"viewer/style/dark-blue.html"},{n:"Squircle",p:"viewer/style/Squircle.html"}]},
-  absen:{title:"Absen Heart Me",type:"form",fields:[{label:"JUDUL HEADER",id:"fld-head",ph:"ABSENSI HEART ME"},{label:"SESSION ID",id:"fld-session2",ph:""}],path:"absen/index.html"},
-  tts:{title:"Text To Speech",type:"info",text:"Tambahkan URL TTS Overlay ke OBS sebagai Browser Source untuk mengaktifkan fitur text-to-speech saat ada chat masuk.",path:"tts/index.html"},
-  follow:{title:"Follow Alert - Pilih Tema",type:"tema",themes:[{n:"Blue Small",p:"follow/style/blue-small.html"},{n:"Glass Sparkling",p:"follow/style/glass-clink.html"},{n:"Magma",p:"follow/style/magma.html"},{n:"Special Motion",p:"follow/style/special-follow.html"}]},
-  gift:{title:"Gift Notification - Pilih Tema",type:"tema",themes:[{n:"Minimalist Gift",p:"gift/index.html"},{n:"Gift Motion",p:"gift/giftmotion.html"},{n:"Gift Animation",p:"gift/giftanimation.html"}]},
-  join:{title:"Join Notification - Pilih Tema",type:"tema",themes:[{n:"Minimalist Join",p:"join/index.html"},{n:"Scattered Join",p:"join/scattered.html"}]},
-  like:{title:"Like Animation - Pilih Tema",type:"tema",themes:[{n:"Like Animation V1",p:"like/index.html"},{n:"Like Animation V2",p:"like/like-v2.html"}]},
-  share:{title:"Share Alert - Pilih Tema",type:"tema",themes:[{n:"Small Orange",p:"share/style/smal-orange.html"},{n:"Vibrant Orange",p:"share/style/vibrant-orange.html"},{n:"Wonderful Share",p:"share/style/wonderful-share.html"}]},
-  giftlb:{title:"Gift Leaderboard - Pilih Tema",type:"tema",themes:[{n:"Minimalist",p:"leaderboard/index.html"},{n:"Glass Glassmorphism",p:"leaderboard/glass.html"},{n:"Dark Glassmorphism",p:"leaderboard/dark-glassmorphism.html"},{n:"Light Theme",p:"leaderboard/light-theme.html"}]},
-  likeboard:{title:"Like Leaderboard - Pilih Tema",type:"tema",themes:[{n:"Minimalist Glass",p:"likeboard/index.html"},{n:"Big Top",p:"likeboard/style1.html"},{n:"Big 10 Top",p:"likeboard/style2.html"}]}
-};
-
-var selectedPath = "";
-var SESSION = document.getElementById("sessionId").value;
-
-document.querySelectorAll(".nav-item[data-tab]").forEach(function(el){
-  el.addEventListener("click", function(){
-    var t = this.getAttribute("data-tab");
-    document.getElementById("engine-view").style.display = t==="engine" ? "block" : "none";
-    document.getElementById("overlay-view").style.display = t==="overlay" ? "block" : "none";
-    document.querySelectorAll(".nav-item[data-tab]").forEach(function(n){ n.classList.remove("active"); });
-    this.classList.add("active");
-  });
-});
-
-document.querySelectorAll(".a-btn[data-modal]").forEach(function(btn){
-  btn.addEventListener("click", function(){
-    openModal(this.getAttribute("data-modal"));
-  });
-});
-
-document.getElementById("btnCopySession").addEventListener("click", function(){
-  navigator.clipboard.writeText(SESSION).then(function(){ alert("Session ID disalin!"); }).catch(function(){ prompt("Session ID:", SESSION); });
-});
-
-document.getElementById("btnCloseModal").addEventListener("click", closeModal);
-document.getElementById("modal").addEventListener("click", function(e){ if(e.target===this) closeModal(); });
-
-function openModal(key){
-  var d = MODAL_DATA[key];
-  if(!d) return;
-  document.getElementById("modal-title").textContent = d.title;
-  var body = document.getElementById("modal-body");
-  selectedPath = "";
-
-  if(d.type === "wip"){
-    body.innerHTML = "<div class='wip-box'><i class='fas fa-tools' style='font-size:28px;color:#1a1a1a'></i><b>SEDANG DI PERBAIKI</b></div>";
-  } else if(d.type === "tema"){
-    var h = "<div class='theme-list'>";
-    d.themes.forEach(function(t){
-      h += "<div class='theme-item' data-path='" + t.p + "'><span>" + t.n + "</span><i class='fas fa-chevron-right' style='color:#444;font-size:12px'></i></div>";
-    });
-    h += "</div><p class='warn-text'>Live Preview Rendering System makes your CPU work hard</p>";
-    h += "<button class='apply-btn' id='btnApply'>Apply &amp; Copy Link</button>";
-    body.innerHTML = h;
-    body.querySelectorAll(".theme-item").forEach(function(item){
-      item.addEventListener("click", function(){
-        body.querySelectorAll(".theme-item").forEach(function(i){ i.classList.remove("selected"); });
-        this.classList.add("selected");
-        selectedPath = this.getAttribute("data-path");
-      });
-    });
-    document.getElementById("btnApply").addEventListener("click", function(){
-      if(!selectedPath){ alert("Pilih tema terlebih dahulu!"); return; }
-      var url = "http://localhost:3001/" + selectedPath + "?session=" + SESSION;
-      navigator.clipboard.writeText(url).then(function(){ alert("URL Disalin!\n\n" + url); closeModal(); }).catch(function(){ prompt("Copy URL ini:", url); closeModal(); });
-    });
-  } else if(d.type === "form"){
-    var h = "";
-    d.fields.forEach(function(f){
-      var val = f.id.indexOf("session") >= 0 ? SESSION : "";
-      h += "<div class='form-group'><label class='form-label'>" + f.label + "</label><input class='form-input' id='" + f.id + "' placeholder='" + f.ph + "' value='" + val + "'></div>";
-    });
-    h += "<button class='apply-btn' id='btnApplyForm'>Apply &amp; Copy Link</button>";
-    body.innerHTML = h;
-    document.getElementById("btnApplyForm").addEventListener("click", function(){
-      var url = "http://localhost:3001/" + d.path + "?session=" + SESSION;
-      navigator.clipboard.writeText(url).then(function(){ alert("URL Disalin!\n\n" + url); closeModal(); }).catch(function(){ prompt("Copy URL ini:", url); closeModal(); });
-    });
-  } else if(d.type === "info"){
-    body.innerHTML = "<p style='color:#aaa;font-size:14px;line-height:1.7;margin-bottom:16px'>" + d.text + "</p><button class='apply-btn' id='btnCopyInfo'>Copy Link</button>";
-    document.getElementById("btnCopyInfo").addEventListener("click", function(){
-      var url = "http://localhost:3001/" + d.path + "?session=" + SESSION;
-      navigator.clipboard.writeText(url).then(function(){ alert("URL Disalin!\n\n" + url); closeModal(); }).catch(function(){ prompt("Copy URL ini:", url); closeModal(); });
-    });
-  }
-  document.getElementById("modal").classList.add("open");
-}
-
-function closeModal(){ document.getElementById("modal").classList.remove("open"); }
-</script>
-</body>
-</html>
+60: .warn-text{font-size:11px;color:#555;margin-top:14px;text-align:center;font-style:italic}
+61: .apply-btn{width:100%;margin-top:16px;padding:12px;background:#007bff;color:#fff;border:none;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer}
+62: .form-group{margin-bottom:14px}
+63: .form-label{font-size:12px;color:#888;margin-bottom:6px;display:block;font-weight:600;text-transform:uppercase}
+64: .form-input{width:100%;background:#222;border:1px solid rgba(255,255,255,0.08);padding:10px 12px;border-radius:9px;color:#fff;font-size:13px;outline:none}
+65: .form-input:focus{border-color:#007bff}
+66: .branding-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px}
+67: .branding-item{display:flex;gap:8px;align-items:center}
+68: .color-picker-wrap{display:flex;align-items:center;gap:10px;background:#222;padding:8px 12px;border-radius:9px;border:1px solid rgba(255,255,255,0.08)}
+69: .preview-box{background:#111;border:1px solid #333;border-radius:12px;padding:20px;margin-bottom:16px;text-align:center}
+70: .sim-buttons{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}
+71: .sim-btn{background:#222;border:1px solid #333;color:#fff;padding:8px;border-radius:8px;font-size:12px;cursor:pointer}
+72: .sim-btn:hover{background:#333}
+73: </style>
+74: </head>
+75: <body>
+76: <div class="top-banner">
+77:   <div><span class="info-tag">INFO</span>Join Komunitas Mboiz Stream Discord <a href="#" style="color:#fff;margin-left:4px">Join Now! &rarr;</a></div>
+78:   <i class="fas fa-times" style="cursor:pointer;opacity:.6"></i>
+79: </div>
+80: <div class="wrapper">
+81:   <div class="sidebar">
+82:     <div class="logo-area">
+83:       <div class="logo-label">DASHBOARD</div>
+84:       <div class="logo-text">Mboiz<span>Nexus.</span></div>
+85:     </div>
+86:     <div class="nav-item active" data-tab="engine"><i class="fas fa-microchip"></i>Engine Session</div>
+87:     <div class="nav-item" data-tab="overlay"><i class="fas fa-layer-group"></i>Overlay Asset</div>
+88:     <div class="nav-item"><i class="fas fa-chart-bar"></i>Information</div>
+89:     <div class="nav-item"><i class="fas fa-book"></i>Tutorial</div>
+90:     <div class="nav-item"><i class="fas fa-dollar-sign"></i>Donatur</div>
+91:     <div class="sidebar-footer">
+92:       <button class="footer-btn"><i class="fas fa-language"></i>Bahasa: ID</button>
+93:       <button class="footer-btn"><i class="fab fa-discord"></i>Pusat Bantuan (Discord)</button>
+94:       <button class="footer-btn orange"><i class="fas fa-coffee"></i>Support Developer</button>
+95:     </div>
+96:   </div>
+97:   <div class="main-content">
+98:     <div id="engine-view">
+99:       <div class="hero-banner"><div class="hero-text">MBOIZ NEXUS<br>STREAM ASSET</div></div>
+100:       <div class="session-grid">
+101:         <div class="card"><div class="card-label">Active Session ID</div><div class="card-row"><input class="input-box" id="sessionId" value="MBOIZ_SESSION" readonly><button class="btn btn-dark" id="btnCopySession">Salin</button></div></div>
+102:         <div class="card"><div class="card-label">Open Dock Control</div><div class="card-row"><button class="btn btn-blue" style="width:100%"><i class="fas fa-desktop"></i> Dock Control</button></div></div>
+103:       </div>
+104:       <div class="card"><div class="card-label">TikTok Username</div><div class="card-row"><input class="input-box" placeholder="Masukkan tanpa @"><button class="btn btn-blue" style="margin-left:6px">Mulai</button></div></div>
+105:       <div class="status-bar"><div style="display:flex;align-items:center;gap:12px"><span class="mode-badge">Mode : None</span><span style="color:#555;font-size:13px">Status Koneksi ...</span></div><button class="btn btn-red">Stop Engine</button></div>
+106:     </div>
+107:     <div id="overlay-view" style="display:none">
+108:       <div class="asset-grid">
+109:         <div class="a-card" style="background:linear-gradient(135deg,#1a1a2e,#16213e)"><h4>Branding Stream</h4><button class="a-btn" data-modal="branding">Pengaturan</button></div>
+110:         <div class="a-card" style="background:linear-gradient(135deg,#3d0000,#7b1a1a)"><h4>Widget Clock</h4><button class="a-btn" data-modal="clock">Pengaturan</button></div>
+111:         <div class="a-card" style="background:linear-gradient(135deg,#1a1a1a,#2d2d2d)"><h4>Dock OBS</h4><button class="a-btn" data-modal="dock">Pengaturan</button></div>
+112:         <div class="a-card" style="background:linear-gradient(135deg,#0f1a2e,#1a2d4a)"><h4>OBS Trigger</h4><button class="a-btn" data-modal="obs">Pengaturan</button></div>
+113:         <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#1b2d3b)"><h4>Chat Box</h4><button class="a-btn" data-modal="chat">Tema</button></div>
+114:         <div class="a-card" style="background:linear-gradient(135deg,#0d1117,#1a1f2c)"><h4>Dock Chat</h4><button class="a-btn" data-modal="dockchat">Tema</button></div>
+115:         <div class="a-card" style="background:linear-gradient(135deg,#0d1b2a,#162032)"><h4>Viewer Counter</h4><button class="a-btn" data-modal="viewer">Tema</button></div>
+116:         <div class="a-card" style="background:linear-gradient(135deg,#2d0a0a,#4a1010)"><h4>Absen Heart Me</h4><button class="a-btn" data-modal="absen">Pengaturan</button></div>
+117:         <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#2d2000)"><h4>Text To Speech</h4><button class="a-btn" data-modal="tts">Pengaturan</button></div>
+118:         <div class="a-card" style="background:linear-gradient(135deg,#1a0a2e,#2d1a4a)"><h4>Follow Alert</h4><button class="a-btn" data-modal="follow">Tema</button></div>
+119:         <div class="a-card" style="background:linear-gradient(135deg,#2d0d1a,#4a1a2e)"><h4>Gift Notification</h4><button class="a-btn" data-modal="gift">Tema</button></div>
+120:         <div class="a-card" style="background:linear-gradient(135deg,#0a1a0a,#1a2d1a)"><h4>Join Notification</h4><button class="a-btn" data-modal="join">Tema</button></div>
+121:         <div class="a-card" style="background:linear-gradient(135deg,#1a0d0d,#2d1515)"><h4>Like Animation</h4><button class="a-btn" data-modal="like">Tema</button></div>
+122:         <div class="a-card" style="background:linear-gradient(135deg,#1a1000,#332200)"><h4>Share Alert</h4><button class="a-btn" data-modal="share">Tema</button></div>
+123:         <div class="a-card" style="background:linear-gradient(135deg,#0d1a1a,#1a3333)"><h4>Gift Leaderboard</h4><button class="a-btn" data-modal="giftlb">Tema</button></div>
+124:         <div class="a-card" style="background:linear-gradient(135deg,#1a1a0d,#2d2d1a)"><h4>Like Leaderboard</h4><button class="a-btn" data-modal="likeboard">Tema</button></div>
+125:         <div class="custom-card"><h4>Butuh Desain Custom?</h4><button class="btn-kreator">Hubungi Kreator</button></div>
+126:       </div>
+127:     </div>
+128:   </div>
+129: </div>
+130: <div class="modal-overlay" id="modal">
+131:   <div class="modal-box">
+132:     <div class="modal-head"><h3 id="modal-title">Pengaturan</h3><button class="modal-close" id="btnCloseModal"><i class="fas fa-times"></i></button></div>
+133:     <div id="modal-body"></div>
+134:   </div>
+135: </div>
+136: <script>
+137: var MODAL_DATA = {
+138:   branding:{title:"Kustomisasi Tema Overlay",type:"branding"},
+139:   clock:{title:"Widget Clock - Pengaturan",type:"clock"},
+140:   dock:{title:"Dock OBS - Setup",type:"info",text:"Salin URL ini ke OBS Studio (View > Docks > Custom Browser Docks):",path:"dock/index.html"},
+141:   obs:{title:"OBS Trigger Control",type:"info",text:"Panel untuk mengatur otomasi scene/source OBS berbasis event TikTok.",path:"obs/obscontrol.html"},
+142:   chat:{title:"Chat Box - Pilih Tema",type:"tema",themes:[{n:"Dynamic Island",p:"theme/dynamic.html"},{n:"Special Roblox",p:"theme/roblox.html"},{n:"Gaming Mood",p:"theme/gaming.html"},{n:"Minimalist Glass",p:"theme/minimalist-glass.html"},{n:"Neumorphism Light",p:"theme/neumorphism.html"}]},
+143:   dockchat:{title:"Dock Chat - Pilih Tema",type:"tema",themes:[{n:"Horizontal",p:"dockchat/index.html"},{n:"Vertical",p:"dockchat/vertical.html"},{n:"Bubble Chat",p:"dockchat/bubblechat.html"}]},
+144:   viewer:{title:"Viewer Counter - Pilih Tema",type:"tema",themes:[{n:"Minimalist Glass",p:"viewer/index.html"},{n:"Animation Border",p:"viewer/style/border-motion.html"}]},
+145:   absen:{title:"Absen Heart Me",type:"leaderboard",themeName:"Absen Notif Cozy",path:"absen/index.html"},
+146:   tts:{title:"Text To Speech Setup",type:"info",text:"Panduan lengkap routing audio ke OBS dan TikTok Live Studio.",path:"tts/index.html"},
+147:   follow:{title:"Follow Alert - Pilih Tema",type:"tema",themes:[{n:"Blue Small",p:"follow/style/blue-small.html"},{n:"Magma",p:"follow/style/magma.html"}]},
+148:   gift:{title:"Gift Notification",type:"tema",themes:[{n:"Minimalist Gift",p:"gift/index.html"},{n:"Gift Motion",p:"gift/giftmotion.html"}]},
+149:   join:{title:"Join Notification",type:"tema",themes:[{n:"Simple",p:"join/index.html"},{n:"Scattered",p:"join/scattered.html"}]},
+150:   like:{title:"Like Animation Control",type:"like_anim"},
+151:   share:{title:"Share Alert",type:"tema",themes:[{n:"Small Orange",p:"share/style/smal-orange.html"},{n:"Wonderful Share",p:"share/style/wonderful-share.html"}]},
+152:   giftlb:{title:"Gift Leaderboard",type:"leaderboard",themeName:"Dark Glassmorphism",path:"leaderboard/index.html"},
+153:   likeboard:{title:"Like Leaderboard",type:"tema",themes:[{n:"Minimalist Glass",p:"likeboard/index.html"},{n:"Big Top",p:"likeboard/style1.html"}]}
+154: };
+155: 
+156: var SESSION = "MBOIZ_SESSION";
+157: 
+158: document.querySelectorAll(".nav-item[data-tab]").forEach(function(el){
+159:   el.addEventListener("click", function(){
+160:     var t = this.getAttribute("data-tab");
+161:     document.getElementById("engine-view").style.display = t==="engine" ? "block" : "none";
+162:     document.getElementById("overlay-view").style.display = t==="overlay" ? "block" : "none";
+163:     document.querySelectorAll(".nav-item[data-tab]").forEach(function(n){ n.classList.remove("active"); });
+164:     this.classList.add("active");
+165:   });
+166: });
+167: 
+168: document.querySelectorAll(".a-btn[data-modal]").forEach(function(btn){
+169:   btn.addEventListener("click", function(){ openModal(this.getAttribute("data-modal")); });
+170: });
+171: 
+172: function openModal(key){
+173:   var d = MODAL_DATA[key];
+174:   if(!d) return;
+175:   document.getElementById("modal-title").textContent = d.title;
+176:   var body = document.getElementById("modal-body");
+177:   body.innerHTML = "";
+178: 
+179:   if(d.type === "branding"){
+180:     body.innerHTML = `
+181:       <div class="branding-list" id="brandList">
+182:         <div class="branding-item"><input class="form-input" value="Mboiz Stream"></div>
+183:         <div class="branding-item"><input class="form-input" value="Tech Reviews"></div>
+184:       </div>
+185:       <button class="btn btn-dark" style="width:100%;margin-bottom:12px" onclick="addBrandItem()">+ New Item</button>
+186:       <div class="color-picker-wrap">
+187:         <label class="form-label" style="margin:0">Theme Color:</label>
+188:         <input type="color" id="brandColor" value="#007bff" style="border:none;background:none;width:40px;height:30px;cursor:pointer">
+189:       </div>
+190:       <button class="apply-btn" onclick="copyResult('branding/index.html')">Apply to overlay</button>
+191:     `;
+192:   } else if(d.type === "clock"){
+193:     body.innerHTML = `
+194:       <div class="preview-box" style="font-size:24px;font-weight:700">12:45:00</div>
+195:       <div class="form-group"><label class="form-label">YOUR LOCATION</label><input class="form-input" value="Jakarta"></div>
+196:       <div class="color-picker-wrap">
+197:         <label class="form-label" style="margin:0">Text Color:</label>
+198:         <input type="color" value="#ffffff" style="border:none;background:none;width:40px;height:30px;cursor:pointer">
+199:       </div>
+200:       <button class="apply-btn" onclick="copyResult('clock/clock.html')">Apply & Copy Link</button>
+201:     `;
+202:   } else if(d.type === "like_anim"){
+203:     body.innerHTML = `
+204:       <div class="form-group"><label class="form-label">Minimal Likes</label><input class="form-input" type="number" value="100"></div>
+205:       <div class="form-group">
+206:         <label class="form-label">Animation Type</label>
+207:         <select class="form-input" style="background:#222">
+208:           <option>Supernova</option><option>Confetti</option><option>Love Rain</option><option>Highlight</option>
+209:         </select>
+210:       </div>
+211:       <button class="apply-btn" onclick="copyResult('like/index.html')">Save & Copy Link</button>
+212:     `;
+213:   } else if(d.type === "leaderboard"){
+214:     body.innerHTML = `
+215:       <div class="preview-box">Tema Aktif: <b>${d.themeName}</b></div>
+216:       <div class="sim-buttons">
+217:         <button class="sim-btn" onclick="alert('Simulasi User A')">Gift User A</button>
+218:         <button class="sim-btn" onclick="alert('Simulasi User B')">Gift User B</button>
+219:         <button class="sim-btn" style="grid-column: span 2" onclick="alert('Auto Sim...')">Auto Simulation</button>
+220:       </div>
+221:       <button class="apply-btn" onclick="copyResult('${d.path}')">Apply & Copy Link</button>
+222:     `;
+223:   } else if(d.type === "tema"){
+224:     var h = "<div class='theme-list'>";
+225:     d.themes.forEach(function(t){
+226:       h += `<div class="theme-item" onclick="selectTheme(this, '${t.p}')"><span>${t.n}</span><i class="fas fa-chevron-right"></i></div>`;
+227:     });
+228:     h += "</div><button class='apply-btn' id='btnFinalApply'>Apply & Copy Link</button>";
+229:     body.innerHTML = h;
+230:   } else if(d.type === "info"){
+231:     body.innerHTML = `<p style='color:#aaa;font-size:14px;line-height:1.7;margin-bottom:16px'>${d.text}</p><button class='apply-btn' onclick="copyResult('${d.path}')">Copy Link</button>`;
+232:   }
+233: 
+234:   document.getElementById("modal").classList.add("open");
+235: }
+236: 
+237: function addBrandItem(){
+238:   var list = document.getElementById("brandList");
+239:   if(list.children.length < 10){
+240:     var div = document.createElement("div");
+241:     div.className = "branding-item";
+242:     div.innerHTML = '<input class="form-input" placeholder="Menu Item">';
+243:     list.appendChild(div);
+244:   } else { alert("Maksimal 10 menu!"); }
+245: }
+246: 
+247: function selectTheme(el, path){
+248:   document.querySelectorAll(".theme-item").forEach(i => i.classList.remove("selected"));
+249:   el.classList.add("selected");
+250:   document.getElementById("btnFinalApply").onclick = () => copyResult(path);
+251: }
+252: 
+253: function copyResult(path){
+254:   var url = "http://localhost:3001/" + path + "?session=" + SESSION;
+255:   navigator.clipboard.writeText(url).then(() => { alert("URL Disalin!\n\n" + url); closeModal(); });
+256: }
+257: 
+258: function closeModal(){ document.getElementById("modal").classList.remove("open"); }
+259: document.getElementById("btnCloseModal").onclick = closeModal;
+260: </script>
+261: </body>
+262: </html>
