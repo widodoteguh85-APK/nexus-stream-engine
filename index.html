@@ -8,62 +8,197 @@
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #050505; color: white; margin: 0; }
         .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .sidebar-btn.active { background: rgba(0, 210, 255, 0.1); color: #00D2FF; border-right: 4px solid #00D2FF; }
-        .tab-content.hidden { display: none; }
+        .sidebar-btn { transition: all 0.2s; border-right: 4px solid transparent; }
+        .sidebar-btn.active { background: rgba(59, 130, 246, 0.1); color: #3b82f6; border-right: 4px solid #3b82f6; }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .card-hover { transition: transform 0.2s; }
+        .card-hover:hover { transform: translateY(-5px); }
     </style>
 </head>
-<body class="h-screen flex overflow-hidden">
-    <div class="bg-blue-600 text-white text-[10px] py-1.5 px-4 flex items-center justify-center gap-2 font-bold uppercase tracking-wider z-50">
-        <span class="bg-white text-blue-600 px-1.5 rounded text-[9px]">INFO</span>
+<body class="flex flex-col h-screen overflow-hidden">
+    <!-- Blue Info Banner -->
+    <div class="bg-blue-600 text-white text-[11px] py-2 px-4 flex items-center justify-center gap-2 font-bold uppercase tracking-wider z-50">
+        <span class="bg-white text-blue-600 px-1.5 rounded text-[10px]">INFO</span>
         Join Komunitas Mboiz Stream untuk update fitur terbaru & bantuan teknis!
     </div>
 
-    <aside class="w-64 glass border-r border-white/10 flex flex-col">
-        <div class="p-6 border-b border-white/10 text-center">
-            <h1 class="text-lg font-bold flex items-center">Mboiz Nexus <span class="bg-blue-600/20 text-blue-500 text-[10px] px-1.5 rounded ml-2">V.5</span></h1>
-            <p class="text-[10px] text-white/40 tracking-widest uppercase mt-1">Premium Stream Asset</p>
-        </div>
-        <nav class="flex-1 py-4 overflow-y-auto">
-                <button onclick="switchTab('engine', this)" class="sidebar-btn active w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
+    <div class="flex flex-1 overflow-hidden">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-zinc-950 border-r border-white/5 flex flex-col">
+            <div class="p-6 border-b border-white/5">
+                <h1 class="text-lg font-bold flex items-center">Mboiz Nexus <span class="bg-blue-600/20 text-blue-500 text-[10px] px-1.5 rounded ml-2">V.5</span></h1>
+                <p class="text-[10px] text-white/40 tracking-widest uppercase mt-1">Premium Stream Asset</p>
+            </div>
+            
+            <nav class="flex-1 py-4 overflow-y-auto">
+                <button onclick="switchTab('engine', this)" class="sidebar-btn active w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
                     <i class="ph ph-cpu text-xl"></i> Engine Session
                 </button>
-                <button onclick="switchTab('overlay', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
+                <button onclick="switchTab('overlay', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
                     <i class="ph ph-stack text-xl"></i> Overlay Asset
                 </button>
-                <button onclick="switchTab('info', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
+                <button onclick="switchTab('info', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
                     <i class="ph ph-chart-bar text-xl"></i> Information
                 </button>
-                <button onclick="switchTab('tutorial', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
+                <button onclick="switchTab('tutorial', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
                     <i class="ph ph-book-open text-xl"></i> Tutorial
                 </button>
-                <button onclick="switchTab('donatur', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
-                    <i class="ph ph-currency-circle-dollar text-xl"></i> Donatur
+                <button onclick="switchTab('donatur', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
+                    <i class="ph ph-currency-dollar text-xl"></i> Donatur
                 </button>
-                <button onclick="switchTab('bahasa', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
+                <button onclick="switchTab('bahasa', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
                     <i class="ph ph-translate text-xl"></i> Bahasa
                 </button>
-                <button onclick="switchTab('discord', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
-                    <i class="ph ph-discord-logo text-xl"></i> Discord
+                <button onclick="switchTab('discord', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
+                    <i class="ph ph-discord-logo text-xl"></i> Join Discord
                 </button>
-                <button onclick="switchTab('support', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 transition-all text-xs font-semibold">
-                    <i class="ph ph-headset text-xl"></i> Support
-                </button></nav>
-        <div class="p-4 border-t border-white/10 space-y-2">
-            <button class="w-full py-2 bg-[#5865F2] hover:bg-[#4752C4] text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2">
-                <i class="ph ph-discord-logo"></i> DISCORD
-            </button>
-            <a href="https://sociabuzz.com/dailylife_emix" target="_blank" class="block w-full py-2 bg-white/5 hover:bg-white/10 text-center rounded-lg text-xs font-bold border border-white/10 transition-all uppercase">
-                Support Dev
-            </a>
-            <button class="w-full py-2 bg-white/5 hover:bg-white/10 text-white rounded-lg text-xs font-bold flex items-center justify-center gap-2 border border-white/10 transition-all uppercase">
-                <i class="ph ph-globe"></i> Bahasa: ID
-            </button>
-        </div>
-    </aside>
-    
-        <main class="flex-1 overflow-y-auto bg-[#0b0f19] relative scroll-smooth">
-            <div id="tab-engine" class="tab-content p-8 max-w-6xl mx-auto">
-                <div class="w-full h-44 bg-gradient-to-br from-indigo-900 via-purple-900 to-fuchsia-900 rounded-2xl mb-8 flex items-center px-10 relative overflow-hidden group">
-                    <div class="absolute top-0 right-0 p-8 opacity-20 group-hover:opacity-30 transition-all">
+                <button onclick="switchTab('support', this)" class="sidebar-btn w-full flex items-center gap-3 px-6 py-3.5 hover:bg-white/5 text-xs font-semibold text-left">
+                    <i class="ph ph-headset text-xl"></i> Pusat Bantuan
+                </button>
+            </nav>
+
+            <div class="p-4 space-y-2 border-t border-white/5">
+                <button class="w-full bg-orange-600 hover:bg-orange-700 py-2.5 rounded-lg text-[11px] font-bold transition-all text-white uppercase">Support Developer</button>
+                <button class="w-full bg-white/5 hover:bg-white/10 py-2.5 rounded-lg text-[11px] font-bold transition-all border border-white/10 text-white uppercase">Pusat Bantuan</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 overflow-y-auto bg-[#0a0a0a] p-8 relative">
+            <!-- Engine Tab -->
+            <div id="engine" class="tab-content active space-y-8">
+                <!-- Purple Hero Banner -->
+                <div class="w-full h-48 rounded-2xl bg-gradient-to-r from-purple-900 to-indigo-900 overflow-hidden relative border border-white/10">
+                    <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-20"></div>
+                    <div class="absolute inset-0 flex flex-col justify-center px-10">
+                        <h2 class="text-3xl font-black italic tracking-tighter">MBOIZ NEXUS ENGINE</h2>
+                        <p class="text-white/60 text-sm mt-1">Sistem Otomasi Live TikTok Terbaik di Indonesia</p>
+                    </div>
+                </div>
+
+                <!-- Three Cards Layout -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="glass p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-blue-600/20 flex items-center justify-center">
+                                <i class="ph ph-key text-blue-500 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-sm">Active Session ID</h3>
+                        </div>
+                        <input type="text" value="SESSION-6472-X921" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-xs text-blue-400 font-mono" readonly>
+                    </div>
+
+                    <div class="glass p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-green-600/20 flex items-center justify-center">
+                                <i class="ph ph-monitor text-green-500 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-sm">Open Dock Control</h3>
+                        </div>
+                        <button class="w-full bg-green-600 hover:bg-green-700 py-3 rounded-lg text-xs font-bold transition-all text-white">BUKA CONTROL PANEL</button>
+                    </div>
+
+                    <div class="glass p-6 rounded-2xl space-y-4">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-pink-600/20 flex items-center justify-center">
+                                <i class="ph ph-at text-pink-500 text-xl"></i>
+                            </div>
+                            <h3 class="font-bold text-sm">TikTok Username</h3>
+                        </div>
+                        <input type="text" placeholder="@username" class="w-full bg-black/40 border border-white/10 rounded-lg px-4 py-3 text-xs focus:border-pink-500 transition-all outline-none text-white">
+                    </div>
+                </div>
+
+                <!-- Stop Button -->
+                <div class="flex justify-center pt-4">
+                    <button class="bg-red-600 hover:bg-red-700 px-12 py-4 rounded-full font-black text-sm tracking-widest flex items-center gap-3 shadow-lg shadow-red-600/20 transition-all text-white">
+                        <i class="ph ph-power text-xl"></i> STOP ENGINE SESSION
+                    </button>
+                </div>
+            </div>
+
+            <!-- Overlay Tab -->
+            <div id="overlay" class="tab-content space-y-6">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-2xl font-bold">Overlay Assets <span class="text-white/20 text-sm ml-2">17 Items</span></h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6" id="overlay-grid">
+                    <!-- Cards will be generated here -->
+                </div>
+            </div>
+
+            <div id="info" class="tab-content">
+                <h2 class="text-2xl font-bold">System Information</h2>
+                <p class="text-white/40 mt-2">Informasi detail mengenai sistem Anda.</p>
+            </div>
+
+            <div id="tutorial" class="tab-content">
+                <h2 class="text-2xl font-bold">Video Tutorial</h2>
+                <p class="text-white/40 mt-2">Panduan penggunaan Mboiz Nexus.</p>
+            </div>
+
+            <div id="donatur" class="tab-content">
+                <h2 class="text-2xl font-bold">Donatur List</h2>
+            </div>
+            
+            <div id="bahasa" class="tab-content">
+                <h2 class="text-2xl font-bold">Language Settings</h2>
+            </div>
+
+            <div id="discord" class="tab-content">
+                <h2 class="text-2xl font-bold">Discord Community</h2>
+            </div>
+
+            <div id="support" class="tab-content">
+                <h2 class="text-2xl font-bold">Support Center</h2>
+            </div>
+
+            <!-- Footer -->
+            <div class="absolute bottom-8 right-8 text-[10px] text-white/20 font-bold tracking-widest uppercase">
+                Powered by Mboiz Stream
+            </div>
+        </main>
+    </div>
+
+    <script>
+        const overlays = [
+            "Branding Stream", "Goal Bar Premium", "Subathon Timer", "Latest Follower",
+            "Top Gifter Glow", "Chat Box Glass", "Alert Popup V4", "Social Media Bar",
+            "Music Player", "Webcam Frame", "Live Viewers Counter", "Event List",
+            "Milestone Progress", "Custom Text Marquee", "Vote System", "Like Leaderboard",
+            "Butuh Desain Custom?"
+        ];
+
+        const grid = document.getElementById('overlay-grid');
+        overlays.forEach((name, index) => {
+            const card = document.createElement('div');
+            card.className = 'glass p-5 rounded-2xl card-hover flex flex-col gap-4 relative overflow-hidden group';
+            card.innerHTML = `
+                <div class="absolute top-0 right-0 p-2 opacity-10 group-hover:opacity-100 transition-opacity">
+                    <i class="ph ph-check-circle text-blue-500 text-xl"></i>
+                </div>
+                <div class="w-full h-32 bg-white/5 rounded-xl flex items-center justify-center border border-white/5 group-hover:border-blue-500/30 transition-all">
+                    <i class="ph ${index === 16 ? 'ph-paint-brush-broad' : 'ph-image-square'} text-3xl text-white/10 group-hover:text-blue-500/50"></i>
+                </div>
+                <div>
+                    <h4 class="font-bold text-xs truncate">${name}</h4>
+                    <p class="text-[10px] text-white/40 mt-1">Ready to use</p>
+                </div>
+                <button class="w-full bg-blue-600/10 hover:bg-blue-600 py-2 rounded-lg text-[10px] font-bold transition-all border border-blue-500/20 group-hover:border-transparent text-white">COPY LINK</button>
+            `;
+            grid.appendChild(card);
+        });
+
+        function switchTab(tabId, el) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.sidebar-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabId).classList.add('active');
+            el.classList.add('active');
+        }
+    </script>
+</body>
+</html>
