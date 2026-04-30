@@ -1,0 +1,739 @@
+:root {
+    --bg-main: #0a0a0c;
+    --bg-sidebar: #111114;
+    --bg-card: #16161a;
+    --accent-blue: #0084ff;
+    --accent-blue-glow: rgba(0, 132, 255, 0.4);
+    --accent-coral: #ff7e5f;
+    --accent-coral-glow: rgba(255, 126, 95, 0.4);
+    --danger: #ff3b30;
+    --danger-glow: rgba(255, 59, 48, 0.4);
+    --text-main: #ffffff;
+    --text-muted: #94a3b8;
+    --border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Inter', -apple-system, sans-serif;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    display: flex;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* ============================================================
+   SIDEBAR (LEFT BAR)
+   ============================================================ */
+.sidebar {
+    width: 260px;
+    background-color: var(--bg-sidebar);
+    border-right: 1px solid var(--border);
+    display: flex;
+    flex-direction: column;
+    padding: 24px 16px;
+    flex-shrink: 0;
+}
+
+.logo-area {
+    margin-bottom: 50px;
+    padding: 0 12px;
+    text-align: center;
+}
+
+.logo-text {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    letter-spacing: 5px; /* Lebih lebar */
+    text-transform: uppercase;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+}
+
+.logo-text span.nexus {
+    font-size: 30px; /* Ethnocentric biasanya lebar, jadi ukuran sedikit disesuaikan */
+    color: #00f2ff;
+    font-weight: 900;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-family: 'Ethnocentric', sans-serif; /* Menerapkan font pilihan Anda */
+    display: block;
+    text-shadow: 
+        0 0 10px #00f2ff,
+        0 0 20px var(--accent-blue-glow);
+    margin: 8px 0;
+}
+
+.logo-text span.stream {
+    color: #ff3b30;
+    font-weight: 800;
+    text-shadow: 0 0 10px rgba(255, 59, 48, 0.4);
+}
+
+.nav-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 18px;
+    border-radius: 14px;
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    cursor: pointer;
+    position: relative;
+    border: 1px solid transparent;
+}
+
+.nav-item:hover {
+    background: rgba(0, 132, 255, 0.08);
+    color: var(--text-main);
+    transform: translateX(8px) scale(1.05); /* Mengembang keluar */
+    border-color: rgba(0, 132, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.nav-item.active {
+    background: var(--accent-blue);
+    color: white;
+    box-shadow: 0 8px 25px var(--accent-blue-glow);
+    transform: scale(1.02);
+}
+
+.nav-item svg {
+    width: 22px;
+    height: 22px;
+    transition: 0.3s;
+}
+
+.nav-item:hover svg {
+    transform: rotate(-10deg); /* Animasi kecil pada ikon */
+    color: var(--accent-blue);
+}
+
+.sidebar-footer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+}
+
+.footer-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px;
+    background: #1e1e24;
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--text-main);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.footer-btn:hover {
+    background: #2a2a32;
+    transform: translateY(-5px) scale(1.05); /* Mengembang ke atas */
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+}
+
+.btn-support {
+    background: var(--accent-coral);
+    border: none;
+}
+
+.btn-support:hover {
+    background: #ff6a45;
+    box-shadow: 0 0 15px var(--accent-coral-glow);
+}
+
+/* ============================================================
+   MAIN CONTENT (ENGINE SECTION)
+   ============================================================ */
+.main-content {
+    flex-grow: 1;
+    padding: 30px;
+    overflow-y: auto;
+    perspective: 1000px; /* Memberikan ruang 3D */
+}
+
+.engine-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* CARDS 3D STYLE DENGAN GRADASI */
+.card {
+    background: linear-gradient(135deg, #1c1c21 0%, #0a0a0c 100%);
+    position: relative;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 24px;
+    padding: 28px;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+    transform-style: preserve-3d;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-12px) rotateX(4deg) rotateY(2deg);
+    background: linear-gradient(135deg, #23232b 0%, #001a33 100%); /* Gradasi saat hover lebih ke biru */
+    border-color: rgba(0, 132, 255, 0.4);
+    box-shadow: 
+        0 30px 60px rgba(0,0,0,0.6),
+        0 0 30px rgba(0, 132, 255, 0.15);
+}
+
+/* Garis aksen cahaya di atas kartu */
+.card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent-blue), transparent);
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+/* Efek Cahaya di belakang kartu saat hover */
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    border-radius: 20px;
+    background: radial-gradient(circle at center, rgba(0, 132, 255, 0.05), transparent);
+    opacity: 0;
+    transition: 0.4s;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.card:hover::before {
+    opacity: 1;
+}
+
+.card-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+}
+
+/* INPUT & ACTION GROUPS */
+.input-group {
+    display: flex;
+    gap: 12px;
+}
+
+.input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+.input-wrapper svg {
+    position: absolute;
+    left: 14px;
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    transition: 0.3s;
+    pointer-events: none;
+}
+
+input[type="text"], 
+input[type="password"] {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 16px 12px 42px; /* Extra padding kiri untuk ikon */
+    color: white;
+    font-size: 14px;
+    outline: none;
+    transition: 0.2s;
+}
+
+.input-wrapper:focus-within svg {
+    color: var(--accent-blue);
+    filter: drop-shadow(0 0 5px var(--accent-blue-glow));
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border-color: var(--accent-blue);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn {
+    padding: 12px 24px;
+    border-radius: 12px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: 0.2s;
+}
+
+.btn-outline {
+    background: transparent;
+    border: 1px solid var(--border);
+    color: var(--text-main);
+}
+
+.btn-outline:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.btn-primary {
+    background: var(--accent-blue);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px var(--accent-blue-glow);
+}
+
+.btn-danger {
+    background: var(--danger);
+    color: white;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 16px;
+}
+
+.btn-danger:hover {
+    box-shadow: 0 0 20px var(--danger-glow);
+}
+
+/* STATUS AREA */
+.status-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.status-badge {
+    padding: 6px 14px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.status-text {
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+/* ============================================================
+   OVERLAY ASSET GRID & CARDS
+   ============================================================ */
+.overlay-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 220px));
+    gap: 16px;
+    padding: 20px;
+    align-items: stretch;
+}
+
+
+
+.ov-card {
+    display: flex;
+    flex-direction: column;
+}
+
+.ov-card-inner {
+    flex: 1;
+    background: linear-gradient(160deg, #1e1b38 0%, #12111f 60%, #0d0c18 100%);
+    border: 1px solid rgba(108, 71, 255, 0.25);
+    border-top: 1px solid rgba(255,255,255,0.12);
+    border-left: 1px solid rgba(255,255,255,0.08);
+    border-radius: 16px;
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 12px;
+    box-shadow:
+        0 2px 0 rgba(255,255,255,0.06) inset,
+        0 20px 40px rgba(0,0,0,0.6),
+        0 8px 20px rgba(108,71,255,0.15);
+    transition: all 0.3s ease;
+}
+
+
+.ov-card:hover .ov-card-inner {
+    transform: rotateX(0deg) rotateY(0deg) translateY(-6px);
+    box-shadow:
+        0 2px 0 rgba(255,255,255,0.08) inset,
+        0 30px 60px rgba(0,0,0,0.7),
+        0 12px 30px rgba(108,71,255,0.3),
+        0 0 0 1px rgba(108,71,255,0.4);
+}
+
+.ov-card-top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.ov-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow:
+        0 4px 12px rgba(0,0,0,0.5),
+        0 2px 0 rgba(255,255,255,0.15) inset;
+}
+
+.ov-icon svg {
+    width: 20px;
+    height: 20px;
+    color: #fff;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.4));
+}
+
+.ov-info {
+    text-align: center;
+}
+
+.ov-title {
+    font-size: 13px;
+    font-weight: 800;
+    color: #fff;
+    margin-bottom: 2px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.ov-sub {
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: rgba(180,160,255,0.5);
+}
+
+.ov-desc {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    line-height: 1.6;
+    padding: 10px 12px;
+    background: rgba(0,0,0,0.2);
+    border-radius: 10px;
+    border: 1px solid rgba(255,255,255,0.05);
+}
+
+.ov-btn {
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    color: #fff;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 16px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    cursor: pointer;
+    width: 100%;
+    box-shadow:
+        0 4px 15px rgba(108,71,255,0.4),
+        0 1px 0 rgba(255,255,255,0.15) inset;
+    transition: all 0.2s ease;
+    text-transform: uppercase;
+}
+
+.ov-btn:hover {
+    background: linear-gradient(135deg, #8b5cf6, #60a5fa);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108,71,255,0.5);
+}
+
+.ov-btn:active {
+    transform: translateY(0px);
+}
+
+.panel {
+    width: 100%;
+    height: 100%;
+}
+
+/* ============================================================
+   MODAL: PENGATURAN TAMPILAN MEREK
+   ============================================================ */
+.modal-backdrop {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    backdrop-filter: blur(6px);
+    z-index: 1000;
+    align-items: center;
+    justify-content: center;
+}
+.modal-backdrop.show {
+    display: flex;
+}
+.modal-box {
+    background: linear-gradient(160deg, #16162a, #0f0f1a);
+    border: none;
+    border-radius: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-shadow: none;
+    overflow: hidden;
+}
+.modal-header {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px 24px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+}
+.modal-title {
+    font-size: 16px;
+    font-weight: 800;
+    color: #fff;
+}
+.modal-sub {
+    font-size: 12px;
+    color: rgba(255,255,255,0.4);
+    margin-top: 3px;
+}
+.modal-close {
+    background: rgba(255,255,255,0.07);
+    border: none;
+    color: #fff;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 13px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.modal-close:hover { background: rgba(255,80,80,0.3); }
+
+.modal-body {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+.modal-form {
+    width: 240px;
+    flex-shrink: 0;
+    padding: 15px;
+    overflow-y: auto;
+    border-right: 1px solid rgba(255,255,255,0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.modal-preview {
+    flex: 1;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+.preview-label {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: rgba(255,255,255,0.35);
+    text-transform: uppercase;
+}
+.preview-screen {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.08);
+    overflow: hidden;
+    position: relative;
+}
+.preview-screen iframe {
+    width: 100%;
+    height: 100%;
+    display: none;
+    background: #111;
+}
+.preview-placeholder {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.3);
+    font-size: 12px;
+}
+.preview-info {
+    display: flex;
+    gap: 16px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.3);
+}
+.preview-info b { color: rgba(255,255,255,0.6); }
+
+/* Form elements */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+.form-group label {
+    font-size: 12px;
+    font-weight: 700;
+    color: rgba(255,255,255,0.7);
+}
+.form-group small {
+    font-size: 10px;
+    color: rgba(255,255,255,0.3);
+}
+.form-group input[type="text"] {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #fff;
+    font-size: 13px;
+    outline: none;
+    transition: border 0.2s;
+}
+.form-group input[type="text"]:focus {
+    border-color: rgba(108,71,255,0.5);
+}
+.text-list {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+.text-item {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+.text-item input {
+    flex: 1;
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 8px;
+    padding: 7px 10px;
+    color: #fff;
+    font-size: 12px;
+    outline: none;
+}
+.text-item.locked input {
+    background: rgba(108,71,255,0.07);
+    border-color: rgba(108,71,255,0.2);
+    color: rgba(255,255,255,0.7);
+}
+.lock-icon {
+    font-size: 11px;
+    flex-shrink: 0;
+    opacity: 0.5;
+    width: 20px;
+    text-align: center;
+}
+.btn-del {
+    background: rgba(255,60,60,0.15);
+    border: 1px solid rgba(255,60,60,0.2);
+    color: #ff6060;
+    border-radius: 6px;
+    width: 28px;
+    height: 28px;
+    cursor: pointer;
+    font-size: 10px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+}
+.btn-del:hover { background: rgba(255,60,60,0.3); }
+.btn-add-text {
+    background: rgba(108,71,255,0.15);
+    border: 1px dashed rgba(108,71,255,0.4);
+    color: rgba(180,160,255,0.8);
+    border-radius: 8px;
+    padding: 7px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.btn-add-text:hover { background: rgba(108,71,255,0.25); }
+.btn-copy-obs {
+    background: var(--accent-blue);
+    border: none;
+    color: #fff;
+    border-radius: 8px;
+    padding: 8px 18px;
+    font-size: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: all 0.2s;
+    box-shadow: 0 4px 10px var(--accent-blue-glow);
+}
+.btn-copy-obs:hover { 
+    background: #0077e6;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 15px var(--accent-blue-glow);
+}
+.btn-apply {
+    background: linear-gradient(135deg, #7c3aed, #3b82f6);
+    border: none;
+    color: #fff;
+    border-radius: 10px;
+    padding: 11px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(108,71,255,0.35);
+    transition: all 0.2s;
+}
+.btn-apply:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(108,71,255,0.5);
+}
