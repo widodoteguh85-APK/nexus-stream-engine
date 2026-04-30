@@ -948,6 +948,7 @@
             const list = document.getElementById('text-list');
             const inputs = list.querySelectorAll('input');
             const style = document.getElementById('branding-style').value;
+            const session = sessionIdDisplay.value || 'guest';
             let data = [];
             inputs.forEach(input => {
                 if (input.value.trim() !== "") {
@@ -957,13 +958,39 @@
 
             const color = document.getElementById('brand-color-hex').value;
             const baseUrl = "https://nexus-stream-overlay.widodo-teguh85.workers.dev/branding/";
-            const finalUrl = `${baseUrl}?color=${encodeURIComponent(color)}&style=${style}&data=${encodeURIComponent(JSON.stringify(data))}`;
+            // 🔥 TAMBAHKAN SESSION AGAR SINKRON
+            const finalUrl = `${baseUrl}?session=${session}&color=${encodeURIComponent(color)}&style=${style}&data=${encodeURIComponent(JSON.stringify(data))}`;
 
             document.getElementById('obs-url-branding').value = finalUrl;
+            document.getElementById('obs-url-branding').style.filter = "none";
+            document.getElementById('obs-url-branding').style.opacity = "1";
+            
             document.getElementById('preview-branding').src = finalUrl;
             document.getElementById('preview-placeholder').style.display = 'none';
             previewFrame.style.display = 'block';
+
+            // 🔥 KIRIM SINYAL REAL-TIME KE CLOUD
+            if (window.coreWS && window.coreWS.readyState === 1) {
+                window.coreWS.send(JSON.stringify({
+                    event: "branding",
+                    session: session,
+                    color: color,
+                    style: style,
+                    data: data
+                }));
+                console.log("🚀 Sinyal sinkronisasi terkirim!");
+            }
         };
+
+        // 🔥 TAMBAHAN: Koneksi WebSocket untuk Dashboard
+        function connectDashboardSync() {
+            const session = new URLSearchParams(window.location.search).get('session') || 'guest';
+            const url = `wss://rvtik-core.ruangvisualamik.workers.dev?session=${session}&type=connector`;
+            window.coreWS = new WebSocket(url);
+            window.coreWS.onopen = () => console.log("✅ Dashboard Sync Active");
+            window.coreWS.onclose = () => setTimeout(connectDashboardSync, 3000);
+        }
+        connectDashboardSync();
 
         // Salin URL OBS
         btnCopyObs.addEventListener('click', () => {
