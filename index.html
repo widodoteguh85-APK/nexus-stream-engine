@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEXUS STREAM | Premium Overlay TikTok</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <!-- 1. SIDEBAR (BAR KIRI) -->
+    <div class="sidebar">
+        <div class="logo-area">
+            <div class="logo-text">
+                <span>DASHBOARD</span>
+                <span class="nexus">NEXUS</span>
+                <span class="stream">STREAM</span>
+            </div>
+        </div>
+
+        <div class="nav-group">
+            <div class="nav-item active" id="menu-engine">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M10 13a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1h-4zM4 13a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1v-4a1 1 0 00-1-1H4zM10 4a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V5a1 1 0 00-1-1h-4zM4 4a1 1 0 00-1 1v4a1 1 0 001 1h4a1 1 0 001-1V5a1 1 0 00-1-1H4z" />
+                </svg>
+                Sesi Koneksi
+            </div>
+            <div class="nav-item" id="menu-overlay">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z" />
+                </svg>
+                Overlay Asset
+            </div>
+            <div class="nav-item">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                </svg>
+                Information
+            </div>
+            <div class="nav-item">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+                </svg>
+                Tutorial
+            </div>
+            <div class="nav-item">
+                <svg fill="currentColor" viewBox="0 0 24 24">
+                    <path
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1.41 16.09V20h-2.67v-1.93c-1.71-.36-3.16-1.46-3.27-3.4h1.96c.1 1.05.82 1.87 2.65 1.87 1.96 0 2.4-.98 2.4-1.59 0-.83-.44-1.61-2.67-2.14-2.48-.6-4.18-1.62-4.18-3.63 0-1.88 1.47-3.24 3.11-3.66V4h2.67v1.91c1.51.32 2.85 1.28 3.16 3.14h-1.93c-.22-1.05-.79-1.51-2.26-1.51-1.48 0-2.1.66-2.1 1.48 0 .78.56 1.33 2.62 1.81 2.53.58 4.23 1.56 4.23 3.73 0 1.93-1.41 3.25-3.21 3.67z" />
+                </svg>
+                Donatur
+            </div>
+        </div>
+
+        <div class="sidebar-footer">
+            <div class="footer-btn">
+                <span>Bahasa: ID</span>
+            </div>
+            <div class="footer-btn">
+                <span>Discord Support</span>
+            </div>
+            <div class="footer-btn btn-support">
+                <span>Support Developer ☕</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 2. MAIN CONTENT (BAR TENGAH) -->
+    <div class="main-content">
+        
+        <!-- Dynamic Island Status -->
+        <div style="display: flex; justify-content: center; padding: 20px 0 10px 0; position: sticky; top: 0; z-index: 100; pointer-events: none;">
+            <div id="dynamic-island" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: auto; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                <div id="island-dot" style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 10px #ff4d4d;"></div>
+                <div style="font-size: 11px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase;" id="island-text">NEXUS OFFLINE</div>
+            </div>
+        </div>
+
+
+        <!-- PANEL: Sesi Koneksi -->
+        <div class="panel" id="panel-engine">
+            <div class="engine-container">
+
+                <!-- Card 1: Session & Dock -->
+                <div class="card">
+                    <div class="card-label">ID Sesi Aktif</div>
+                    <div class="input-group">
+                        <input type="text" id="session" class="blur-session" value="NEXUS-0000" readonly>
+                        <button id="copy" class="btn btn-outline">Salin</button>
+                    </div>
+                    <div class="card-label" style="margin-top: 20px;">Buka Kontrol Dock</div>
+                    <button id="dock" class="btn btn-primary tkp-btn-dock"
+                        style="width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;">
+                        <svg style="width: 18px;" fill="currentColor" viewBox="0 0 24 24">
+                            <path
+                                d="M21 2H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h7l-2 3v1h8v-1l-2-3h7c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 12H3V4h18v10z" />
+                        </svg>
+                        Dock Control
+                    </button>
+                </div>
+
+                <!-- Card 2: TikTok Connection -->
+                <div class="card">
+                    <div class="card-label">TikTok Username</div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <svg fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.06-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.03 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.9-.32-1.98-.23-2.81.33-.85.51-1.44 1.42-1.58 2.41-.1.82.03 1.68.39 2.41.46.81 1.33 1.47 2.27 1.63.21.03.42.04.63.04 1.76-.02 3.41-1.42 3.81-3.13.12-.45.12-.9.11-1.37V.02z" />
+                            </svg>
+                            <input type="text" id="username" placeholder="Masukkan tanpa @">
+                        </div>
+                        <button id="btnConnect" class="btn btn-primary active">Mulai</button>
+                    </div>
+                </div>
+
+                <!-- Card: OBS Connection (NEW) -->
+                <div class="card">
+                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                        <div class="card-label" style="margin-bottom: 0;">Koneksi OBS</div>
+                        <div id="obs-status-dot" style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 8px #ff4d4d;"></div>
+                    </div>
+                    <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 10px;">
+                        <div class="input-wrapper">
+                            <input type="text" id="obs-ip" placeholder="IP Address (127.0.0.1)">
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="text" id="obs-port" placeholder="Port (4455)">
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <div class="input-wrapper">
+                            <input type="password" id="obs-password" placeholder="Password (Kosongkan)">
+                        </div>
+                        <button id="btnConnectObs" class="btn btn-outline" style="min-width: 100px;">Hubungkan</button>
+                    </div>
+                </div>
+
+                <!-- Card 3: Status & Control -->
+                <div class="card">
+                    <div class="status-bar">
+                        <div id="status" class="status-badge">Mode : Mati</div>
+                        <div class="status-text" id="status-label">Menunggu Koneksi ...</div>
+                    </div>
+                    <button id="stop" class="btn btn-danger">Matikan Mesin</button>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- PANEL: Overlay Asset -->
+        <div class="panel" id="panel-overlay" style="display:none;">
+            <div class="overlay-grid">
+
+                <!-- Card: Tampilan Merek -->
+                <div class="ov-card">
+                    <div class="ov-card-inner">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#6c47ff,#3b82f6);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Tampilan Merek</div>
+                                <div class="ov-sub">IDENTITAS VISUAL</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc">Atur logo, watermark, dan teks berjalan kustom untuk memperkuat branding stream Anda.</div>
+                        <button class="ov-btn" id="btn-open-branding">⚙ Pengaturan</button>
+                    </div>
+                </div>
+
+                <!-- Card: Dock OBS -->
+                <div class="ov-card">
+                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #0d1b2a 0%, #0b1424 60%, #050a14 100%); border-color: rgba(0, 242, 255, 0.2);">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#00f2ff,#0084ff);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Dock OBS</div>
+                                <div class="ov-sub" style="color: rgba(0, 242, 255, 0.5);">INTEGRASI PANEL</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc" style="background: rgba(0, 242, 255, 0.05); border-color: rgba(0, 242, 255, 0.1);">Salin link panel kontrol Nexus untuk memasang Custom Browser Dock di OBS Studio.</div>
+                        <button class="ov-btn" id="btn-open-dock" style="background: linear-gradient(135deg, #0084ff, #00f2ff); box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);">⚙ PENGATURAN</button>
+                    </div>
+                </div>
+
+                <!-- Card: Chat Box -->
+                <div class="ov-card">
+                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #2b0b1e 0%, #1a0814 60%, #10040c 100%); border-color: rgba(255, 0, 153, 0.2);">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#ff0099,#ff6600);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Chat Box</div>
+                                <div class="ov-sub" style="color: rgba(255, 0, 153, 0.5);">TEMA OVERLAY</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc" style="background: rgba(255, 0, 153, 0.05); border-color: rgba(255, 0, 153, 0.1);">Pilih dan salin gaya tampilan chat yang akan muncul di layar streaming penonton.</div>
+                        <button class="ov-btn" id="btn-open-chat" style="background: linear-gradient(135deg, #ff0099, #ff6600); box-shadow: 0 4px 15px rgba(255, 0, 153, 0.4);">🎨 TEMA</button>
+                    </div>
+                </div>
+
+                <!-- Card: Dock Chat -->
+                <div class="ov-card">
+                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #0b2b1d 0%, #081a11 60%, #04100a 100%); border-color: rgba(0, 255, 153, 0.2);">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#00ff99,#00ccff);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Dock Chat</div>
+                                <div class="ov-sub" style="color: rgba(0, 255, 153, 0.5);">READER PANEL</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc" style="background: rgba(0, 255, 153, 0.05); border-color: rgba(0, 255, 153, 0.1);">Panel khusus untuk membaca pesan chat TikTok Live secara real-time di OBS.</div>
+                        <button class="ov-btn" id="btn-open-dock-chat" style="background: linear-gradient(135deg, #00ff99, #00ccff); box-shadow: 0 4px 15px rgba(0, 255, 153, 0.4);">⚙ PENGATURAN</button>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+        </div>
+
+
+    </div>
+
+    <!-- ===================== MODAL: PENGATURAN TAMPILAN MEREK ===================== -->
+    <div class="modal-backdrop" id="modal-branding">
+        <div class="modal-box">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">⚙ Pengaturan Tampilan Merek</div>
+                    <div class="modal-sub">Sesuaikan teks bergulir yang tampil di layar OBS Anda</div>
+                </div>
+                <button class="modal-close" id="btn-close-branding">✕</button>
+            </div>
+            <div class="modal-body">
+                <!-- KIRI: Form Pengaturan -->
+                <div class="modal-form">
+                    <div class="form-group">
+                        <label>Gaya Animasi</label>
+                        <select id="branding-style" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; cursor: pointer; outline: none;">
+                            <option value="standard">Standard (3D Scroll)</option>
+                            <option value="luxury">Luxury (Shatter Effect)</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+
+                        <label>Teks Bergulir <span style="opacity:0.4;font-weight:400;">(maks. 9 item
+                                kustom)</span></label>
+                        <div class="text-list" id="text-list">
+                            <div class="text-item locked" id="item-brand">
+                                <span class="lock-icon">🔒</span>
+                                <input type="text" value="NEXUS Stream" disabled>
+                                <span style="font-size:10px;color:rgba(108,71,255,0.7);white-space:nowrap;">Merek
+                                    Utama</span>
+                            </div>
+                            <div class="text-item locked">
+                                <span class="lock-icon">🔒</span>
+                                <input type="text" value="Streaming">
+                            </div>
+                            <div class="text-item locked">
+                                <span class="lock-icon">🔒</span>
+                                <input type="text" value="TikTok">
+                            </div>
+                            <div class="text-item locked">
+                                <span class="lock-icon">🔒</span>
+                                <input type="text" value="Welcome">
+                            </div>
+                            <div class="text-item locked">
+                                <span class="lock-icon">🔒</span>
+                                <input type="text" value="Kreator">
+                            </div>
+                        </div>
+                        <button class="btn-add-text" id="btn-add-text">+ Tambah Teks</button>
+                    </div>
+                    <div class="form-group">
+                        <label>Warna Teks</label>
+                        <div style="display:flex;gap:10px;align-items:center;">
+                            <input type="color" id="brand-color" value="#ffffff"
+                                style="width:44px;height:36px;border:none;border-radius:8px;cursor:pointer;background:none;">
+                            <input type="text" id="brand-color-hex" value="#ffffff" placeholder="#ffffff"
+                                style="flex:1;">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>Tautan OBS Browser Source</label>
+                        <div style="display:flex;gap:8px;">
+                            <input type="text" id="obs-url-branding" readonly
+                                placeholder="Klik 'Terapkan' untuk generate link"
+                                style="filter: blur(3px); pointer-events: none; opacity: 0.7; user-select: none;">
+                            <button class="btn-copy-obs" id="btn-copy-obs-branding">Salin</button>
+                        </div>
+                    </div>
+                    <button class="btn-apply" id="btn-apply-branding">✔ Terapkan & Pratinjau</button>
+                </div>
+                <!-- KANAN: Preview OBS -->
+                <div class="modal-preview">
+                    <div class="preview-label">Pratinjau Langsung</div>
+                    <div class="preview-screen">
+                        <iframe id="preview-branding" src="" frameborder="0" allowtransparency="true"></iframe>
+                        <div class="preview-placeholder" id="preview-placeholder">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width:32px;height:32px;opacity:0.3;">
+                                <path
+                                    d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12z" />
+                            </svg>
+                            <span>Tekan "Terapkan" untuk melihat pratinjau</span>
+                        </div>
+                    </div>
+                    <div class="preview-info">
+                        <span>Ukuran: <b>1920 × 1080</b></span>
+                        <span>Format: <b>Transparan</b></span>
+                    </div>
+
+                    <!-- Tutorial Singkat -->
+                    <div style="margin-top: 30px; margin-bottom: 60px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
+
+                        <div style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+                            <svg style="width:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
+                            Panduan Cepat
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 11px; line-height: 1.6; color: rgba(255,255,255,0.6);">
+                            <div style="display: flex; gap: 10px;">
+                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">1</span>
+                                <span>Pilih <b>Gaya Animasi</b> yang diinginkan di kolom sebelah kiri.</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">2</span>
+                                <span>Tulis pesan branding lo di daftar <b>Teks Bergulir</b>.</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">3</span>
+                                <span>Klik <b>Terapkan & Pratinjau</b> untuk mengaktifkan perubahan.</span>
+                            </div>
+                            <div style="display: flex; gap: 10px;">
+                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">4</span>
+                                <span>Klik <b>Salin</b> dan tempel link ke <b>Browser Source</b> OBS.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ===================== MODAL: PENGATURAN DOCK OBS ===================== -->
+    <div class="modal-backdrop" id="modal-dock">
+        <div class="modal-box" style="max-width: 600px; height: auto; min-height: 400px; border-radius: 20px; margin: auto;">
+            <div class="modal-header">
+                <div>
+                    <div class="modal-title">⚙ Pengaturan Dock OBS</div>
+                    <div class="modal-sub">Integrasikan panel kontrol Nexus langsung ke dalam OBS Studio</div>
+                </div>
+                <button class="modal-close" id="btn-close-dock">✕</button>
+            </div>
+            <div class="modal-body" style="padding: 30px; flex-direction: column; gap: 25px; overflow-y: auto;">
+                
+                <div class="form-group" style="margin-bottom: 20px;">
+                    <label style="color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Tautan Custom Browser Dock</label>
+                    <div style="display:flex; gap:10px; margin-top:10px;">
+                        <input type="text" id="obs-url-dock" readonly 
+                               style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
+                               value="https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/">
+                        <button class="btn-copy-obs" id="btn-copy-obs-dock" style="padding: 0 25px; background: #0084ff; border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
+                    </div>
+                </div>
+
+                <div style="padding: 20px; background: rgba(0,132,255,0.05); border: 1px solid rgba(0,132,255,0.1); border-radius: 12px;">
+                    <div style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px;">
+                        Cara Pemasangan:
+                    </div>
+                    <ul style="font-size: 12px; color: rgba(255,255,255,0.6); padding-left: 20px; line-height: 1.8;">
+                        <li>Buka <b>OBS Studio</b> Anda.</li>
+                        <li>Klik menu <b>Docks</b> > <b>Custom Browser Docks...</b></li>
+                        <li>Beri nama Dock (misal: <b>NEXUS Panel</b>).</li>
+                        <li>Tempelkan link yang sudah Anda salin di atas pada kolom <b>URL</b>.</li>
+                        <li>Klik <b>Apply</b> dan letakkan panel di mana saja dalam OBS.</li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- ===================== MODAL: PENGATURAN DOCK CHAT ===================== -->
+    <div class="modal-backdrop" id="modal-chat">
+        <div class="modal-box" style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
+
+            <div class="modal-header" style="border-color: rgba(255, 0, 153, 0.1);">
+                <div>
+                    <div class="modal-title">🎨 Pengaturan Tema Chat</div>
+                    <div class="modal-sub">Pilih gaya tampilan chat TikTok yang paling cocok dengan stream Anda</div>
+                </div>
+                <button class="modal-close" id="btn-close-chat">✕</button>
+            </div>
+            <div class="modal-body" style="padding: 0; display: flex; overflow: hidden;">
+
+                <!-- KIRI: Daftar Tema -->
+                <div style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
+                    <div class="form-group">
+                        <label style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih Bentuk Bubble</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;" id="chat-theme-list">
+                            <div class="chat-theme-item active" data-file="dynamic.html" style="padding: 12px; background: rgba(255,0,153,0.1); border: 1px solid rgba(255,0,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Dynamic Island</div>
+                                <span style="font-size: 9px; opacity: 0.5;">iOS UI Style</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="minimalist-glass.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Minimalist Glass</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Elegant & Modern</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="minimalist-white.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Minimalist White</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Clean & Bright</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="neumorphism.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Neumorphism Light</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Soft UI Design</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="neumorphism-dark.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Neumorphism Dark</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Premium Dark Soft</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="square-minimalis.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Square Minimalist</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Sharp & Bold</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="womenstyle.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Women Style</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Fancy & Aesthetic</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KANAN: Preview & Link -->
+                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                    <div class="preview-label" style="color: #ff0099; z-index: 1;">Pratinjau Bentuk</div>
+                    
+                    <div style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                        
+                        <!-- Container Iframe Gede tapi Konten Mungil -->
+                        <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 12px; overflow: hidden;">
+                            <iframe id="preview-chat" src="" frameborder="0" 
+                                    style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
+                            
+                            <div id="chat-preview-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
+                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                                <span style="font-size: 11px;">Rendering Preview...</span>
+                            </div>
+                        </div>
+
+                        <div style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">Nexus Visual Engine • Bubble Style</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan Browser Source OBS</label>
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <input type="text" id="obs-url-chat" readonly 
+                                   style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
+                                   value="">
+                            <button class="btn-copy-obs" id="btn-copy-obs-chat" style="padding: 0 25px; background: linear-gradient(135deg, #ff0099, #ff6600); border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- ===================== MODAL: PENGATURAN ANIMASI CHAT ===================== -->
+    <div class="modal-backdrop" id="modal-dock-reader">
+        <div class="modal-box" style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
+            <div class="modal-header" style="border-color: rgba(0, 255, 153, 0.1);">
+                <div>
+                    <div class="modal-title">🎬 Pengaturan Animasi Chat</div>
+                    <div class="modal-sub">Pilih arah munculnya chat di layar stream Anda</div>
+                </div>
+                <button class="modal-close" id="btn-close-dock-reader">✕</button>
+            </div>
+            <div class="modal-body" style="padding: 0; display: flex; overflow: hidden;">
+                <!-- KIRI: Daftar Animasi -->
+                <div style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
+                    <div class="form-group">
+                        <label style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih Arah Muncul</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;" id="anim-theme-list">
+                            <div class="anim-theme-item active" data-file="horizontal.html" style="padding: 12px; background: rgba(0,255,153,0.1); border: 1px solid rgba(0,255,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Horizontal</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Elegant Simple</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="vertical.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Vertical</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Elegant & Modern</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="bubblechat.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Bubble Chat</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Minimalist Bubble</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="minimalistglow.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Cute Glow Chat</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Cute Glow</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="luxuryglass.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Luxury Glass</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Premium Glassmorphism</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="gaming.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Gaming Mood</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Gaming Cyber Purple</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="bounce.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Bounce</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Lively Scale Up</span>
+                            </div>
+                            <div class="anim-theme-item" data-file="flip3d.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Flip 3D</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Premium 3D Flip</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- KANAN: Preview & Link -->
+                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                    <div class="preview-label" style="color: #00ff99; z-index: 1;">Pratinjau Animasi</div>
+                    
+                    <div style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background: transparent; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                        <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
+                            <iframe id="preview-anim" src="" frameborder="0" 
+                                    style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
+                            <div id="anim-preview-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
+                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+                                <span style="font-size: 11px;">Rendering Preview...</span>
+                            </div>
+                        </div>
+                        <div style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">Nexus Visual Engine • Animation Mode</div>
+                    </div>
+
+                    <div class="form-group">
+                        <label style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan Browser Source OBS</label>
+                        <div style="display:flex; gap:10px; margin-top:10px;">
+                            <input type="text" id="obs-url-anim" readonly 
+                                   style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
+                                   value="">
+                            <button class="btn-copy-obs" id="btn-copy-anim" style="padding: 0 25px; background: #00ff99; border: none; border-radius: 10px; color: #000; font-weight: 800; cursor: pointer;">Salin</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== END MODAL ===================== -->
+
+
+
+    <script>
+        var electronAPI = window.electronAPI;
+
+        // Elements
+        const tiktokInput = document.getElementById('username');
+        const sessionIdDisplay = document.getElementById('session');
+        const btnStart = document.getElementById('btnConnect');
+        const btnStop = document.getElementById('stop');
+        const btnDock = document.getElementById('dock');
+        const copyBtn = document.getElementById('copy');
+        const statusLabel = document.getElementById('status-label');
+        const statusBadge = document.getElementById('status');
+
+        // === TAB SWITCHING ===
+        const menuEngine = document.getElementById('menu-engine');
+        const menuOverlay = document.getElementById('menu-overlay');
+        const panelEngine = document.getElementById('panel-engine');
+        const panelOverlay = document.getElementById('panel-overlay');
+
+        menuEngine.addEventListener('click', () => {
+            menuEngine.classList.add('active');
+            menuOverlay.classList.remove('active');
+            panelEngine.style.display = 'block';
+            panelOverlay.style.display = 'none';
+        });
+
+        menuOverlay.addEventListener('click', () => {
+            menuOverlay.classList.add('active');
+            menuEngine.classList.remove('active');
+            panelOverlay.style.display = 'block';
+            panelEngine.style.display = 'none';
+        });
+
+        // 1. Tangkap Session dari URL
+        function init() {
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                const sessionFromUrl = urlParams.get('session');
+                if (sessionFromUrl) {
+                    sessionIdDisplay.value = sessionFromUrl;
+                } else {
+                    sessionIdDisplay.value = 'NEXUS-READY';
+                }
+            } catch (err) { console.error(err); }
+        }
+
+        // 2. Tombol Mulai
+        btnStart.addEventListener('click', () => {
+            const user = tiktokInput.value.trim();
+            if (!user) { alert("Masukkan username!"); return; }
+            electronAPI.startConnector(user);
+        });
+
+        // 3. Tombol Stop
+        btnStop.addEventListener('click', () => {
+            electronAPI.stopConnector();
+        });
+
+        // 4. Tombol Dock
+        btnDock.addEventListener('click', () => {
+            const session = sessionIdDisplay.value;
+            if (session && session !== 'NEXUS-READY') {
+                electronAPI.openDock(session);
+            }
+        });
+
+        // 5. Salin ID
+        copyBtn.addEventListener('click', () => {
+            sessionIdDisplay.select();
+            document.execCommand("copy");
+            const original = copyBtn.textContent;
+            copyBtn.textContent = "Tersalin!";
+            setTimeout(() => copyBtn.textContent = original, 2000);
+        });
+
+        // 6. Update Status
+        function updateStatus(status) {
+            const island = document.getElementById('dynamic-island');
+            const islandDot = document.getElementById('island-dot');
+            const islandText = document.getElementById('island-text');
+
+            if (status === 'connected' || status === 'dom') {
+                statusLabel.textContent = status === 'dom' ? '🟢 Streaming Online (DOM)' : '🟢 Terhubung ke TikTok';
+                statusLabel.style.color = '#00ffcc';
+                statusBadge.textContent = status === 'dom' ? 'Mode : DOM Engine' : 'Mode : Terhubung';
+                btnStart.disabled = true;
+                btnStart.style.opacity = '0.5';
+
+                // Island Active
+                islandText.textContent = "NEXUS ONLINE";
+                islandDot.style.background = "#00ffcc";
+                islandDot.style.boxShadow = "0 0 15px #00ffcc";
+                island.style.padding = "8px 30px";
+            } else if (status === 'connector' || status === 'connecting') {
+                statusLabel.textContent = '🟡 Menghubungkan...';
+                statusLabel.style.color = '#ffcc00';
+                statusBadge.textContent = 'Mode : Menyambungkan';
+
+                // Island Loading
+                islandText.textContent = "MENGHUBUNGKAN...";
+                islandDot.style.background = "#ffcc00";
+                islandDot.style.boxShadow = "0 0 15px #ffcc00";
+            } else {
+                statusLabel.textContent = '🔴 Mesin Mati';
+                statusLabel.style.color = '#ff4d4d';
+                statusBadge.textContent = 'Mode : Mati';
+                btnStart.disabled = false;
+                btnStart.style.opacity = '1';
+
+                // Island Offline
+                islandText.textContent = "NEXUS OFFLINE";
+                islandDot.style.background = "#ff4d4d";
+                islandDot.style.boxShadow = "0 0 15px #ff4d4d";
+                island.style.padding = "8px 20px";
+            }
+        }
+
+
+        electronAPI.onEngineStatus((status) => {
+            updateStatus(status);
+        });
+
+        // ============================
+        // 7. OBS CONNECTION LOGIC (NEW)
+        // ============================
+        const obsIpInput = document.getElementById('obs-ip');
+        const obsPortInput = document.getElementById('obs-port');
+        const obsPasswordInput = document.getElementById('obs-password');
+        const btnConnectObs = document.getElementById('btnConnectObs');
+        const obsStatusDot = document.getElementById('obs-status-dot');
+
+        async function loadObsConfig() {
+            try {
+                const config = await electronAPI.getObsConfig();
+                if (config && config.connection) {
+                    obsIpInput.value = config.connection.ip || '127.0.0.1';
+                    obsPortInput.value = config.connection.port || '4455';
+                    obsPasswordInput.value = config.connection.password || '';
+                }
+            } catch (err) { console.error("Gagal load OBS config:", err); }
+        }
+
+        async function updateObsStatus() {
+            try {
+                const connected = await electronAPI.getObsStatus();
+                if (connected) {
+                    obsStatusDot.style.background = '#00ffcc';
+                    obsStatusDot.style.boxShadow = '0 0 10px #00ffcc';
+                    btnConnectObs.textContent = 'Terhubung';
+                    btnConnectObs.classList.add('active');
+                } else {
+                    obsStatusDot.style.background = '#ff4d4d';
+                    obsStatusDot.style.boxShadow = '0 0 10px #ff4d4d';
+                    btnConnectObs.textContent = 'Hubungkan';
+                    btnConnectObs.classList.remove('active');
+                }
+            } catch (err) { }
+        }
+
+        btnConnectObs.addEventListener('click', async () => {
+            const ip = obsIpInput.value.trim() || '127.0.0.1';
+            const port = obsPortInput.value.trim() || '4455';
+            const password = obsPasswordInput.value.trim();
+
+            btnConnectObs.textContent = 'Menghubungkan...';
+            
+            // Get current full config first to not lose rules
+            const currentConfig = await electronAPI.getObsConfig() || { rules: [], enabled: false };
+            currentConfig.connection = { ip, port, password };
+            
+            electronAPI.saveObsConfig(currentConfig);
+            
+            // Wait a bit then check status
+            setTimeout(updateObsStatus, 2000);
+        });
+
+        // Initial Load
+        loadObsConfig();
+        updateObsStatus();
+        setInterval(updateObsStatus, 5000); 
+
+        init();
+
+        // === MODAL: TAMPILAN MEREK ===
+        const modalBranding = document.getElementById('modal-branding');
+        const btnCloseBranding = document.getElementById('btn-close-branding');
+        const btnApplyBranding = document.getElementById('btn-apply-branding');
+        const btnCopyObs = document.getElementById('btn-copy-obs-branding');
+        const brandColorPicker = document.getElementById('brand-color');
+        const brandColorHex = document.getElementById('brand-color-hex');
+        const obsUrlInput = document.getElementById('obs-url-branding');
+        const previewFrame = document.getElementById('preview-branding');
+        const previewPlaceholder = document.getElementById('preview-placeholder');
+        const textList = document.getElementById('text-list');
+        const btnAddText = document.getElementById('btn-add-text');
+
+        // MODAL: DOCK CHAT ANIMASI (KARTU 4)
+        const modalAnim = document.getElementById('modal-dock-reader');
+        const btnCloseAnim = document.getElementById('btn-close-dock-reader');
+        const btnCopyAnim = document.getElementById('btn-copy-anim');
+        const animUrlInput = document.getElementById('obs-url-anim');
+        const animPreviewFrame = document.getElementById('preview-anim');
+        const animThemeItems = document.querySelectorAll('.anim-theme-item');
+        let selectedAnimTheme = "index.html"; 
+
+        function updateAnimUrl() {
+            const session = sessionIdDisplay.value || 'guest';
+            // Link untuk OBS (Server)
+            const publicUrl = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dockchat/${selectedAnimTheme}?session=${session}`;
+            animUrlInput.value = publicUrl;
+            
+            // Link untuk Preview (Sesuai Alur Amik: Pake folder dummy)
+            animPreviewFrame.src = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dockchat/dummy/${selectedAnimTheme}?session=${session}`;
+
+            document.getElementById('anim-preview-placeholder').style.display = 'none';
+        }
+
+        animThemeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                animThemeItems.forEach(i => {
+                    i.style.background = "rgba(255,255,255,0.03)";
+                    i.style.borderColor = "rgba(255,255,255,0.1)";
+                });
+                item.style.background = "rgba(0,255,153,0.1)";
+                item.style.borderColor = "rgba(0,255,153,0.5)";
+                selectedAnimTheme = item.getAttribute('data-file');
+                updateAnimUrl();
+            });
+        });
+
+        document.getElementById('btn-open-dock-chat').addEventListener('click', () => {
+            updateAnimUrl();
+            modalAnim.classList.add('show');
+        });
+
+        btnCloseAnim.addEventListener('click', () => modalAnim.classList.remove('show'));
+        modalAnim.addEventListener('click', (e) => { if (e.target === modalAnim) modalAnim.classList.remove('show'); });
+
+        btnCopyAnim.addEventListener('click', () => {
+            navigator.clipboard.writeText(animUrlInput.value);
+            const orig = btnCopyAnim.textContent;
+            btnCopyAnim.textContent = 'Tersalin!';
+            setTimeout(() => btnCopyAnim.textContent = orig, 2000);
+        });
+
+
+        // MODAL: DOCK CHAT
+        const modalChat = document.getElementById('modal-chat');
+
+        const btnCloseChat = document.getElementById('btn-close-chat');
+        const btnCopyChat = document.getElementById('btn-copy-obs-chat');
+        const chatUrlInput = document.getElementById('obs-url-chat');
+        const chatPreviewFrame = document.getElementById('preview-chat');
+        const chatThemeItems = document.querySelectorAll('.chat-theme-item');
+        let selectedChatTheme = "dynamic.html";
+
+        function updateChatUrl() {
+            const session = sessionIdDisplay.value || 'guest';
+            // Link untuk OBS (Server)
+            const publicUrl = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/theme/${selectedChatTheme}?session=${session}`;
+            chatUrlInput.value = publicUrl;
+
+            // Link untuk Preview (Sesuai Alur Amik: Pake folder dummy)
+            chatPreviewFrame.src = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/theme/dummy/${selectedChatTheme}?session=${session}`;
+            document.getElementById('chat-preview-placeholder').style.display = 'none';
+        }
+
+        chatThemeItems.forEach(item => {
+            item.addEventListener('click', () => {
+                chatThemeItems.forEach(i => {
+                    i.style.background = "rgba(255,255,255,0.03)";
+                    i.style.borderColor = "rgba(255,255,255,0.1)";
+                });
+                item.style.background = "rgba(255,0,153,0.1)";
+                item.style.borderColor = "rgba(255,0,153,0.5)";
+                selectedChatTheme = item.getAttribute('data-file');
+                updateChatUrl();
+            });
+        });
+
+
+        document.getElementById('btn-open-chat').addEventListener('click', () => {
+            updateChatUrl();
+            modalChat.classList.add('show');
+        });
+
+        btnCloseChat.addEventListener('click', () => {
+            modalChat.classList.remove('show');
+        });
+
+        modalChat.addEventListener('click', (e) => {
+            if (e.target === modalChat) modalChat.classList.remove('show');
+        });
+
+        btnCopyChat.addEventListener('click', () => {
+            navigator.clipboard.writeText(chatUrlInput.value);
+            const orig = btnCopyChat.textContent;
+            btnCopyChat.textContent = 'Tersalin!';
+            setTimeout(() => btnCopyChat.textContent = orig, 2000);
+        });
+
+        // Buka modal saat klik Pengaturan
+        const modalDock = document.getElementById('modal-dock');
+
+        const btnCloseDock = document.getElementById('btn-close-dock');
+        const btnCopyDock = document.getElementById('btn-copy-obs-dock');
+        const dockUrlInput = document.getElementById('obs-url-dock');
+
+        document.getElementById('btn-open-branding').addEventListener('click', () => {
+            modalBranding.classList.add('show');
+        });
+        document.getElementById('btn-open-dock').addEventListener('click', () => {
+            // Update Dock URL with current session if available
+            const session = sessionIdDisplay.value || 'guest';
+            dockUrlInput.value = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/?session=${session}`;
+            modalDock.classList.add('show');
+        });
+
+        // Tutup modal
+        btnCloseBranding.addEventListener('click', () => {
+            modalBranding.classList.remove('show');
+        });
+        btnCloseDock.addEventListener('click', () => {
+            modalDock.classList.remove('show');
+        });
+
+        modalBranding.addEventListener('click', (e) => {
+            if (e.target === modalBranding) modalBranding.classList.remove('show');
+        });
+        modalDock.addEventListener('click', (e) => {
+            if (e.target === modalDock) modalDock.classList.remove('show');
+        });
+
+        // Salin Dock URL
+        btnCopyDock.addEventListener('click', () => {
+            navigator.clipboard.writeText(dockUrlInput.value);
+            const orig = btnCopyDock.textContent;
+            btnCopyDock.textContent = 'Tersalin!';
+            setTimeout(() => btnCopyDock.textContent = orig, 2000);
+        });
+
+
+        // Sinkron color picker ↔ input hex
+        brandColorPicker.addEventListener('input', () => {
+            brandColorHex.value = brandColorPicker.value;
+        });
+        brandColorHex.addEventListener('input', () => {
+            if (/^#[0-9A-Fa-f]{6}$/.test(brandColorHex.value)) {
+                brandColorPicker.value = brandColorHex.value;
+            }
+        });
+
+        // Tambah item teks (maks 9 kustom sesuai MAX_ITEMS Amik, item brand tidak dihitung)
+        btnAddText.addEventListener('click', () => {
+            const extraItems = textList.querySelectorAll('.text-item:not(.locked)');
+            if (extraItems.length >= 5) { alert('Maksimal 5 teks tambahan!'); return; }
+            const div = document.createElement('div');
+            div.className = 'text-item';
+            div.innerHTML = `<span class="lock-icon" style="opacity:0;">🔒</span><input type="text" placeholder="Teks tambahan..."><button class="btn-del" onclick="removeTextItem(this)">✕</button>`;
+            textList.appendChild(div);
+        });
+
+        // Hapus item teks
+        function removeTextItem(btn) {
+            btn.closest('.text-item').remove();
+        }
+
+        // Terapkan & Pratinjau — ikuti aturan Amik:
+        btnApplyBranding.onclick = () => {
+            const list = document.getElementById('text-list');
+            const inputs = list.querySelectorAll('input');
+            const style = document.getElementById('branding-style').value;
+            let data = [];
+            inputs.forEach(input => {
+                if (input.value.trim() !== "") {
+                    data.push(input.value.trim());
+                }
+            });
+
+            const color = document.getElementById('brand-color-hex').value;
+            const baseUrl = "https://nexus-stream-overlay.widodo-teguh85.workers.dev/branding/";
+            const finalUrl = `${baseUrl}?color=${encodeURIComponent(color)}&style=${style}&data=${encodeURIComponent(JSON.stringify(data))}`;
+
+            document.getElementById('obs-url-branding').value = finalUrl;
+            document.getElementById('preview-branding').src = finalUrl;
+            document.getElementById('preview-placeholder').style.display = 'none';
+            previewFrame.style.display = 'block';
+        };
+
+        // Salin URL OBS
+        btnCopyObs.addEventListener('click', () => {
+            if (!obsUrlInput.value) { alert('Klik "Terapkan" dulu!'); return; }
+            navigator.clipboard.writeText(obsUrlInput.value);
+            const orig = btnCopyObs.textContent;
+            btnCopyObs.textContent = 'Tersalin!';
+            setTimeout(() => btnCopyObs.textContent = orig, 2000);
+        });
+
+    </script>
+    <div style="position:fixed; bottom:15px; right:20px; font-size:11px; color:rgba(255,255,255,0.2); font-family: 'Inter', sans-serif; font-weight:600; pointer-events:none; z-index:10000; letter-spacing: 0.5px;">
+        Powered by <span style="color: #ffffff; opacity: 0.8;">Pakdhe Mboiz</span>
+    </div>
+</body>
+
+</html>
