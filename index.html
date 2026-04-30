@@ -943,33 +943,72 @@
             btn.closest('.text-item').remove();
         }
 
-        // Terapkan & Pratinjau — ikuti aturan Amik:
+        // 🔥 LOGIKA SINKRONISASI TOTAL (PENGIRIM SINYAL)
+        let syncStatusDot = null;
+        
+        function initSyncIndicator() {
+            const container = document.querySelector('.logo-area');
+            const statusDiv = document.createElement('div');
+            statusDiv.style = "display:flex; align-items:center; gap:8px; margin-top:10px; padding:5px 12px; background:rgba(0,0,0,0.3); border-radius:20px; border:1px solid rgba(255,255,255,0.1); width:fit-content;";
+            statusDiv.innerHTML = `<div id="sync-dot" style="width:8px; height:8px; background:#ff4d4d; border-radius:50%; box-shadow:0 0 10px #ff4d4d;"></div><span style="font-size:9px; color:rgba(255,255,255,0.5); font-weight:800; letter-spacing:1px;">CLOUD SYNC</span>`;
+            container.appendChild(statusDiv);
+            syncStatusDot = document.getElementById('sync-dot');
+        }
+
+        function connectDashboardSync() {
+            const session = sessionIdDisplay.value;
+            if (!session || session === 'NEXUS-READY' || session === 'guest') {
+                setTimeout(connectDashboardSync, 1000);
+                return;
+            }
+
+            console.log("🔗 Mencoba menyambung ke Cloud Sync: " + session);
+            const url = `wss://rvtik-core.ruangvisualamik.workers.dev?session=${session}&type=connector`;
+            window.coreWS = new WebSocket(url);
+
+            window.coreWS.onopen = () => {
+                console.log("✅ Terhubung ke Cloud Sync!");
+                if (syncStatusDot) {
+                    syncStatusDot.style.background = "#00ffcc";
+                    syncStatusDot.style.boxShadow = "0 0 10px #00ffcc";
+                }
+            };
+
+            window.coreWS.onclose = () => {
+                if (syncStatusDot) {
+                    syncStatusDot.style.background = "#ff4d4d";
+                    syncStatusDot.style.boxShadow = "0 0 10px #ff4d4d";
+                }
+                setTimeout(connectDashboardSync, 3000);
+            };
+        }
+
+        initSyncIndicator();
+        setTimeout(connectDashboardSync, 2000);
+
+        // Update fungsi Terapkan untuk mengirim sinyal
         btnApplyBranding.onclick = () => {
             const list = document.getElementById('text-list');
             const inputs = list.querySelectorAll('input');
             const style = document.getElementById('branding-style').value;
-            const session = sessionIdDisplay.value || 'guest';
+            const session = sessionIdDisplay.value;
+            
             let data = [];
             inputs.forEach(input => {
-                if (input.value.trim() !== "") {
-                    data.push(input.value.trim());
-                }
+                if (input.value.trim() !== "") data.push(input.value.trim());
             });
 
             const color = document.getElementById('brand-color-hex').value;
             const baseUrl = "https://nexus-stream-overlay.widodo-teguh85.workers.dev/branding/";
-            // 🔥 TAMBAHKAN SESSION AGAR SINKRON
             const finalUrl = `${baseUrl}?session=${session}&color=${encodeURIComponent(color)}&style=${style}&data=${encodeURIComponent(JSON.stringify(data))}`;
 
             document.getElementById('obs-url-branding').value = finalUrl;
             document.getElementById('obs-url-branding').style.filter = "none";
             document.getElementById('obs-url-branding').style.opacity = "1";
-            
             document.getElementById('preview-branding').src = finalUrl;
             document.getElementById('preview-placeholder').style.display = 'none';
-            previewFrame.style.display = 'block';
 
-            // 🔥 KIRIM SINYAL REAL-TIME KE CLOUD
+            // KIRIM SINYAL KE CLOUD (Biar OBS Berubah)
             if (window.coreWS && window.coreWS.readyState === 1) {
                 window.coreWS.send(JSON.stringify({
                     event: "branding",
@@ -978,19 +1017,9 @@
                     style: style,
                     data: data
                 }));
-                console.log("🚀 Sinyal sinkronisasi terkirim!");
+                console.log("🚀 Sinyal Branding dikirim ke Cloud!");
             }
         };
-
-        // 🔥 TAMBAHAN: Koneksi WebSocket untuk Dashboard
-        function connectDashboardSync() {
-            const session = new URLSearchParams(window.location.search).get('session') || 'guest';
-            const url = `wss://rvtik-core.ruangvisualamik.workers.dev?session=${session}&type=connector`;
-            window.coreWS = new WebSocket(url);
-            window.coreWS.onopen = () => console.log("✅ Dashboard Sync Active");
-            window.coreWS.onclose = () => setTimeout(connectDashboardSync, 3000);
-        }
-        connectDashboardSync();
 
         // Salin URL OBS
         btnCopyObs.addEventListener('click', () => {
