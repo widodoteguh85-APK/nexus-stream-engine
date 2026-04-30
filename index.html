@@ -987,7 +987,7 @@
                 setTimeout(connectSync, 1000);
                 return;
             }
-            const url = `wss://nexus-core.ruangvisualamik.workers.dev?session=${session}&type=connector`;
+            const url = `wss://nexus-core.widodo-teguh85.workers.dev?session=${session}&type=connector`;
             window.coreWS = new WebSocket(url);
             window.coreWS.onclose = () => setTimeout(connectSync, 3000);
         }
