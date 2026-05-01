@@ -967,31 +967,7 @@
             document.getElementById('preview-branding').src = finalUrl;
             document.getElementById('preview-placeholder').style.display = 'none';
             previewFrame.style.display = 'block';
-
-            // Kirim sinyal sinkronisasi ke Cloud
-            if (window.coreWS && window.coreWS.readyState === 1) {
-                window.coreWS.send(JSON.stringify({
-                    event: "branding",
-                    session: session,
-                    color: color,
-                    style: style,
-                    data: data
-                }));
-            }
         };
-
-        // Koneksi Sinkronisasi Latar Belakang (Tanpa Lampu/Indikator)
-        function connectSync() {
-            const session = sessionIdDisplay.value;
-            if (!session || session === 'NEXUS-READY') {
-                setTimeout(connectSync, 1000);
-                return;
-            }
-            const url = `wss://nexus-core.widodo-teguh85.workers.dev?session=${session}&type=connector`;
-            window.coreWS = new WebSocket(url);
-            window.coreWS.onclose = () => setTimeout(connectSync, 3000);
-        }
-        setTimeout(connectSync, 1000);
 
         // Salin URL OBS
         btnCopyObs.addEventListener('click', () => {
