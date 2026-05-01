@@ -678,6 +678,30 @@
                 islandText.textContent = "MENGHUBUNGKAN...";
                 islandDot.style.background = "#ffcc00";
                 islandDot.style.boxShadow = "0 0 15px #ffcc00";
+            } else if (status === 'error') {
+                statusLabel.textContent = '🔴 Gagal Terhubung';
+                statusLabel.style.color = '#ff4d4d';
+                statusBadge.textContent = 'Mode : Gagal';
+                btnStart.disabled = false;
+                btnStart.style.opacity = '1';
+
+                // Island Error
+                islandText.textContent = "KONEKSI GAGAL";
+                islandDot.style.background = "#ff4d4d";
+                islandDot.style.boxShadow = "0 0 15px #ff4d4d";
+                island.style.padding = "8px 20px";
+            } else if (status === 'offline') {
+                statusLabel.textContent = '⚪ Live Berakhir / Offline';
+                statusLabel.style.color = '#aaaaaa';
+                statusBadge.textContent = 'Mode : Offline';
+                btnStart.disabled = false;
+                btnStart.style.opacity = '1';
+
+                // Island Offline
+                islandText.textContent = "TARGET OFFLINE";
+                islandDot.style.background = "#aaaaaa";
+                islandDot.style.boxShadow = "0 0 10px #aaaaaa";
+                island.style.padding = "8px 20px";
             } else {
                 statusLabel.textContent = '🔴 Mesin Mati';
                 statusLabel.style.color = '#ff4d4d';
