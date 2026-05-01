@@ -967,6 +967,14 @@
             document.getElementById('preview-branding').src = finalUrl;
             document.getElementById('preview-placeholder').style.display = 'none';
             previewFrame.style.display = 'block';
+
+            // Kirim event secara realtime via WebSocket Lokal
+            if (window.electronAPI) {
+                electronAPI.domEvent({
+                    event: "branding_update",
+                    data: { style: style, color: color, menuData: data }
+                });
+            }
         };
 
         // Salin URL OBS
