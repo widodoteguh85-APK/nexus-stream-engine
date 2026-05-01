@@ -235,6 +235,25 @@
                     </div>
                 </div>
 
+                <!-- Card: Obs Trigger Automation -->
+                <div class="ov-card">
+                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #2b1d0b 0%, #1a1108 60%, #100a04 100%); border-color: rgba(255, 153, 0, 0.2);">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#ff9900,#ffcc00);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Obs Trigger Automation</div>
+                                <div class="ov-sub" style="color: rgba(255, 153, 0, 0.5);">SMART AUTOMATION</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc" style="background: rgba(255, 153, 0, 0.05); border-color: rgba(255, 153, 0, 0.1);">Kontrol interaktif OBS Studio secara otomatis berdasarkan event TikTok Live.</div>
+                        <button class="ov-btn" id="btn-open-obs-trigger" style="background: linear-gradient(135deg, #ff9900, #ffcc00); box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);">⚙ PENGATURAN</button>
+                    </div>
+                </div>
+
 
 
 
@@ -916,6 +935,15 @@
             const session = sessionIdDisplay.value || 'guest';
             dockUrlInput.value = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/?session=${session}`;
             modalDock.classList.add('show');
+        });
+
+        document.getElementById('btn-open-obs-trigger').addEventListener('click', () => {
+            const session = sessionIdDisplay.value || 'guest';
+            if (window.electronAPI) {
+                electronAPI.openOBS(session);
+            } else {
+                alert("Panel OBS Trigger hanya bisa dibuka di aplikasi Desktop.");
+            }
         });
 
         // Tutup modal
