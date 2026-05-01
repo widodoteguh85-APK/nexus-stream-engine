@@ -279,13 +279,24 @@
 
         <!-- PANEL: Nexus Pro Showcase -->
         <div class="panel" id="panel-pro" style="display:none; height: 80vh;">
-            <iframe src="./Nexus%20stream-overlay/dashboard/pro.html" style="width: 100%; height: 100%; border: none;"></iframe>
+            <iframe id="iframe-pro" src="" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
 
         <!-- PANEL: Donatur Hall of Fame -->
         <div class="panel" id="panel-donatur" style="display:none; height: 80vh;">
-            <iframe src="./Nexus%20stream-overlay/dashboard/donatur.html" style="width: 100%; height: 100%; border: none;"></iframe>
+            <iframe id="iframe-donatur" src="" style="width: 100%; height: 100%; border: none;"></iframe>
         </div>
+
+        <script>
+            // Logika Jalur Pintar (Smart Path)
+            const isLocal = window.location.protocol === 'file:';
+            const overlayBase = isLocal 
+                ? './Nexus%20stream-overlay' 
+                : 'https://widodoteguh85-apk.github.io/nexus-stream-overlay';
+            
+            document.getElementById('iframe-pro').src = `${overlayBase}/dashboard/pro.html`;
+            document.getElementById('iframe-donatur').src = `${overlayBase}/dashboard/donatur.html`;
+        </script>
 
 
     </div>
