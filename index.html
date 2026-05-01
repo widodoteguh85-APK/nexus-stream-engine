@@ -9,12 +9,48 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@900&display=swap"
         rel="stylesheet">
     <style>
-        .pro-menu { color: #ffd700 !important; font-weight: 800 !important; position: relative; }
-        .pro-icon { color: #ffd700; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
-        .pro-tag { font-size: 9px; background: linear-gradient(135deg, #ffd700, #ff8c00); color: black; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: 900; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
-        .modal-pro { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255, 215, 0, 0.3) !important; max-width: 450px !important; }
-        .pro-btn-buy { background: linear-gradient(135deg, #ffd700, #ff8c00); color: black; font-weight: 800; padding: 12px; border-radius: 12px; width: 100%; transition: all 0.3s; }
-        .pro-btn-buy:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
+        .pro-menu {
+            color: #ffd700 !important;
+            font-weight: 800 !important;
+            position: relative;
+        }
+
+        .pro-icon {
+            color: #ffd700;
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5));
+        }
+
+        .pro-tag {
+            font-size: 9px;
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: black;
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: 8px;
+            font-weight: 900;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .modal-pro {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border: 1px solid rgba(255, 215, 0, 0.3) !important;
+            max-width: 450px !important;
+        }
+
+        .pro-btn-buy {
+            background: linear-gradient(135deg, #ffd700, #ff8c00);
+            color: black;
+            font-weight: 800;
+            padding: 12px;
+            border-radius: 12px;
+            width: 100%;
+            transition: all 0.3s;
+        }
+
+        .pro-btn-buy:hover {
+            transform: scale(1.02);
+            box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4);
+        }
     </style>
 </head>
 
@@ -66,7 +102,7 @@
             </div>
             <div class="nav-item" id="menu-pro">
                 <svg fill="currentColor" viewBox="0 0 24 24" style="color: #ffd700;">
-                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z" />
                 </svg>
                 NEXUS PRO
                 <span class="pro-tag" style="margin-left: auto;">PRO</span>
@@ -88,12 +124,17 @@
 
     <!-- 2. MAIN CONTENT (BAR TENGAH) -->
     <div class="main-content">
-        
+
         <!-- Dynamic Island Status -->
-        <div style="display: flex; justify-content: center; padding: 20px 0 10px 0; position: sticky; top: 0; z-index: 100; pointer-events: none;">
-            <div id="dynamic-island" style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: auto; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
-                <div id="island-dot" style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 10px #ff4d4d;"></div>
-                <div style="font-size: 11px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase;" id="island-text">NEXUS OFFLINE</div>
+        <div
+            style="display: flex; justify-content: center; padding: 20px 0 10px 0; position: sticky; top: 0; z-index: 100; pointer-events: none;">
+            <div id="dynamic-island"
+                style="background: rgba(0, 0, 0, 0.8); backdrop-filter: blur(20px); padding: 8px 20px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; gap: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); pointer-events: auto; transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+                <div id="island-dot"
+                    style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 10px #ff4d4d;">
+                </div>
+                <div style="font-size: 11px; font-weight: 800; color: white; letter-spacing: 1px; text-transform: uppercase;"
+                    id="island-text">NEXUS OFFLINE</div>
             </div>
         </div>
 
@@ -137,9 +178,12 @@
 
                 <!-- Card: OBS Connection (NEW) -->
                 <div class="card">
-                    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+                    <div
+                        style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
                         <div class="card-label" style="margin-bottom: 0;">Koneksi OBS</div>
-                        <div id="obs-status-dot" style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 8px #ff4d4d;"></div>
+                        <div id="obs-status-dot"
+                            style="width: 8px; height: 8px; background: #ff4d4d; border-radius: 50%; box-shadow: 0 0 8px #ff4d4d;">
+                        </div>
                     </div>
                     <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 10px; margin-bottom: 10px;">
                         <div class="input-wrapper">
@@ -188,14 +232,16 @@
                                 <div class="ov-sub">IDENTITAS VISUAL</div>
                             </div>
                         </div>
-                        <div class="ov-desc">Atur logo, watermark, dan teks berjalan kustom untuk memperkuat branding stream Anda.</div>
+                        <div class="ov-desc">Atur logo, watermark, dan teks berjalan kustom untuk memperkuat branding
+                            stream Anda.</div>
                         <button class="ov-btn" id="btn-open-branding">⚙ Pengaturan</button>
                     </div>
                 </div>
 
                 <!-- Card: Dock OBS -->
                 <div class="ov-card">
-                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #0d1b2a 0%, #0b1424 60%, #050a14 100%); border-color: rgba(0, 242, 255, 0.2);">
+                    <div class="ov-card-inner"
+                        style="background: linear-gradient(160deg, #0d1b2a 0%, #0b1424 60%, #050a14 100%); border-color: rgba(0, 242, 255, 0.2);">
                         <div class="ov-card-top">
                             <div class="ov-icon" style="background: linear-gradient(135deg,#00f2ff,#0084ff);">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -207,14 +253,20 @@
                                 <div class="ov-sub" style="color: rgba(0, 242, 255, 0.5);">INTEGRASI PANEL</div>
                             </div>
                         </div>
-                        <div class="ov-desc" style="background: rgba(0, 242, 255, 0.05); border-color: rgba(0, 242, 255, 0.1);">Salin link panel kontrol Nexus untuk memasang Custom Browser Dock di OBS Studio.</div>
-                        <button class="ov-btn" id="btn-open-dock" style="background: linear-gradient(135deg, #0084ff, #00f2ff); box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);">⚙ PENGATURAN</button>
+                        <div class="ov-desc"
+                            style="background: rgba(0, 242, 255, 0.05); border-color: rgba(0, 242, 255, 0.1);">Salin
+                            link panel kontrol Nexus untuk memasang Custom Browser Dock di OBS Studio.</div>
+                        <button class="ov-btn" id="btn-open-dock"
+                            style="background: linear-gradient(135deg, #0084ff, #00f2ff); box-shadow: 0 4px 15px rgba(0, 132, 255, 0.4);">⚙
+                            PENGATURAN</button>
                     </div>
                 </div>
 
+
                 <!-- Card: Chat Box -->
                 <div class="ov-card">
-                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #2b0b1e 0%, #1a0814 60%, #10040c 100%); border-color: rgba(255, 0, 153, 0.2);">
+                    <div class="ov-card-inner"
+                        style="background: linear-gradient(160deg, #2b0b1e 0%, #1a0814 60%, #10040c 100%); border-color: rgba(255, 0, 153, 0.2);">
                         <div class="ov-card-top">
                             <div class="ov-icon" style="background: linear-gradient(135deg,#ff0099,#ff6600);">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -226,18 +278,24 @@
                                 <div class="ov-sub" style="color: rgba(255, 0, 153, 0.5);">TEMA OVERLAY</div>
                             </div>
                         </div>
-                        <div class="ov-desc" style="background: rgba(255, 0, 153, 0.05); border-color: rgba(255, 0, 153, 0.1);">Pilih dan salin gaya tampilan chat yang akan muncul di layar streaming penonton.</div>
-                        <button class="ov-btn" id="btn-open-chat" style="background: linear-gradient(135deg, #ff0099, #ff6600); box-shadow: 0 4px 15px rgba(255, 0, 153, 0.4);">🎨 TEMA</button>
+                        <div class="ov-desc"
+                            style="background: rgba(255, 0, 153, 0.05); border-color: rgba(255, 0, 153, 0.1);">Pilih dan
+                            salin gaya tampilan chat yang akan muncul di layar streaming penonton.</div>
+                        <button class="ov-btn" id="btn-open-chat"
+                            style="background: linear-gradient(135deg, #ff0099, #ff6600); box-shadow: 0 4px 15px rgba(255, 0, 153, 0.4);">🎨
+                            TEMA</button>
                     </div>
                 </div>
 
                 <!-- Card: Dock Chat -->
                 <div class="ov-card">
-                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #0b2b1d 0%, #081a11 60%, #04100a 100%); border-color: rgba(0, 255, 153, 0.2);">
+                    <div class="ov-card-inner"
+                        style="background: linear-gradient(160deg, #0b2b1d 0%, #081a11 60%, #04100a 100%); border-color: rgba(0, 255, 153, 0.2);">
                         <div class="ov-card-top">
                             <div class="ov-icon" style="background: linear-gradient(135deg,#00ff99,#00ccff);">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
+                                    <path
+                                        d="M15 4v7H5.17l-.59.59-.58.58V4h11m1-2H3c-.55 0-1 .45-1 1v14l4-4h10c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1zm5 4h-2v9H6v2c0 .55.45 1 1 1h11l4 4V7c0-.55-.45-1-1-1z" />
                                 </svg>
                             </div>
                             <div class="ov-info">
@@ -245,14 +303,19 @@
                                 <div class="ov-sub" style="color: rgba(0, 255, 153, 0.5);">READER PANEL</div>
                             </div>
                         </div>
-                        <div class="ov-desc" style="background: rgba(0, 255, 153, 0.05); border-color: rgba(0, 255, 153, 0.1);">Panel khusus untuk membaca pesan chat TikTok Live secara real-time di OBS.</div>
-                        <button class="ov-btn" id="btn-open-dock-chat" style="background: linear-gradient(135deg, #00ff99, #00ccff); box-shadow: 0 4px 15px rgba(0, 255, 153, 0.4);">⚙ PENGATURAN</button>
+                        <div class="ov-desc"
+                            style="background: rgba(0, 255, 153, 0.05); border-color: rgba(0, 255, 153, 0.1);">Panel
+                            khusus untuk membaca pesan chat TikTok Live secara real-time di OBS.</div>
+                        <button class="ov-btn" id="btn-open-dock-chat"
+                            style="background: linear-gradient(135deg, #00ff99, #00ccff); box-shadow: 0 4px 15px rgba(0, 255, 153, 0.4);">⚙
+                            PENGATURAN</button>
                     </div>
                 </div>
 
                 <!-- Card: Obs Trigger Automation -->
                 <div class="ov-card">
-                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #2b1d0b 0%, #1a1108 60%, #100a04 100%); border-color: rgba(255, 153, 0, 0.2);">
+                    <div class="ov-card-inner"
+                        style="background: linear-gradient(160deg, #2b1d0b 0%, #1a1108 60%, #100a04 100%); border-color: rgba(255, 153, 0, 0.2);">
                         <div class="ov-card-top">
                             <div class="ov-icon" style="background: linear-gradient(135deg,#ff9900,#ffcc00);">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
@@ -264,8 +327,32 @@
                                 <div class="ov-sub" style="color: rgba(255, 153, 0, 0.5);">SMART AUTOMATION</div>
                             </div>
                         </div>
-                        <div class="ov-desc" style="background: rgba(255, 153, 0, 0.05); border-color: rgba(255, 153, 0, 0.1);">Kontrol interaktif OBS Studio secara otomatis berdasarkan event TikTok Live.</div>
-                        <button class="ov-btn" id="btn-open-obs-trigger" style="background: linear-gradient(135deg, #ff9900, #ffcc00); box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);">⚙ PENGATURAN</button>
+                        <div class="ov-desc"
+                            style="background: rgba(255, 153, 0, 0.05); border-color: rgba(255, 153, 0, 0.1);">Kontrol
+                            interaktif OBS Studio secara otomatis berdasarkan event TikTok Live.</div>
+                        <button class="ov-btn" id="btn-open-obs-trigger"
+                            style="background: linear-gradient(135deg, #ff9900, #ffcc00); box-shadow: 0 4px 15px rgba(255, 153, 0, 0.4);">⚙
+                            PENGATURAN</button>
+                    </div>
+                </div>
+
+                <!-- Card: Kecerdasan AI (NEW) -->
+                <div class="ov-card">
+                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #1a1a1a 0%, #111111 60%, #080808 100%); border-color: rgba(255, 255, 255, 0.2);">
+                        <div class="ov-card-top">
+                            <div class="ov-icon" style="background: linear-gradient(135deg,#ffffff,#999999);">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.584a.5.5 0 0 1 0 .84l-5.576 3.584a.5.5 0 0 1-.77-.42Z" />
+                                    <path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Z" />
+                                </svg>
+                            </div>
+                            <div class="ov-info">
+                                <div class="ov-title">Kecerdasan AI</div>
+                                <div class="ov-sub" style="color: rgba(255, 255, 255, 0.5);">PUSAT OTAK NEXUS</div>
+                            </div>
+                        </div>
+                        <div class="ov-desc" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);">Kendalikan live stream Anda dengan kecerdasan buatan untuk respon otomatis yang lebih pintar.</div>
+                        <button class="ov-btn" id="btn-open-ai" style="background: linear-gradient(135deg, #ffffff, #aaaaaa); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); color: #000; font-weight: 800;">⚙ PENGATURAN</button>
                     </div>
                 </div>
 
@@ -290,10 +377,10 @@
         <script>
             // Logika Jalur Pintar (Smart Path)
             const isLocal = window.location.protocol === 'file:';
-            const overlayBase = isLocal 
-                ? './Nexus%20stream-overlay' 
+            const overlayBase = isLocal
+                ? './Nexus%20stream-overlay'
                 : 'https://nexus-stream-overlay.widodo-teguh85.workers.dev';
-            
+
             document.getElementById('iframe-pro').src = `${overlayBase}/dashboard/pro.html`;
             document.getElementById('iframe-donatur').src = `${overlayBase}/dashboard/donatur.html`;
         </script>
@@ -316,7 +403,8 @@
                 <div class="modal-form">
                     <div class="form-group">
                         <label>Gaya Animasi</label>
-                        <select id="branding-style" style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; cursor: pointer; outline: none;">
+                        <select id="branding-style"
+                            style="width: 100%; padding: 10px; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; color: white; cursor: pointer; outline: none;">
                             <option value="standard">Standard (3D Scroll)</option>
                             <option value="luxury">Luxury (Shatter Effect)</option>
                         </select>
@@ -391,27 +479,37 @@
 
 
 
-                <!-- Tutorial Singkat -->
-                <div style="margin-top: 30px; margin-bottom: 60px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
-                    <div style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
-                        <svg style="width:16px;" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z"/></svg>
-                        Panduan Cepat
-                    </div>
-                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 11px; line-height: 1.6; color: rgba(255,255,255,0.6);">
+                    <!-- Tutorial Singkat -->
+                    <div
+                        style="margin-top: 30px; margin-bottom: 60px; padding: 20px; background: rgba(255,255,255,0.03); border: 1px dashed rgba(255,255,255,0.1); border-radius: 12px;">
+                        <div
+                            style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px; display: flex; align-items: center; gap: 8px;">
+                            <svg style="width:16px;" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
+                            </svg>
+                            Panduan Cepat
+                        </div>
+                        <div
+                            style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; font-size: 11px; line-height: 1.6; color: rgba(255,255,255,0.6);">
                             <div style="display: flex; gap: 10px;">
-                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">1</span>
+                                <span
+                                    style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">1</span>
                                 <span>Pilih <b>Gaya Animasi</b> yang diinginkan di kolom sebelah kiri.</span>
                             </div>
                             <div style="display: flex; gap: 10px;">
-                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">2</span>
+                                <span
+                                    style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">2</span>
                                 <span>Tulis pesan branding lo di daftar <b>Teks Bergulir</b>.</span>
                             </div>
                             <div style="display: flex; gap: 10px;">
-                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">3</span>
+                                <span
+                                    style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">3</span>
                                 <span>Klik <b>Terapkan & Pratinjau</b> untuk mengaktifkan perubahan.</span>
                             </div>
                             <div style="display: flex; gap: 10px;">
-                                <span style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">4</span>
+                                <span
+                                    style="background: #0084ff; color: white; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 10px; font-weight: bold;">4</span>
                                 <span>Klik <b>Salin</b> dan tempel link ke <b>Browser Source</b> OBS.</span>
                             </div>
                         </div>
@@ -423,7 +521,8 @@
     </div>
     <!-- ===================== MODAL: PENGATURAN DOCK OBS ===================== -->
     <div class="modal-backdrop" id="modal-dock">
-        <div class="modal-box" style="max-width: 600px; height: auto; min-height: 400px; border-radius: 20px; margin: auto;">
+        <div class="modal-box"
+            style="max-width: 600px; height: auto; min-height: 400px; border-radius: 20px; margin: auto;">
             <div class="modal-header">
                 <div>
                     <div class="modal-title">⚙ Pengaturan Dock OBS</div>
@@ -432,19 +531,24 @@
                 <button class="modal-close" id="btn-close-dock">✕</button>
             </div>
             <div class="modal-body" style="padding: 30px; flex-direction: column; gap: 25px; overflow-y: auto;">
-                
+
                 <div class="form-group" style="margin-bottom: 20px;">
-                    <label style="color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Tautan Custom Browser Dock</label>
+                    <label
+                        style="color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Tautan
+                        Custom Browser Dock</label>
                     <div style="display:flex; gap:10px; margin-top:10px;">
-                        <input type="text" id="obs-url-dock" readonly 
-                               style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
-                               value="https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/">
-                        <button class="btn-copy-obs" id="btn-copy-obs-dock" style="padding: 0 25px; background: #0084ff; border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
+                        <input type="text" id="obs-url-dock" readonly
+                            style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;"
+                            value="https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/">
+                        <button class="btn-copy-obs" id="btn-copy-obs-dock"
+                            style="padding: 0 25px; background: #0084ff; border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
                     </div>
                 </div>
 
-                <div style="padding: 20px; background: rgba(0,132,255,0.05); border: 1px solid rgba(0,132,255,0.1); border-radius: 12px;">
-                    <div style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px;">
+                <div
+                    style="padding: 20px; background: rgba(0,132,255,0.05); border: 1px solid rgba(0,132,255,0.1); border-radius: 12px;">
+                    <div
+                        style="color: #0084ff; font-weight: 800; font-size: 12px; text-transform: uppercase; margin-bottom: 15px; letter-spacing: 1px;">
                         Cara Pemasangan:
                     </div>
                     <ul style="font-size: 12px; color: rgba(255,255,255,0.6); padding-left: 20px; line-height: 1.8;">
@@ -461,7 +565,8 @@
     </div>
     <!-- ===================== MODAL: PENGATURAN DOCK CHAT ===================== -->
     <div class="modal-backdrop" id="modal-chat">
-        <div class="modal-box" style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
+        <div class="modal-box"
+            style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
 
             <div class="modal-header" style="border-color: rgba(255, 0, 153, 0.1);">
                 <div>
@@ -473,35 +578,46 @@
             <div class="modal-body" style="padding: 0; display: flex; overflow: hidden;">
 
                 <!-- KIRI: Daftar Tema -->
-                <div style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
+                <div
+                    style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
                     <div class="form-group">
-                        <label style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih Bentuk Bubble</label>
-                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;" id="chat-theme-list">
-                            <div class="chat-theme-item active" data-file="dynamic.html" style="padding: 12px; background: rgba(255,0,153,0.1); border: 1px solid rgba(255,0,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                        <label
+                            style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih
+                            Bentuk Bubble</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;"
+                            id="chat-theme-list">
+                            <div class="chat-theme-item active" data-file="dynamic.html"
+                                style="padding: 12px; background: rgba(255,0,153,0.1); border: 1px solid rgba(255,0,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Dynamic Island</div>
                                 <span style="font-size: 9px; opacity: 0.5;">iOS UI Style</span>
                             </div>
-                            <div class="chat-theme-item" data-file="minimalist-glass.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="minimalist-glass.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Minimalist Glass</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Elegant & Modern</span>
                             </div>
-                            <div class="chat-theme-item" data-file="minimalist-white.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="minimalist-white.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Minimalist White</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Clean & Bright</span>
                             </div>
-                            <div class="chat-theme-item" data-file="neumorphism.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="neumorphism.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Neumorphism Light</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Soft UI Design</span>
                             </div>
-                            <div class="chat-theme-item" data-file="neumorphism-dark.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="neumorphism-dark.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Neumorphism Dark</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Premium Dark Soft</span>
                             </div>
-                            <div class="chat-theme-item" data-file="square-minimalis.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="square-minimalis.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Square Minimalist</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Sharp & Bold</span>
                             </div>
-                            <div class="chat-theme-item" data-file="womenstyle.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="chat-theme-item" data-file="womenstyle.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Women Style</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Fancy & Aesthetic</span>
                             </div>
@@ -510,45 +626,57 @@
                 </div>
 
                 <!-- KANAN: Preview & Link -->
-                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                <div
+                    style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
                     <div class="preview-label" style="color: #ff0099; z-index: 1;">Pratinjau Bentuk</div>
-                    
-                    <div style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                        
+
+                    <div
+                        style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background-image: radial-gradient(rgba(255,255,255,0.05) 1px, transparent 1px); background-size: 24px 24px; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+
                         <!-- Container Iframe Gede tapi Konten Mungil -->
-                        <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 12px; overflow: hidden;">
-                            <iframe id="preview-chat" src="" frameborder="0" 
-                                    style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
-                            
-                            <div id="chat-preview-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
-                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+                        <div
+                            style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center; background: transparent; border-radius: 12px; overflow: hidden;">
+                            <iframe id="preview-chat" src="" frameborder="0"
+                                style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
+
+                            <div id="chat-preview-placeholder"
+                                style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
+                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+                                </svg>
                                 <span style="font-size: 11px;">Rendering Preview...</span>
                             </div>
                         </div>
 
-                        <div style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">Nexus Visual Engine • Bubble Style</div>
+                        <div
+                            style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">
+                            Nexus Visual Engine • Bubble Style</div>
                     </div>
 
                     <div class="form-group">
-                        <label style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan Browser Source OBS</label>
+                        <label
+                            style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan
+                            Browser Source OBS</label>
                         <div style="display:flex; gap:10px; margin-top:10px;">
-                            <input type="text" id="obs-url-chat" readonly 
-                                   style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
-                                   value="">
-                            <button class="btn-copy-obs" id="btn-copy-obs-chat" style="padding: 0 25px; background: linear-gradient(135deg, #ff0099, #ff6600); border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
+                            <input type="text" id="obs-url-chat" readonly
+                                style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;"
+                                value="">
+                            <button class="btn-copy-obs" id="btn-copy-obs-chat"
+                                style="padding: 0 25px; background: linear-gradient(135deg, #ff0099, #ff6600); border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
                         </div>
                     </div>
                 </div>
             </div>
-                </div>
-            </div>
         </div>
+    </div>
+    </div>
     </div>
 
 
     <!-- ===================== MODAL: PENGATURAN ANIMASI CHAT ===================== -->
     <div class="modal-backdrop" id="modal-dock-reader">
-        <div class="modal-box" style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
+        <div class="modal-box"
+            style="max-width: 1000px; width: 90%; height: 85%; border-radius: 24px; margin: auto; box-shadow: 0 50px 100px rgba(0,0,0,0.8);">
             <div class="modal-header" style="border-color: rgba(0, 255, 153, 0.1);">
                 <div>
                     <div class="modal-title">🎬 Pengaturan Animasi Chat</div>
@@ -558,39 +686,51 @@
             </div>
             <div class="modal-body" style="padding: 0; display: flex; overflow: hidden;">
                 <!-- KIRI: Daftar Animasi -->
-                <div style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
+                <div
+                    style="width: 320px; padding: 30px; overflow-y: auto; border-right: 1px solid rgba(255,255,255,0.06); display: flex; flex-direction: column; gap: 25px; background: rgba(0,0,0,0.1);">
                     <div class="form-group">
-                        <label style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih Arah Muncul</label>
-                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;" id="anim-theme-list">
-                            <div class="anim-theme-item active" data-file="horizontal.html" style="padding: 12px; background: rgba(0,255,153,0.1); border: 1px solid rgba(0,255,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                        <label
+                            style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1.5px;">Pilih
+                            Arah Muncul</label>
+                        <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;"
+                            id="anim-theme-list">
+                            <div class="anim-theme-item active" data-file="horizontal.html"
+                                style="padding: 12px; background: rgba(0,255,153,0.1); border: 1px solid rgba(0,255,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Horizontal</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Elegant Simple</span>
                             </div>
-                            <div class="anim-theme-item" data-file="vertical.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="vertical.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Vertical</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Elegant & Modern</span>
                             </div>
-                            <div class="anim-theme-item" data-file="bubblechat.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="bubblechat.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Bubble Chat</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Minimalist Bubble</span>
                             </div>
-                            <div class="anim-theme-item" data-file="minimalistglow.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="minimalistglow.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Cute Glow Chat</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Cute Glow</span>
                             </div>
-                            <div class="anim-theme-item" data-file="luxuryglass.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="luxuryglass.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Luxury Glass</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Premium Glassmorphism</span>
                             </div>
-                            <div class="anim-theme-item" data-file="gaming.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="gaming.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Gaming Mood</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Gaming Cyber Purple</span>
                             </div>
-                            <div class="anim-theme-item" data-file="bounce.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="bounce.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Bounce</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Lively Scale Up</span>
                             </div>
-                            <div class="anim-theme-item" data-file="flip3d.html" style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                            <div class="anim-theme-item" data-file="flip3d.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Flip 3D</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Premium 3D Flip</span>
                             </div>
@@ -599,28 +739,40 @@
                 </div>
 
                 <!-- KANAN: Preview & Link -->
-                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                <div
+                    style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
                     <div class="preview-label" style="color: #00ff99; z-index: 1;">Pratinjau Animasi</div>
-                    
-                    <div style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background: transparent; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
-                        <div style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
-                            <iframe id="preview-anim" src="" frameborder="0" 
-                                    style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
-                            <div id="anim-preview-placeholder" style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
-                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor"><path d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z"/></svg>
+
+                    <div
+                        style="width: 100%; flex: 1; display: flex; justify-content: center; align-items: center; background: transparent; border-radius: 12px; position: relative; overflow: hidden; border: 1px solid rgba(255,255,255,0.05);">
+                        <div
+                            style="width: 100%; height: 100%; position: relative; display: flex; align-items: center; justify-content: center;">
+                            <iframe id="preview-anim" src="" frameborder="0"
+                                style="width: 100%; height: 100%; border: none; background: transparent;"></iframe>
+                            <div id="anim-preview-placeholder"
+                                style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; opacity: 0.3;">
+                                <svg style="width: 40px;" viewBox="0 0 24 24" fill="currentColor">
+                                    <path
+                                        d="M21 3H3c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zM9 17H7v-7h2v7zm4 0h-2V7h2v10zm4 0h-2v-4h2v4z" />
+                                </svg>
                                 <span style="font-size: 11px;">Rendering Preview...</span>
                             </div>
                         </div>
-                        <div style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">Nexus Visual Engine • Animation Mode</div>
+                        <div
+                            style="position: absolute; bottom: 20px; font-size: 10px; color: rgba(255,255,255,0.15); letter-spacing: 1px; font-weight: 700; text-transform: uppercase;">
+                            Nexus Visual Engine • Animation Mode</div>
                     </div>
 
                     <div class="form-group">
-                        <label style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan Browser Source OBS</label>
+                        <label
+                            style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan
+                            Browser Source OBS</label>
                         <div style="display:flex; gap:10px; margin-top:10px;">
-                            <input type="text" id="obs-url-anim" readonly 
-                                   style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;" 
-                                   value="">
-                            <button class="btn-copy-obs" id="btn-copy-anim" style="padding: 0 25px; background: #00ff99; border: none; border-radius: 10px; color: #000; font-weight: 800; cursor: pointer;">Salin</button>
+                            <input type="text" id="obs-url-anim" readonly
+                                style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white; filter: blur(3px); pointer-events: none; opacity: 0.7;"
+                                value="">
+                            <button class="btn-copy-obs" id="btn-copy-anim"
+                                style="padding: 0 25px; background: #00ff99; border: none; border-radius: 10px; color: #000; font-weight: 800; cursor: pointer;">Salin</button>
                         </div>
                     </div>
                 </div>
@@ -834,13 +986,13 @@
             const password = obsPasswordInput.value.trim();
 
             btnConnectObs.textContent = 'Menghubungkan...';
-            
+
             // Get current full config first to not lose rules
             const currentConfig = await electronAPI.getObsConfig() || { rules: [], enabled: false };
             currentConfig.connection = { ip, port, password };
-            
+
             electronAPI.saveObsConfig(currentConfig);
-            
+
             // Wait a bit then check status
             setTimeout(updateObsStatus, 2000);
         });
@@ -848,7 +1000,7 @@
         // Initial Load
         loadObsConfig();
         updateObsStatus();
-        setInterval(updateObsStatus, 5000); 
+        setInterval(updateObsStatus, 5000);
 
         init();
 
@@ -872,14 +1024,14 @@
         const animUrlInput = document.getElementById('obs-url-anim');
         const animPreviewFrame = document.getElementById('preview-anim');
         const animThemeItems = document.querySelectorAll('.anim-theme-item');
-        let selectedAnimTheme = "index.html"; 
+        let selectedAnimTheme = "index.html";
 
         function updateAnimUrl() {
             const session = sessionIdDisplay.value || 'guest';
             // Link untuk OBS (Server)
             const publicUrl = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dockchat/${selectedAnimTheme}?session=${session}`;
             animUrlInput.value = publicUrl;
-            
+
             // Link untuk Preview (Sesuai Alur Amik: Pake folder dummy)
             animPreviewFrame.src = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/dockchat/dummy/${selectedAnimTheme}?session=${session}`;
 
@@ -1067,7 +1219,7 @@
             document.getElementById('obs-url-branding').value = finalUrl;
             document.getElementById('obs-url-branding').style.filter = "none";
             document.getElementById('obs-url-branding').style.opacity = "1";
-            
+
             document.getElementById('preview-branding').src = finalUrl;
             document.getElementById('preview-placeholder').style.display = 'none';
             previewFrame.style.display = 'block';
@@ -1091,7 +1243,8 @@
         });
 
     </script>
-    <div style="position:fixed; bottom:15px; right:20px; font-size:11px; color:rgba(255,255,255,0.2); font-family: 'Inter', sans-serif; font-weight:600; pointer-events:none; z-index:10000; letter-spacing: 0.5px;">
+    <div
+        style="position:fixed; bottom:15px; right:20px; font-size:11px; color:rgba(255,255,255,0.2); font-family: 'Inter', sans-serif; font-weight:600; pointer-events:none; z-index:10000; letter-spacing: 0.5px;">
         Powered by <span style="color: #ffffff; opacity: 0.8;">Pakdhe Mboiz</span>
     </div>
     <!-- ===================== MODAL: NEXUS PRO UPGRADE ===================== -->
@@ -1101,28 +1254,37 @@
                 <button class="modal-close" id="btn-close-pro">✕</button>
             </div>
             <div class="modal-body text-center" style="padding-top:0;">
-                <div style="width:70px; height:70px; background:rgba(255,215,0,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+                <div
+                    style="width:70px; height:70px; background:rgba(255,215,0,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
                     <svg style="width:40px; color:#ffd700;" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.91 1.5h1.9c-.03-1.64-1.14-2.85-3.07-3.3V4h-1.63v1.86c-1.55.33-2.73 1.34-2.73 2.87 0 1.91 1.59 2.87 3.92 3.4 2.01.46 2.45 1.14 2.45 1.86 0 1.05-1.03 1.56-2.22 1.56-1.57 0-2.21-.73-2.3-1.71h-1.89c.11 1.77 1.3 2.87 3.19 3.25V19h1.63v-1.87c1.71-.31 3.03-1.28 3.03-3.1 0-2.31-2-2.99-4.32-3.59z"/>
+                        <path
+                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.91 1.5h1.9c-.03-1.64-1.14-2.85-3.07-3.3V4h-1.63v1.86c-1.55.33-2.73 1.34-2.73 2.87 0 1.91 1.59 2.87 3.92 3.4 2.01.46 2.45 1.14 2.45 1.86 0 1.05-1.03 1.56-2.22 1.56-1.57 0-2.21-.73-2.3-1.71h-1.89c.11 1.77 1.3 2.87 3.19 3.25V19h1.63v-1.87c1.71-.31 3.03-1.28 3.03-3.1 0-2.31-2-2.99-4.32-3.59z" />
                     </svg>
                 </div>
                 <h2 style="font-size:24px; font-weight:900; color:#ffd700; margin-bottom:10px;">UPGRADE NEXUS PRO</h2>
-                <p style="color:rgba(255,255,255,0.7); font-size:14px; margin-bottom:30px;" id="pro-feature-name">Buka fitur premium untuk hasil stream yang lebih profesional!</p>
-                
-                <div style="background:rgba(255,255,255,0.03); border-radius:15px; padding:20px; text-align:left; margin-bottom:30px;">
+                <p style="color:rgba(255,255,255,0.7); font-size:14px; margin-bottom:30px;" id="pro-feature-name">Buka
+                    fitur premium untuk hasil stream yang lebih profesional!</p>
+
+                <div
+                    style="background:rgba(255,255,255,0.03); border-radius:15px; padding:20px; text-align:left; margin-bottom:30px;">
                     <div style="display:flex; gap:10px; margin-bottom:12px;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Akses Penuh AI Automation</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Akses Penuh AI
+                            Automation</span>
                     </div>
                     <div style="display:flex; gap:10px; margin-bottom:12px;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Premium Smart TTS Voices</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Premium Smart TTS
+                            Voices</span>
                     </div>
                     <div style="display:flex; gap:10px;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Hapus Watermark & Branding</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Hapus Watermark &
+                            Branding</span>
                     </div>
                 </div>
 
-                <button class="pro-btn-buy" onclick="window.open('https://trakteer.id/pakdhemboiz', '_blank')">BELI PAKET PRO SEKARANG</button>
-                <p style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:15px;">Konfirmasi pembayaran otomatis lewat WhatsApp Pakdhe.</p>
+                <button class="pro-btn-buy" onclick="window.open('https://trakteer.id/pakdhemboiz', '_blank')">BELI
+                    PAKET PRO SEKARANG</button>
+                <p style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:15px;">Konfirmasi pembayaran otomatis
+                    lewat WhatsApp Pakdhe.</p>
             </div>
         </div>
     </div>
