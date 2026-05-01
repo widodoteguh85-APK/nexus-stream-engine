@@ -1019,15 +1019,7 @@
             setTimeout(() => btnCopyDock.textContent = orig, 2000);
         });
 
-        // Salin Saweria Alert URL
-        const btnCopySaweria = document.getElementById('btn-copy-saweria');
-        const saweriaLinkInput = document.getElementById('saweria-link');
-        btnCopySaweria.addEventListener('click', () => {
-            navigator.clipboard.writeText(saweriaLinkInput.value);
-            const orig = btnCopySaweria.textContent;
-            btnCopySaweria.textContent = 'Tersalin!';
-            setTimeout(() => btnCopySaweria.textContent = orig, 2000);
-        });
+
 
 
         // Sinkron color picker ↔ input hex
