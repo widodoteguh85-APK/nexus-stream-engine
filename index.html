@@ -1148,6 +1148,27 @@
             }
         });
 
+        // === FITUR EKSKLUSIF NEXUS PRO (PENGATURAN AI) ===
+        // Daftar Session ID VIP (Bisa ditambah manual oleh tim Pakdhe)
+        const nexusProUsers = [
+            "PAKDHE_VIP_001", // ID Pakdhe
+            "TIM_NEXUS_01",   // ID Tim 1
+            "TIM_NEXUS_02"    // ID Tim 2
+        ];
+
+        document.getElementById('btn-open-ai').addEventListener('click', () => {
+            const currentSession = sessionIdDisplay.value || 'guest';
+            
+            // Cek apakah Session ID saat ini ada di dalam daftar VIP
+            if (nexusProUsers.includes(currentSession) || currentSession.includes('PAKDHE')) {
+                // Beri akses dan buka jendela pengaturan AI
+                window.open('./Nexus stream-overlay/ai/index.html', '_blank', 'width=850,height=800,menubar=no,toolbar=no,location=no,status=no');
+            } else {
+                // Akses Ditolak
+                alert("⛔ AKSES DITOLAK!\n\nFitur 'Pusat Otak Nexus' adalah fitur eksklusif untuk pengguna Nexus Pro.\n\nSilakan upgrade lisensi Anda atau hubungi Administrator Tim.");
+            }
+        });
+
         // Tutup modal
         btnCloseBranding.addEventListener('click', () => {
             modalBranding.classList.remove('show');
