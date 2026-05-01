@@ -8,6 +8,14 @@
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@900&display=swap"
         rel="stylesheet">
+    <style>
+        .pro-menu { color: #ffd700 !important; font-weight: 800 !important; position: relative; }
+        .pro-icon { color: #ffd700; filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.5)); }
+        .pro-tag { font-size: 9px; background: linear-gradient(135deg, #ffd700, #ff8c00); color: black; padding: 2px 6px; border-radius: 4px; margin-left: 8px; font-weight: 900; box-shadow: 0 0 10px rgba(255, 215, 0, 0.3); }
+        .modal-pro { background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); border: 1px solid rgba(255, 215, 0, 0.3) !important; max-width: 450px !important; }
+        .pro-btn-buy { background: linear-gradient(135deg, #ffd700, #ff8c00); color: black; font-weight: 800; padding: 12px; border-radius: 12px; width: 100%; transition: all 0.3s; }
+        .pro-btn-buy:hover { transform: scale(1.02); box-shadow: 0 5px 20px rgba(255, 215, 0, 0.4); }
+    </style>
 </head>
 
 <body>
@@ -42,7 +50,7 @@
                 </svg>
                 Information
             </div>
-            <div class="nav-item">
+            <div class="nav-item" id="menu-tutorial">
                 <svg fill="currentColor" viewBox="0 0 24 24">
                     <path
                         d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H8c0-2.21 1.79-4 4-4s4 1.79 4 4c0 .88-.36 1.68-.93 2.25z" />
@@ -56,16 +64,17 @@
                 </svg>
                 Donatur
             </div>
+            <div class="nav-item" id="menu-pro">
+                <svg fill="currentColor" viewBox="0 0 24 24" style="color: #ffd700;">
+                    <path d="M12 2L4.5 20.29l.71.71L12 18l6.79 3 .71-.71z"/>
+                </svg>
+                NEXUS PRO
+                <span class="pro-tag" style="margin-left: auto;">PRO</span>
+            </div>
         </div>
 
         <div class="sidebar-footer">
-            <div class="footer-btn">
-                <span>Bahasa: ID</span>
-            </div>
-            <div class="footer-btn">
-                <span>Discord Support</span>
-            </div>
-            <div class="footer-btn btn-support">
+            <div class="footer-btn btn-support" onclick="window.open('https://trakteer.id/pakdhemboiz', '_blank')">
                 <span>Support Developer ☕</span>
             </div>
         </div>
@@ -259,6 +268,78 @@
 
 
 
+            </div>
+        </div>
+
+        <!-- PANEL: Nexus Pro Showcase -->
+        <div class="panel" id="panel-pro" style="display:none;">
+            <div class="pro-showcase-container" style="padding: 20px;">
+                <div style="text-align: center; margin-bottom: 40px;">
+                    <h2 style="font-size: 32px; font-weight: 900; color: #ffd700; margin-bottom: 10px;">Buka Potensi Penuh Stream Anda</h2>
+                    <p style="color: rgba(255,255,255,0.6);">Dapatkan fitur eksklusif untuk pengalaman streaming kasta tertinggi.</p>
+                </div>
+
+                <div class="overlay-grid">
+                    <!-- Feature 1: AI Automation -->
+                    <div class="ov-card">
+                        <div class="ov-card-inner" style="border-color: rgba(255, 215, 0, 0.2);">
+                            <div class="ov-card-top">
+                                <div class="ov-icon pro-glow">
+                                    <i data-lucide="brain-circuit"></i>
+                                </div>
+                                <div class="ov-info">
+                                    <div class="ov-title">AI Automation</div>
+                                    <div class="ov-sub" style="color: #ffd700;">PREMIUM FEATURE</div>
+                                </div>
+                            </div>
+                            <div class="ov-desc">Otomatisasi cerdas berbasis chat dan event yang lebih kompleks untuk interaksi tanpa batas.</div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 2: Smart TTS Pro -->
+                    <div class="ov-card">
+                        <div class="ov-card-inner" style="border-color: rgba(255, 215, 0, 0.2);">
+                            <div class="ov-card-top">
+                                <div class="ov-icon pro-glow">
+                                    <i data-lucide="mic-2"></i>
+                                </div>
+                                <div class="ov-info">
+                                    <div class="ov-title">Smart TTS Pro</div>
+                                    <div class="ov-sub" style="color: #ffd700;">PREMIUM FEATURE</div>
+                                </div>
+                            </div>
+                            <div class="ov-desc">Pilihan suara AI yang lebih manusiawi dan natural untuk membacakan pesan chat penonton.</div>
+                        </div>
+                    </div>
+
+                    <!-- Feature 3: Custom Layouts -->
+                    <div class="ov-card">
+                        <div class="ov-card-inner" style="border-color: rgba(255, 215, 0, 0.2);">
+                            <div class="ov-card-top">
+                                <div class="ov-icon pro-glow">
+                                    <i data-lucide="layout"></i>
+                                </div>
+                                <div class="ov-info">
+                                    <div class="ov-title">Custom Layouts</div>
+                                    <div class="ov-sub" style="color: #ffd700;">PREMIUM FEATURE</div>
+                                </div>
+                            </div>
+                            <div class="ov-desc">Akses ke puluhan tema eksklusif dan tata letak kustom yang tidak ada di versi standar.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Purchase Box -->
+                <div style="margin-top: 50px; background: linear-gradient(135deg, rgba(255,215,0,0.1), rgba(0,0,0,0.4)); border: 2px solid #ffd700; border-radius: 30px; padding: 40px; text-align: center;">
+                    <div style="font-size: 20px; font-weight: 800; color: #ffd700; margin-bottom: 20px;">🚀 SIAP UPGRADE KE NEXUS PRO?</div>
+                    <p style="color: white; margin-bottom: 30px; font-size: 14px; max-width: 500px; margin-inline: auto;">Dapatkan lisensi permanen dan support penuh dari tim pengembang untuk memaksimalkan stream Anda.</p>
+                    <button class="pro-btn-buy" style="max-width: 300px; font-size: 16px; width: 100%; cursor: pointer;" onclick="window.open('https://trakteer.id/pakdhemboiz', '_blank')">
+                        BELI PAKET PRO SEKARANG
+                    </button>
+                    <div style="margin-top: 20px; font-size: 11px; color: rgba(255,255,255,0.4);">
+                        *Lisensi akan dikirimkan secara manual setelah konfirmasi pembayaran.
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -611,22 +692,29 @@
         // === TAB SWITCHING ===
         const menuEngine = document.getElementById('menu-engine');
         const menuOverlay = document.getElementById('menu-overlay');
+        const menuPro = document.getElementById('menu-pro');
         const panelEngine = document.getElementById('panel-engine');
         const panelOverlay = document.getElementById('panel-overlay');
+        const panelPro = document.getElementById('panel-pro');
 
         menuEngine.addEventListener('click', () => {
-            menuEngine.classList.add('active');
-            menuOverlay.classList.remove('active');
-            panelEngine.style.display = 'block';
-            panelOverlay.style.display = 'none';
+            setActiveTab(menuEngine, panelEngine);
         });
 
         menuOverlay.addEventListener('click', () => {
-            menuOverlay.classList.add('active');
-            menuEngine.classList.remove('active');
-            panelOverlay.style.display = 'block';
-            panelEngine.style.display = 'none';
+            setActiveTab(menuOverlay, panelOverlay);
         });
+
+        menuPro.addEventListener('click', () => {
+            setActiveTab(menuPro, panelPro);
+        });
+
+        function setActiveTab(menuEl, panelEl) {
+            [menuEngine, menuOverlay, menuPro].forEach(m => m.classList.remove('active'));
+            [panelEngine, panelOverlay, panelPro].forEach(p => p.style.display = 'none');
+            menuEl.classList.add('active');
+            panelEl.style.display = 'block';
+        }
 
         // 1. Tangkap Session dari URL
         function init() {
@@ -1042,6 +1130,46 @@
     <div style="position:fixed; bottom:15px; right:20px; font-size:11px; color:rgba(255,255,255,0.2); font-family: 'Inter', sans-serif; font-weight:600; pointer-events:none; z-index:10000; letter-spacing: 0.5px;">
         Powered by <span style="color: #ffffff; opacity: 0.8;">Pakdhe Mboiz</span>
     </div>
+    <!-- ===================== MODAL: NEXUS PRO UPGRADE ===================== -->
+    <div class="modal-backdrop" id="modal-pro">
+        <div class="modal-box modal-pro">
+            <div class="modal-header" style="border:none;">
+                <button class="modal-close" id="btn-close-pro">✕</button>
+            </div>
+            <div class="modal-body text-center" style="padding-top:0;">
+                <div style="width:70px; height:70px; background:rgba(255,215,0,0.1); border-radius:50%; display:flex; align-items:center; justify-content:center; margin:0 auto 20px;">
+                    <svg style="width:40px; color:#ffd700;" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86c-1.77-.45-2.34-.94-2.34-1.67 0-.84.79-1.43 2.1-1.43 1.38 0 1.9.66 1.91 1.5h1.9c-.03-1.64-1.14-2.85-3.07-3.3V4h-1.63v1.86c-1.55.33-2.73 1.34-2.73 2.87 0 1.91 1.59 2.87 3.92 3.4 2.01.46 2.45 1.14 2.45 1.86 0 1.05-1.03 1.56-2.22 1.56-1.57 0-2.21-.73-2.3-1.71h-1.89c.11 1.77 1.3 2.87 3.19 3.25V19h1.63v-1.87c1.71-.31 3.03-1.28 3.03-3.1 0-2.31-2-2.99-4.32-3.59z"/>
+                    </svg>
+                </div>
+                <h2 style="font-size:24px; font-weight:900; color:#ffd700; margin-bottom:10px;">UPGRADE NEXUS PRO</h2>
+                <p style="color:rgba(255,255,255,0.7); font-size:14px; margin-bottom:30px;" id="pro-feature-name">Buka fitur premium untuk hasil stream yang lebih profesional!</p>
+                
+                <div style="background:rgba(255,255,255,0.03); border-radius:15px; padding:20px; text-align:left; margin-bottom:30px;">
+                    <div style="display:flex; gap:10px; margin-bottom:12px;">
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Akses Penuh AI Automation</span>
+                    </div>
+                    <div style="display:flex; gap:10px; margin-bottom:12px;">
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Premium Smart TTS Voices</span>
+                    </div>
+                    <div style="display:flex; gap:10px;">
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Hapus Watermark & Branding</span>
+                    </div>
+                </div>
+
+                <button class="pro-btn-buy" onclick="window.open('https://trakteer.id/pakdhemboiz', '_blank')">BELI PAKET PRO SEKARANG</button>
+                <p style="font-size:11px; color:rgba(255,255,255,0.4); margin-top:15px;">Konfirmasi pembayaran otomatis lewat WhatsApp Pakdhe.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showProModal(featureName) {
+            document.getElementById('pro-feature-name').innerText = `Fitur ${featureName} hanya tersedia untuk member NEXUS PRO.`;
+            document.getElementById('modal-pro').classList.add('show');
+        }
+        document.getElementById('btn-close-pro').onclick = () => document.getElementById('modal-pro').classList.remove('show');
+    </script>
 </body>
 
 </html>
