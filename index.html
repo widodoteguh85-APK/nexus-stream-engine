@@ -338,11 +338,13 @@
 
                 <!-- Card: Kecerdasan AI (NEW) -->
                 <div class="ov-card">
-                    <div class="ov-card-inner" style="background: linear-gradient(160deg, #1a1a1a 0%, #111111 60%, #080808 100%); border-color: rgba(255, 255, 255, 0.2);">
+                    <div class="ov-card-inner"
+                        style="background: linear-gradient(160deg, #1a1a1a 0%, #111111 60%, #080808 100%); border-color: rgba(255, 255, 255, 0.2);">
                         <div class="ov-card-top">
                             <div class="ov-icon" style="background: linear-gradient(135deg,#ffffff,#999999);">
                                 <svg viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.584a.5.5 0 0 1 0 .84l-5.576 3.584a.5.5 0 0 1-.77-.42Z" />
+                                    <path
+                                        d="M9.5 15.584V8.416a.5.5 0 0 1 .77-.42l5.576 3.584a.5.5 0 0 1 0 .84l-5.576 3.584a.5.5 0 0 1-.77-.42Z" />
                                     <path d="M1 12C1 5.925 5.925 1 12 1s11 4.925 11 11-4.925 11-11 11S1 18.075 1 12Z" />
                                 </svg>
                             </div>
@@ -351,8 +353,13 @@
                                 <div class="ov-sub" style="color: rgba(255, 255, 255, 0.5);">PUSAT OTAK NEXUS</div>
                             </div>
                         </div>
-                        <div class="ov-desc" style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);">Kendalikan live stream Anda dengan kecerdasan buatan untuk respon otomatis yang lebih pintar.</div>
-                        <button class="ov-btn" id="btn-open-ai" style="background: linear-gradient(135deg, #ffffff, #aaaaaa); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); color: #000; font-weight: 800;">⚙ PENGATURAN</button>
+                        <div class="ov-desc"
+                            style="background: rgba(255, 255, 255, 0.05); border-color: rgba(255, 255, 255, 0.1);">
+                            Kendalikan live stream Anda dengan kecerdasan buatan untuk respon otomatis yang lebih
+                            pintar.</div>
+                        <button class="ov-btn" id="btn-open-ai"
+                            style="background: linear-gradient(135deg, #ffffff, #aaaaaa); box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); color: #000; font-weight: 800;">⚙
+                            PENGATURAN</button>
                     </div>
                 </div>
 
@@ -1158,11 +1165,15 @@
 
         document.getElementById('btn-open-ai').addEventListener('click', () => {
             const currentSession = sessionIdDisplay.value || 'guest';
-            
+
             // Cek apakah Session ID saat ini ada di dalam daftar VIP
             if (nexusProUsers.includes(currentSession) || currentSession.includes('PAKDHE')) {
-                // Beri akses dan buka jendela pengaturan AI
-                window.open('./Nexus stream-overlay/ai/index.html', '_blank', 'width=850,height=800,menubar=no,toolbar=no,location=no,status=no');
+                // Beri akses dan buka jendela pengaturan AI via Electron IPC
+                if (window.electronAPI) {
+                    window.electronAPI.openAI(currentSession);
+                } else {
+                    alert("Panel Pengaturan AI hanya bisa dibuka di dalam aplikasi Desktop Nexus Stream.");
+                }
             } else {
                 // Akses Ditolak
                 alert("⛔ AKSES DITOLAK!\n\nFitur 'Pusat Otak Nexus' adalah fitur eksklusif untuk pengguna Nexus Pro.\n\nSilakan upgrade lisensi Anda atau hubungi Administrator Tim.");
