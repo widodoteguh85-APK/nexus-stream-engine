@@ -667,14 +667,12 @@
                                 <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Photo Profile</div>
                                 <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
-                            </div>
                         </div>
                     </div>
                 </div>
 
                 <!-- KANAN: Preview & Link -->
-                <div
-                    style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
                     <div class="preview-label" style="color: #ff0099; z-index: 1;">Pratinjau Bentuk</div>
 
                     <div
@@ -1167,7 +1165,7 @@
             });
         });
 
-        // Tombol Terapkan di dalam Modal Chat (FOKUS: SIMPAN & TUTUP)
+        // Tombol Terapkan di dalam Modal Chat (FOKUS: SIMPAN & SYNC)
         document.getElementById('btn-save-chat-theme').addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
@@ -1175,12 +1173,24 @@
             // 1. Simpan Pilihan & Update Link
             updateChatUrl();
 
-            // 2. Tutup Modal Secara Paksa
+            // 2. KIRIM SINYAL KE OBS (LIVE SYNC) - BIAR TIDAK HOAX
+            const sessId = sessionIdDisplay.value || 'demo';
+            if (window.electronAPI) {
+                electronAPI.domEvent({
+                    event: "switch_theme",
+                    data: {
+                        theme: selectedChatTheme,
+                        session: sessId
+                    }
+                });
+            }
+
+            // 3. Tutup Modal Secara Paksa
             const targetModal = document.getElementById('modal-chat');
             targetModal.classList.remove('show');
-            targetModal.style.display = 'none'; // Dipaksa hilang
+            targetModal.style.display = 'none';
 
-            console.log("Modal Chat Berhasil Ditutup & Tema Disimpan!");
+            console.log("Tema Chat Berhasil Diterapkan & Disinkronkan!");
         });
 
 
