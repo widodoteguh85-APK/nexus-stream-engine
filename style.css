@@ -302,12 +302,6 @@ input[type="password"]:focus {
     user-select: none;
 }
 
-.blur-session:hover,
-.blur-session:focus {
-    filter: blur(0);
-    user-select: auto;
-}
-
 .btn {
     padding: 12px 24px;
     border-radius: 12px;
