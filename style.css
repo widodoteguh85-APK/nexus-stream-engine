@@ -296,6 +296,18 @@ input[type="password"]:focus {
     background: rgba(255, 255, 255, 0.05);
 }
 
+.blur-session {
+    filter: blur(6px);
+    transition: all 0.3s ease;
+    user-select: none;
+}
+
+.blur-session:hover,
+.blur-session:focus {
+    filter: blur(0);
+    user-select: auto;
+}
+
 .btn {
     padding: 12px 24px;
     border-radius: 12px;
