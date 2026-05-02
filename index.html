@@ -667,12 +667,8 @@
                                 <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Photo Profile</div>
                                 <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
+                            </div>
                         </div>
-                        
-                        <!-- TOMBOL TERAPKAN DI DALAM MODAL (CLASS DIGANTI BIAR GAK MENTAL) -->
-                        <button id="btn-save-chat-theme" type="button" class="btn-save-theme" style="margin-top: 10px; width: 100%;">
-                            ✔ Pakai Tema Ini
-                        </button>
                     </div>
                 </div>
 
@@ -717,6 +713,11 @@
                                 style="padding: 0 25px; background: linear-gradient(135deg, #ff0099, #ff6600); border: none; border-radius: 10px; color: white; font-weight: 800; cursor: pointer;">Salin</button>
                         </div>
                     </div>
+
+                    <!-- TOMBOL TERAPKAN TEMA (PINDAH KE KANAN BIAR KELIHATAN) -->
+                    <button id="btn-save-chat-theme" type="button" class="btn-save-theme" style="width: 100%; height: 50px; font-size: 16px;">
+                        ✔ TERAPKAN TEMA SEKARANG
+                    </button>
                 </div>
             </div>
         </div>
@@ -839,27 +840,6 @@
 
     <script>
         var electronAPI = window.electronAPI;
-
-        // === ⚡ NEXUS LIVE SYNC ENGINE (DASHBOARD SIDE) ===
-        // Inisialisasi koneksi ke Server WebSocket Lokal
-        function connectToNexusSync() {
-            const socketUrl = "ws://localhost:3000"; // Server internal Nexus
-            window.nexusSocket = new WebSocket(socketUrl);
-
-            window.nexusSocket.onopen = () => {
-                console.log("%c🔌 DASHBOARD SYNC: CONNECTED", "color: #00ff00; font-weight: bold;");
-            };
-
-            window.nexusSocket.onclose = () => {
-                console.warn("🔌 DASHBOARD SYNC: DISCONNECTED. Retrying in 3s...");
-                setTimeout(connectToNexusSync, 3000); // Reconnect otomatis
-            };
-
-            window.nexusSocket.onerror = (err) => {
-                console.error("🔌 DASHBOARD SYNC ERROR:", err);
-            };
-        }
-        connectToNexusSync();
 
         // Elements
         const tiktokInput = document.getElementById('username');
@@ -1187,26 +1167,20 @@
             });
         });
 
-        // Tombol Terapkan di dalam Modal Chat
-        document.getElementById('btn-save-chat-theme').addEventListener('click', () => {
-            modalChat.classList.remove('show');
-            updateChatUrl();
-            
-            // KIRIM SINYAL KE OBS (LIVE SYNC)
-            // Kita gunakan event 'chat_theme_change' agar semua overlay yang terbuka otomatis berganti
-            const sessId = sessionIdInput.value || 'demo';
-            if (window.nexusSocket && window.nexusSocket.readyState === WebSocket.OPEN) {
-                window.nexusSocket.send(JSON.stringify({
-                    type: "broadcast",
-                    event: "switch_theme",
-                    data: {
-                        theme: selectedChatTheme,
-                        session: sessId
-                    }
-                }));
-            }
+        // Tombol Terapkan di dalam Modal Chat (FOKUS: SIMPAN & TUTUP)
+        document.getElementById('btn-save-chat-theme').addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
 
-            console.log("Sinyal pindah tema dikirim:", selectedChatTheme);
+            // 1. Simpan Pilihan & Update Link
+            updateChatUrl();
+
+            // 2. Tutup Modal Secara Paksa
+            const targetModal = document.getElementById('modal-chat');
+            targetModal.classList.remove('show');
+            targetModal.style.display = 'none'; // Dipaksa hilang
+
+            console.log("Modal Chat Berhasil Ditutup & Tema Disimpan!");
         });
 
 
