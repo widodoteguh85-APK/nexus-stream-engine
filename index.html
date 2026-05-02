@@ -648,7 +648,7 @@
                         </div>
                         
                         <!-- TOMBOL TERAPKAN DI DALAM MODAL -->
-                        <button id="btn-save-chat-theme" class="btn-apply" style="margin-top: 10px; width: 100%; background: linear-gradient(135deg, #00f2ff, #0084ff); color: black;">
+                        <button id="btn-save-chat-theme" type="button" class="btn-apply" style="margin-top: 10px; width: 100%; background: linear-gradient(135deg, #00f2ff, #0084ff); color: black;">
                             ✔ Pakai Tema Ini
                         </button>
                     </div>
@@ -1146,14 +1146,24 @@
 
         // Tombol Terapkan di dalam Modal Chat
         document.getElementById('btn-save-chat-theme').addEventListener('click', () => {
-            // Tutup modal
             modalChat.classList.remove('show');
-            
-            // Perbarui URL saja tanpa pindah halaman
             updateChatUrl();
             
-            // Beri notifikasi kecil bahwa berhasil
-            console.log("Tema Chat berhasil diperbarui ke:", selectedChatTheme);
+            // KIRIM SINYAL KE OBS (LIVE SYNC)
+            // Kita gunakan event 'chat_theme_change' agar semua overlay yang terbuka otomatis berganti
+            const sessId = sessionIdInput.value || 'demo';
+            if (window.nexusSocket && window.nexusSocket.readyState === WebSocket.OPEN) {
+                window.nexusSocket.send(JSON.stringify({
+                    type: "broadcast",
+                    event: "switch_theme",
+                    data: {
+                        theme: selectedChatTheme,
+                        session: sessId
+                    }
+                }));
+            }
+
+            console.log("Sinyal pindah tema dikirim:", selectedChatTheme);
         });
 
 
