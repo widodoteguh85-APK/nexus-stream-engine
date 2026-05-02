@@ -1175,8 +1175,6 @@
 
         document.getElementById('btn-open-obs-trigger').addEventListener('click', () => {
             const session = sessionIdDisplay.value || 'guest';
-            const isProObs = nexusProUsers && (nexusProUsers.includes(session) || session.toUpperCase().includes('PAKDHE'));
-            if (!isProObs) { showProModal('OBS Trigger Automation'); return; }
             if (window.electronAPI) {
                 electronAPI.openOBS(session);
             } else {
@@ -1187,7 +1185,7 @@
         // === FITUR EKSKLUSIF NEXUS PRO (PENGATURAN AI) ===
         // Daftar Session ID VIP (Bisa ditambah manual oleh tim Pakdhe)
         const nexusProUsers = [
-            "admin", // ID Pakdhe
+            "NEXUS_6FN2Y5PV", // ID Pakdhe
             "TIM_NEXUS_01",   // ID Tim 1
             "TIM_NEXUS_02"    // ID Tim 2
         ];
@@ -1333,7 +1331,7 @@
                         <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Tema Chat Eksklusif & Premium</span>
                     </div>
                     <div style="display:flex; gap:10px; margin-bottom:10px; align-items:center;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">OBS Trigger Automation</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">OBS AI Trigger Automation</span>
                     </div>
                     <div style="display:flex; gap:10px; align-items:center;">
                         <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Kecerdasan AI (Pusat Otak Nexus)</span>
