@@ -593,8 +593,18 @@
                             Bentuk Bubble</label>
                         <div style="display: flex; flex-direction: column; gap: 10px; margin-top:12px;"
                             id="chat-theme-list">
-                            <div class="chat-theme-item active" data-file="black-1.html"
+                            <div class="chat-theme-item active" data-file="dual-balloon.html"
                                 style="padding: 12px; background: rgba(255,0,153,0.1); border: 1px solid rgba(255,0,153,0.5); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Dual Default</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="basic.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Basic Bubble</div>
+                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
+                            </div>
+                            <div class="chat-theme-item" data-file="black-1.html"
+                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Black 1 (Dotted)</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
                             </div>
@@ -603,35 +613,25 @@
                                 <div style="font-weight: 800; color: white; font-size: 12px;">Black 2 (Elegant)</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
                             </div>
-                            <div class="chat-theme-item" data-file="basic.html"
-                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">Basic Bubble</div>
-                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
-                            </div>
                             <div class="chat-theme-item" data-file="cyberpunk-blue.html"
                                 style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">Cyberpunk Blue</div>
+                                <div style="font-weight: 800; color: white; font-size: 12px;">Cyberpunk</div>
                                 <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
                             </div>
-                            <div class="chat-theme-item" data-file="macos.html"
+                            <div class="chat-theme-item pro-item" data-file="macos.html"
                                 style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">MacOS Style</div>
-                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
+                                <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 MacOS Style</div>
+                                <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
-                            <div class="chat-theme-item" data-file="vertical-glass.html"
+                            <div class="chat-theme-item pro-item" data-file="vertical-glass.html"
                                 style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">Vertical Glass</div>
-                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
+                                <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Vertical Glass</div>
+                                <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
-                            <div class="chat-theme-item" data-file="photo-profile.html"
+                            <div class="chat-theme-item pro-item" data-file="photo-profile.html"
                                 style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">Photo Profile</div>
-                                <span style="font-size: 9px; opacity: 0.5;">Solo Balloon</span>
-                            </div>
-                            <div class="chat-theme-item" data-file="dual-balloon.html"
-                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: white; font-size: 12px;">Dual Default</div>
-                                <span style="font-size: 9px; opacity: 0.5;">Double Balloon</span>
+                                <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Photo Profile</div>
+                                <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
                         </div>
                     </div>
@@ -1102,6 +1102,18 @@
 
         chatThemeItems.forEach(item => {
             item.addEventListener('click', () => {
+                const currentSession = sessionIdDisplay.value || 'guest';
+                const isProItem = item.classList.contains('pro-item');
+                
+                // Cek Akses jika item tersebut adalah PRO
+                if (isProItem) {
+                    const isVip = nexusProUsers.includes(currentSession) || currentSession.toUpperCase().includes('PAKDHE');
+                    if (!isVip) {
+                        showProModal(item.querySelector('div').innerText.replace('🔒 ', ''));
+                        return;
+                    }
+                }
+
                 chatThemeItems.forEach(i => {
                     i.style.background = "rgba(255,255,255,0.03)";
                     i.style.borderColor = "rgba(255,255,255,0.1)";
