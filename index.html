@@ -1146,12 +1146,14 @@
 
         // Tombol Terapkan di dalam Modal Chat
         document.getElementById('btn-save-chat-theme').addEventListener('click', () => {
+            // Tutup modal
             modalChat.classList.remove('show');
-            // Trigger tombol "Terapkan" yang ada di dashboard utama agar link terupdate
-            document.getElementById('btn-apply-chat').click();
             
-            // Notifikasi kecil (Opsional)
-            console.log("Tema Chat berhasil diterapkan:", selectedChatTheme);
+            // Perbarui URL saja tanpa pindah halaman
+            updateChatUrl();
+            
+            // Beri notifikasi kecil bahwa berhasil
+            console.log("Tema Chat berhasil diperbarui ke:", selectedChatTheme);
         });
 
 
