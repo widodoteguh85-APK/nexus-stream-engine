@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Outfit:wght@900&display=swap"
         rel="stylesheet">
     <style>
-
         .pro-menu {
             color: #ffd700 !important;
             font-weight: 800 !important;
@@ -492,8 +491,8 @@
                         <label>Tautan OBS Browser Source</label>
                         <div style="display:flex;gap:8px;">
                             <input type="text" id="obs-url-branding" readonly
-                                placeholder="Klik 'Terapkan' untuk generate link"
-                                class="blur-session" style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;">
+                                placeholder="Klik 'Terapkan' untuk generate link" class="blur-session"
+                                style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;">
                             <button class="btn-copy-obs" id="btn-copy-obs-branding">Salin</button>
                         </div>
                     </div>
@@ -577,8 +576,7 @@
                         style="color: rgba(255,255,255,0.4); font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px;">Tautan
                         Custom Browser Dock</label>
                     <div style="display:flex; gap:10px; margin-top:10px;">
-                        <input type="text" id="obs-url-dock" readonly
-                            class="blur-session"
+                        <input type="text" id="obs-url-dock" readonly class="blur-session"
                             style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;"
                             value="https://nexus-stream-overlay.widodo-teguh85.workers.dev/dock/">
                         <button class="btn-copy-obs" id="btn-copy-obs-dock"
@@ -657,11 +655,6 @@
                                 <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 MacOS Style</div>
                                 <span class="pro-tag" style="font-size: 8px;">PRO</span>
                             </div>
-                            <div class="chat-theme-item pro-item" data-file="vertical-glass.html"
-                                style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
-                                <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Vertical Glass</div>
-                                <span class="pro-tag" style="font-size: 8px;">PRO</span>
-                            </div>
                             <div class="chat-theme-item pro-item" data-file="photo-profile.html"
                                 style="padding: 12px; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.1); border-radius: 10px; cursor: pointer; display:flex; justify-content: space-between; align-items: center;">
                                 <div style="font-weight: 800; color: #ffd700; font-size: 12px;">🔒 Photo Profile</div>
@@ -672,7 +665,8 @@
                 </div>
 
                 <!-- KANAN: Preview & Link -->
-                <div style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
+                <div
+                    style="flex: 1; padding: 25px; display: flex; flex-direction: column; gap: 20px; background: #08080c; position: relative;">
                     <div class="preview-label" style="color: #ff0099; z-index: 1;">Pratinjau Bentuk</div>
 
                     <div
@@ -703,8 +697,7 @@
                             style="color: rgba(255, 0, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan
                             Browser Source OBS</label>
                         <div style="display:flex; gap:10px; margin-top:10px;">
-                            <input type="text" id="obs-url-chat" readonly
-                                class="blur-session"
+                            <input type="text" id="obs-url-chat" readonly class="blur-session"
                                 style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;"
                                 value="">
                             <button class="btn-copy-obs" id="btn-copy-obs-chat"
@@ -713,7 +706,8 @@
                     </div>
 
                     <!-- TOMBOL TERAPKAN TEMA (PINDAH KE KANAN BIAR KELIHATAN) -->
-                    <button id="btn-save-chat-theme" type="button" class="btn-save-theme" style="width: 100%; height: 50px; font-size: 16px;">
+                    <button id="btn-save-chat-theme" type="button" class="btn-save-theme"
+                        style="width: 100%; height: 50px; font-size: 16px;">
                         ✔ TERAPKAN TEMA SEKARANG
                     </button>
                 </div>
@@ -819,8 +813,7 @@
                             style="color: rgba(0, 255, 153, 0.6); font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;">Tautan
                             Browser Source OBS</label>
                         <div style="display:flex; gap:10px; margin-top:10px;">
-                            <input type="text" id="obs-url-anim" readonly
-                                class="blur-session"
+                            <input type="text" id="obs-url-anim" readonly class="blur-session"
                                 style="flex:1; padding:12px; background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1); border-radius:10px; color:white;"
                                 value="">
                             <button class="btn-copy-obs" id="btn-copy-anim"
@@ -1131,29 +1124,23 @@
 
         function updateChatUrl() {
             const session = sessionIdDisplay.value || 'guest';
-            // Link untuk OBS (Server)
             const publicUrl = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/tema 1/${selectedChatTheme}?session=${session}`;
             chatUrlInput.value = publicUrl;
-
-            // Link untuk Preview (Sesuai Alur Amik: Pake folder dummy)
             chatPreviewFrame.src = `https://nexus-stream-overlay.widodo-teguh85.workers.dev/tema 1/dummy/${selectedChatTheme}?session=${session}`;
             document.getElementById('chat-preview-placeholder').style.display = 'none';
         }
 
+        // 1. KLIK ITEM TEMA (CUMA UPDATE PREVIEW)
         chatThemeItems.forEach(item => {
             item.addEventListener('click', () => {
                 const currentSession = sessionIdDisplay.value || 'guest';
-                const isProItem = item.classList.contains('pro-item');
-                
-                // Cek Akses jika item tersebut adalah PRO
-                if (isProItem) {
+                if (item.classList.contains('pro-item')) {
                     const isVip = nexusProUsers.includes(currentSession) || currentSession.toUpperCase().includes('PAKDHE');
                     if (!isVip) {
                         showProModal(item.querySelector('div').innerText.replace('🔒 ', ''));
                         return;
                     }
                 }
-
                 chatThemeItems.forEach(i => {
                     i.style.background = "rgba(255,255,255,0.03)";
                     i.style.borderColor = "rgba(255,255,255,0.1)";
@@ -1161,43 +1148,32 @@
                 item.style.background = "rgba(255,0,153,0.1)";
                 item.style.borderColor = "rgba(255,0,153,0.5)";
                 selectedChatTheme = item.getAttribute('data-file');
-                updateChatUrl();
+                updateChatUrl(); // Update pratinjau
             });
         });
 
-        // Tombol Terapkan di dalam Modal Chat (FOKUS: SIMPAN & SYNC)
+        // 2. TOMBOL TERAPKAN (SIMPAN & KIRIM SINYAL SYNC)
         document.getElementById('btn-save-chat-theme').addEventListener('click', (e) => {
             e.preventDefault();
             e.stopPropagation();
-
-            // 1. Simpan Pilihan & Update Link
             updateChatUrl();
-
-            // 2. KIRIM SINYAL KE OBS (LIVE SYNC) - BIAR TIDAK HOAX
             const sessId = sessionIdDisplay.value || 'demo';
             if (window.electronAPI) {
                 electronAPI.domEvent({
                     event: "switch_theme",
-                    data: {
-                        theme: selectedChatTheme,
-                        session: sessId
-                    }
+                    data: { theme: selectedChatTheme, session: sessId }
                 });
             }
-
-            // 3. Tutup Modal Secara Paksa
-            const targetModal = document.getElementById('modal-chat');
-            targetModal.classList.remove('show');
-            targetModal.style.display = 'none';
-
-            console.log("Tema Chat Berhasil Diterapkan & Disinkronkan!");
+            console.log("Sinyal Sync Terkirim ke OBS!");
         });
 
-
+        // 3. TOMBOL BUKA MODAL
         document.getElementById('btn-open-chat').addEventListener('click', () => {
             updateChatUrl();
             modalChat.classList.add('show');
         });
+
+        // --- AKHIR LOGIKA MODAL CHAT ---
 
         btnCloseChat.addEventListener('click', () => {
             modalChat.classList.remove('show');
@@ -1382,15 +1358,20 @@
 
                 <div
                     style="background:rgba(255,255,255,0.03); border-radius:15px; padding:20px; text-align:left; margin-bottom:30px; width:100%;">
-                    <div style="font-size:10px; color:rgba(255,215,0,0.6); font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">🔒 Fitur Eksklusif PRO</div>
+                    <div
+                        style="font-size:10px; color:rgba(255,215,0,0.6); font-weight:800; letter-spacing:1px; text-transform:uppercase; margin-bottom:12px;">
+                        🔒 Fitur Eksklusif PRO</div>
                     <div style="display:flex; gap:10px; margin-bottom:10px; align-items:center;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Tema Chat Eksklusif & Premium</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Tema Chat Eksklusif &
+                            Premium</span>
                     </div>
                     <div style="display:flex; gap:10px; margin-bottom:10px; align-items:center;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">OBS AI Trigger Automation</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">OBS AI Trigger
+                            Automation</span>
                     </div>
                     <div style="display:flex; gap:10px; align-items:center;">
-                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Kecerdasan AI (Pusat Otak Nexus)</span>
+                        <span style="color:#ffd700;">✔</span> <span style="font-size:13px;">Kecerdasan AI (Pusat Otak
+                            Nexus)</span>
                     </div>
                 </div>
 
